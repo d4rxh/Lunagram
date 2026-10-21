@@ -66,7 +66,7 @@ public class TypefaceHelper {
     public static SpannableStringBuilder getTitleText() {
         String title = getString(R.string.AppName);
         if (NekoConfig.lunarHeader) {
-            String prefix = NekoConfig.ghostMode ? "👻 🌙 " : "🌙 ";
+            String prefix = NekoConfig.isGhostMode() ? "👻 🌙 " : "🌙 ";
             title = prefix + title;
         }
         var builder = new SpannableStringBuilder(title);
