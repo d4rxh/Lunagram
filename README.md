@@ -1,7 +1,7 @@
 # 🌙 Lunagram
 
 <p align="center">
-  <img src="lunagram_icon.png" alt="Lunagram Logo" width="128" height="128" style="border-radius: 28px;" />
+  <img src="aec052a48687e175c7e578ad423f71f3.jpg" alt="Lunagram Logo" width="128" height="128" style="border-radius: 28px;" />
 </p>
 
 <p align="center">

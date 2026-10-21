@@ -26,8 +26,10 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
 
-      - name: Set up Android SDK
-        uses: android-actions/setup-android@v3
+      - name: Accept Android SDK Licenses & Setup Components
+        run: |
+          yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses || true
+          "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --install "build-tools;37.0.0" "cmake;3.22.1" "ndk;27.3.13750724" || true
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
@@ -44,6 +46,10 @@ jobs:
           cat << 'EOF' > local.properties
           apiId=${{ secrets.API_ID || '35571665' }}
           apiHash=${{ secrets.API_HASH || '7cd8bba954b4f9b1024328365fdd1d30' }}
+          sentryDsn=
+          helperBotId=0
+          helperBotUsername=
+          mapsApiKey=
           EOF
 
       - name: Configure Release Keystore
@@ -64,46 +70,10 @@ jobs:
             echo "keyPassword=lunagram123" >> local.properties
           fi
 
-      - name: Configure Dummy Google Services (if secret omitted)
-        run: |
-          if [ ! -f "TMessagesProj_App/google-services.json" ]; then
-            cat << 'EOF' > TMessagesProj_App/google-services.json
-            {
-              "project_info": {
-                "project_number": "123456789012",
-                "project_id": "lunagram-app",
-                "storage_bucket": "lunagram-app.appspot.com"
-              },
-              "client": [
-                {
-                  "client_info": {
-                    "mobilesdk_app_id": "1:123456789012:android:abcdef0123456789",
-                    "android_client_info": {
-                      "package_name": "com.lunagram.app"
-                    }
-                  },
-                  "oauth_client": [],
-                  "api_key": [
-                    {
-                      "current_key": "dummy_api_key_for_lunagram_build"
-                    }
-                  ],
-                  "services": {
-                    "appinvite_service": {
-                      "other_platform_oauth_client": []
-                    }
-                  }
-                }
-              ],
-              "configuration_version": "1"
-            }
-            EOF
-          fi
-
       - name: Build Lunagram APK with Gradle
         run: |
           chmod +x ./gradlew
-          ./gradlew assembleRelease --no-daemon -x test -x lint
+          ./gradlew assembleRelease --no-daemon --stacktrace -x test -x lint
 
       - name: Locate Generated APKs
         id: apks
@@ -120,7 +90,7 @@ jobs:
           path: release-apks/*.apk
 
       - name: Publish to GitHub Releases
-        if: startsWith(github.ref, 'refs/tags/v') || github.event_name == 'workflow_dispatch'
+        if: startsWith(github.ref, 'refs/tags/v')
         uses: softprops/action-gh-release@v2
         with:
           files: release-apks/*.apk
@@ -139,7 +109,7 @@ jobs:
             
             #### ✨ Highlights:
             - MTProto Telegram API client (`api_id`: 35571665)
-            - Cosmic Lunar UI theme and full-screen media player
+            - Custom user branding & full-screen media player
             - Fully signed and ready to install
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
