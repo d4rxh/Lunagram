@@ -146,10 +146,18 @@ public class MonetHelper {
     private static class OverlayChangeReceiver extends BroadcastReceiver {
 
         public void register(Context context) {
-            IntentFilter packageFilter = new IntentFilter(ACTION_OVERLAY_CHANGED);
-            packageFilter.addDataScheme("package");
-            packageFilter.addDataSchemeSpecificPart("android", PatternMatcher.PATTERN_LITERAL);
-            context.registerReceiver(this, packageFilter);
+            try {
+                IntentFilter packageFilter = new IntentFilter(ACTION_OVERLAY_CHANGED);
+                packageFilter.addDataScheme("package");
+                packageFilter.addDataSchemeSpecificPart("android", PatternMatcher.PATTERN_LITERAL);
+                if (Build.VERSION.SDK_INT >= 34) {
+                    context.registerReceiver(this, packageFilter, Context.RECEIVER_NOT_EXPORTED);
+                } else {
+                    context.registerReceiver(this, packageFilter);
+                }
+            } catch (Throwable t) {
+                FileLog.e(t);
+            }
         }
 
         public void unregister(Context context) {

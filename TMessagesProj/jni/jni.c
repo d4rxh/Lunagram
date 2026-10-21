@@ -23,9 +23,7 @@ jint JNI_OnLoad(JavaVM *vm, void *reserved) {
 	JNIEnv *env = 0;
     srand(time(NULL));
 
-    if (!check_signature()) {
-        return JNI_ERR;
-    }
+    // anti-tamper signature check removed for Lunagram
 
 	if ((*vm)->GetEnv(vm, (void **) &env, JNI_VERSION_1_6) != JNI_OK) {
 		return -1;

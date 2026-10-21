@@ -373,8 +373,16 @@ public class ApplicationLoader extends Application {
         AndroidUtilities.runOnUIThread(ApplicationLoader::startPushService);
         countDownLatch.countDown();
 
-        LauncherIconController.tryFixLauncherIconIfNeeded();
-        ProxyRotationController.init();
+        try {
+            LauncherIconController.tryFixLauncherIconIfNeeded();
+        } catch (Throwable t) {
+            FileLog.e(t);
+        }
+        try {
+            ProxyRotationController.init();
+        } catch (Throwable t) {
+            FileLog.e(t);
+        }
 
         //if (BuildConfig.DEBUG_PRIVATE_VERSION) {
         //    Choreographer60FpsContent.getInstance().addFrameCallback(debugEverySecondChecks, 1);
