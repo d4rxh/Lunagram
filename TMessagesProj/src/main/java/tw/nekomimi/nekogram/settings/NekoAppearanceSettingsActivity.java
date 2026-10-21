@@ -39,6 +39,10 @@ public class NekoAppearanceSettingsActivity extends BaseNekoSettingsActivity {
     private final int tabsTitleTypeRow = rowId++;
     private final int tabsPositionRow = rowId++;
 
+    private final int material3StyleRow = rowId++;
+    private final int expressiveFabRow = rowId++;
+    private final int lunarHeaderRow = rowId++;
+
     private final int strokeOnViewsRow = rowId++;
 
     @Override
@@ -78,6 +82,12 @@ public class NekoAppearanceSettingsActivity extends BaseNekoSettingsActivity {
 
         items.add(UItem.asHeader(LocaleController.getString(R.string.LiteOptionsBlur2)));
         items.add(UItem.asCheck(strokeOnViewsRow, LocaleController.getString(R.string.StrokeOnViews)).setChecked(NekoConfig.strokeOnViews).slug("strokeOnViews"));
+        items.add(UItem.asShadow(null));
+
+        items.add(UItem.asHeader(LocaleController.getString(R.string.Material3UIHeader)));
+        items.add(UItem.asCheck(material3StyleRow, LocaleController.getString(R.string.M3ExpressiveTabs), LocaleController.getString(R.string.M3ExpressiveTabsDesc)).slug("material3Style").setChecked(NekoConfig.material3Style));
+        items.add(UItem.asCheck(expressiveFabRow, LocaleController.getString(R.string.M3SquircleFab), LocaleController.getString(R.string.M3SquircleFabDesc)).slug("expressiveFab").setChecked(NekoConfig.expressiveFab));
+        items.add(UItem.asCheck(lunarHeaderRow, LocaleController.getString(R.string.LunarBrandedHeader), LocaleController.getString(R.string.LunarBrandedHeaderDesc)).slug("lunarHeader").setChecked(NekoConfig.lunarHeader));
         items.add(UItem.asShadow(null));
 
     }
@@ -190,6 +200,24 @@ public class NekoAppearanceSettingsActivity extends BaseNekoSettingsActivity {
             if (view instanceof TextCheckCell) {
                 ((TextCheckCell) view).setChecked(NekoConfig.miniSenderAvatar);
             }
+        } else if (id == material3StyleRow) {
+            NekoConfig.toggleMaterial3Style();
+            if (view instanceof TextCheckCell) {
+                ((TextCheckCell) view).setChecked(NekoConfig.material3Style);
+            }
+            parentLayout.rebuildAllFragmentViews(false, false);
+        } else if (id == expressiveFabRow) {
+            NekoConfig.toggleExpressiveFab();
+            if (view instanceof TextCheckCell) {
+                ((TextCheckCell) view).setChecked(NekoConfig.expressiveFab);
+            }
+            parentLayout.rebuildAllFragmentViews(false, false);
+        } else if (id == lunarHeaderRow) {
+            NekoConfig.toggleLunarHeader();
+            if (view instanceof TextCheckCell) {
+                ((TextCheckCell) view).setChecked(NekoConfig.lunarHeader);
+            }
+            parentLayout.rebuildAllFragmentViews(false, false);
         }
     }
 

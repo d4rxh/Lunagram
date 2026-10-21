@@ -85,6 +85,9 @@ public class NekoConfig {
     public static boolean saveEditHistory = true;
     public static boolean unlockPremiumFeatures = true;
     public static boolean noSponsoredAds = true;
+    public static boolean material3Style = true;
+    public static boolean expressiveFab = true;
+    public static boolean lunarHeader = true;
 
     public static boolean accentAsNotificationColor = false;
     public static boolean askBeforeCall = true;
@@ -202,6 +205,9 @@ public class NekoConfig {
             saveEditHistory = preferences.getBoolean("saveEditHistory", true);
             unlockPremiumFeatures = preferences.getBoolean("unlockPremiumFeatures", true);
             noSponsoredAds = preferences.getBoolean("noSponsoredAds", true);
+            material3Style = preferences.getBoolean("material3Style", true);
+            expressiveFab = preferences.getBoolean("expressiveFab", true);
+            lunarHeader = preferences.getBoolean("lunarHeader", true);
             askBeforeCall = preferences.getBoolean("askBeforeCall", true);
             autoInlineBot = preferences.getBoolean("autoInlineBot", false);
             autoPauseVideo = preferences.getBoolean("autoPauseVideo", true);
@@ -1207,6 +1213,21 @@ public class NekoConfig {
     public static void toggleNoSponsoredAds() {
         noSponsoredAds = !noSponsoredAds;
         preferences.edit().putBoolean("noSponsoredAds", noSponsoredAds).apply();
+    }
+
+    public static void toggleMaterial3Style() {
+        material3Style = !material3Style;
+        preferences.edit().putBoolean("material3Style", material3Style).apply();
+    }
+
+    public static void toggleExpressiveFab() {
+        expressiveFab = !expressiveFab;
+        preferences.edit().putBoolean("expressiveFab", expressiveFab).apply();
+    }
+
+    public static void toggleLunarHeader() {
+        lunarHeader = !lunarHeader;
+        preferences.edit().putBoolean("lunarHeader", lunarHeader).apply();
     }
 
     public static void setCfAccountID(String value) {

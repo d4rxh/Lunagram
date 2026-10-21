@@ -375,4 +375,13 @@
     <string name="UnlockPremiumPerksDesc">Enables 5 accounts limit, premium stickers animations, and badges locally.</string>
     <string name="NoSponsoredAds">Block sponsored ads</string>
     <string name="NoSponsoredAdsDesc">Completely remove sponsored promotional messages from public channels.</string>
+
+    <!-- Material Design 3 & Lunar UI -->
+    <string name="Material3UIHeader">Material Design 3 &amp; Lunar UI</string>
+    <string name="M3ExpressiveTabs">Material 3 pill tabs</string>
+    <string name="M3ExpressiveTabsDesc">Use modern Material Design 3 capsule pills for navigation and folder tabs.</string>
+    <string name="M3SquircleFab">Material 3 squircle FAB</string>
+    <string name="M3SquircleFabDesc">Shape the floating action button with Material 3 rounded squircle geometry.</string>
+    <string name="LunarBrandedHeader">Lunar cosmic header</string>
+    <string name="LunarBrandedHeaderDesc">Show cosmic crescent and stealth cloak indicator in the top app bar.</string>
 </resources>
