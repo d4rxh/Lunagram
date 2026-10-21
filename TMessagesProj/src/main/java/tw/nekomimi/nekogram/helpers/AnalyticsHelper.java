@@ -32,36 +32,53 @@ public class AnalyticsHelper {
     public static String userId = null;
 
     public static void start(Application application) {
-        preferences = application.getSharedPreferences("nekoanalytics", Application.MODE_PRIVATE);
-        analyticsDisabled = !Extra.FORCE_ANALYTICS && preferences.getBoolean("analyticsDisabled", false);
-        sendBugReport = Extra.FORCE_ANALYTICS || preferences.getBoolean("sendBugReport", true);
-        if (analyticsDisabled) {
-            FileLog.d("Analytics: userId = disabled");
-            return;
-        }
-        userId = preferences.getString("userId", null);
-        if (userId == null || userId.length() < 32) {
-            preferences.edit().putString("userId", userId = generateUserID()).apply();
-        }
-        firebaseAnalytics = FirebaseAnalytics.getInstance(application);
-        firebaseAnalytics.setAnalyticsCollectionEnabled(true);
-        firebaseAnalytics.setUserId(userId);
-        SentryAndroid.init(application, options -> {
-            options.setDsn(Extra.SENTRY_DSN);
-            options.setEnvironment(BuildConfig.BUILD_TYPE);
-            options.setPrintUncaughtStackTrace(true);
-            options.getDataCollection().forceDataCollection();
-            options.setEnableUserInteractionTracing(true);
-            options.setAttachViewHierarchy(true);
-            options.setEnableSystemEventBreadcrumbsExtras(true);
-            options.setTracesSampleRate(0.01);
-        });
-        var user = new User();
-        user.setId(userId);
-        Sentry.setUser(user);
+        try {
+            preferences = application.getSharedPreferences("nekoanalytics", Application.MODE_PRIVATE);
+            analyticsDisabled = !Extra.FORCE_ANALYTICS && preferences.getBoolean("analyticsDisabled", false);
+            sendBugReport = Extra.FORCE_ANALYTICS || preferences.getBoolean("sendBugReport", true);
+            if (analyticsDisabled) {
+                FileLog.d("Analytics: userId = disabled");
+                return;
+            }
+            userId = preferences.getString("userId", null);
+            if (userId == null || userId.length() < 32) {
+                preferences.edit().putString("userId", userId = generateUserID()).apply();
+            }
 
-        if (BuildVars.LOGS_ENABLED) {
-            FileLog.d("Analytics: userId = " + userId);
+            try {
+                firebaseAnalytics = FirebaseAnalytics.getInstance(application);
+                firebaseAnalytics.setAnalyticsCollectionEnabled(true);
+                firebaseAnalytics.setUserId(userId);
+            } catch (Throwable t) {
+                FileLog.e("FirebaseAnalytics init failed", t);
+                firebaseAnalytics = null;
+            }
+
+            try {
+                if (Extra.SENTRY_DSN != null && !Extra.SENTRY_DSN.isEmpty() && !"null".equalsIgnoreCase(Extra.SENTRY_DSN) && Extra.SENTRY_DSN.startsWith("http")) {
+                    SentryAndroid.init(application, options -> {
+                        options.setDsn(Extra.SENTRY_DSN);
+                        options.setEnvironment(BuildConfig.BUILD_TYPE);
+                        options.setPrintUncaughtStackTrace(true);
+                        options.getDataCollection().forceDataCollection();
+                        options.setEnableUserInteractionTracing(true);
+                        options.setAttachViewHierarchy(true);
+                        options.setEnableSystemEventBreadcrumbsExtras(true);
+                        options.setTracesSampleRate(0.01);
+                    });
+                    var user = new User();
+                    user.setId(userId);
+                    Sentry.setUser(user);
+                }
+            } catch (Throwable t) {
+                FileLog.e("Sentry init failed", t);
+            }
+
+            if (BuildVars.LOGS_ENABLED) {
+                FileLog.d("Analytics: userId = " + userId);
+            }
+        } catch (Throwable t) {
+            FileLog.e("AnalyticsHelper.start failed", t);
         }
     }
 
@@ -71,15 +88,18 @@ public class AnalyticsHelper {
 
     public static void trackFragmentLifecycle(String lifecycle, BaseFragment fragment) {
         if (analyticsDisabled || fragment == null) return;
-        var breadcrumb = new Breadcrumb();
-        breadcrumb.setType("navigation");
-        breadcrumb.setCategory("ui.fragment.lifecycle");
-        breadcrumb.setLevel(SentryLevel.INFO);
-        breadcrumb.setData("state", lifecycle);
-        breadcrumb.setData("screen", getFragmentName(fragment));
-        Sentry.addBreadcrumb(breadcrumb);
-        if ("created".equals(lifecycle)) {
-            firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, null);
+        try {
+            var breadcrumb = new Breadcrumb();
+            breadcrumb.setType("navigation");
+            breadcrumb.setCategory("ui.fragment.lifecycle");
+            breadcrumb.setLevel(SentryLevel.INFO);
+            breadcrumb.setData("state", lifecycle);
+            breadcrumb.setData("screen", getFragmentName(fragment));
+            Sentry.addBreadcrumb(breadcrumb);
+            if ("created".equals(lifecycle) && firebaseAnalytics != null) {
+                firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, null);
+            }
+        } catch (Throwable ignore) {
         }
     }
 
@@ -89,12 +109,15 @@ public class AnalyticsHelper {
     }
 
     public static void trackEvent(String event, HashMap<String, String> map) {
-        if (analyticsDisabled) return;
-        Bundle bundle = new Bundle();
-        for (String key : map.keySet()) {
-            bundle.putString(key, map.get(key));
+        if (analyticsDisabled || firebaseAnalytics == null) return;
+        try {
+            Bundle bundle = new Bundle();
+            for (String key : map.keySet()) {
+                bundle.putString(key, map.get(key));
+            }
+            firebaseAnalytics.logEvent(event, bundle);
+        } catch (Throwable ignore) {
         }
-        firebaseAnalytics.logEvent(event, bundle);
     }
 
     public static boolean isSettingsAvailable() {
@@ -104,13 +127,22 @@ public class AnalyticsHelper {
     public static void setAnalyticsDisabled() {
         AnalyticsHelper.analyticsDisabled = true;
         if (BuildConfig.DEBUG) return;
-        FirebaseAnalytics.getInstance(ApplicationLoader.applicationContext).setAnalyticsCollectionEnabled(false);
-        preferences.edit().putBoolean("analyticsDisabled", true).apply();
+        try {
+            if (firebaseAnalytics != null) {
+                firebaseAnalytics.setAnalyticsCollectionEnabled(false);
+            }
+        } catch (Throwable ignore) {
+        }
+        if (preferences != null) {
+            preferences.edit().putBoolean("analyticsDisabled", true).apply();
+        }
     }
 
     public static void toggleSendBugReport() {
         AnalyticsHelper.sendBugReport = !AnalyticsHelper.sendBugReport;
         if (BuildConfig.DEBUG) return;
-        preferences.edit().putBoolean("sendBugReport", sendBugReport).apply();
+        if (preferences != null) {
+            preferences.edit().putBoolean("sendBugReport", sendBugReport).apply();
+        }
     }
 }

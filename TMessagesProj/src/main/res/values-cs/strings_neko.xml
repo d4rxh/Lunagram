@@ -22,7 +22,7 @@
     <string name="AddToSavedMessages">Зберегти повідомлення</string>
     <string name="CreateMention">Vytvořit zmínku</string>
     <string name="Prpr">Peropero</string>
-    <string name="NekogramRunning">Nekogram běží</string>
+    <string name="NekogramRunning">Lunagram běží</string>
     <string name="EventType">Sada ikon postranního panelu</string>
     <string name="DependsOnDate">Záleží na datu</string>
     <string name="Christmas">Vánoce</string>
@@ -64,8 +64,8 @@
     <string name="IgnoreBlockedAbout">TO NENÍ OPRAVDU SKRÝT! Zprávy jsou stále k dispozici k zobrazení, ale text bude převeden na spoiler a média se nebudou automaticky stahovat.</string>
     <string name="Donate">Podpořit</string>
     <string name="DonateAbout">Podpořte vývoj aplikace.</string>
-    <string name="TranslationAbout">Pomozte nám přeložit Nekogram do vašeho jazyka.</string>
-    <string name="Translation">Přeložte Nekogram</string>
+    <string name="TranslationAbout">Pomozte nám přeložit Lunagram do vašeho jazyka.</string>
+    <string name="Translation">Přeložte Lunagram</string>
     <string name="GooglePlay">Google Play</string>
     <string name="ResetStickerSize">Resetovat velikost nálepky</string>
     <string name="RestartAppToTakeEffect">Restartujte aplikaci, aby se změny projevily.</string>
@@ -141,7 +141,7 @@
     <string name="MutualContactDescription">Tento kontakt je vzájemný.</string>
     <string name="InviteTextNeko">TextPozvánkyNeko</string>
     <string name="ShareNekogram">PodílNekoGram...</string>
-    <string name="NekogramVersion">VerzeNekogram</string>
+    <string name="NekogramVersion">VerzeLunagram</string>
     <string name="UpdateInstalling">InstalaceAktualizace</string>
     <string name="UpdateInstallingNotification">UpozorněníNaInstalaciAktualizace</string>
     <string name="UpdateInstallingRelaunch">AktualizaceInstalaceZnovuSpustit.</string>
@@ -163,7 +163,7 @@
     <string name="SaveToDownloadCount_few">Ukládání %1$d souborů ke stažení</string>
     <string name="SaveToDownloadCount_many">Ukládání %1$d souborů ke stažení</string>
     <string name="SaveToDownloadCount_other">Ukládání %1$d souborů ke stažení</string>
-    <string name="AppLinkNotVerifiedMessage">Pro Android 12 a novější musíte ručně přidat odkaz na ověřené odkazy, abyste mohli otevřít odkazy t.me v Nekogramu.</string>
+    <string name="AppLinkNotVerifiedMessage">Pro Android 12 a novější musíte ručně přidat odkaz na ověřené odkazy, abyste mohli otevřít odkazy t.me v Lunagramu.</string>
     <string name="AppLinkNotVerifiedTitle">Odkazy na aplikace nebyly ověřeny</string>
     <string name="AutoTranslate">Automatický překlad</string>
     <string name="AutoTranslateAbout">Automaticky překládat zprávy, které jsou v jiném jazyce.</string>

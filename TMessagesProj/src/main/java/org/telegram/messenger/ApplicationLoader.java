@@ -302,8 +302,16 @@ public class ApplicationLoader extends Application {
 
         // AndroidUtilities must be initialized before FileLog
         final String helloWorld = AndroidUtilities.getHelloWorld();
-        AnalyticsHelper.start(this);
-        CronetHelper.init(this);
+        try {
+            AnalyticsHelper.start(this);
+        } catch (Throwable t) {
+            FileLog.e(t);
+        }
+        try {
+            CronetHelper.init(this);
+        } catch (Throwable t) {
+            FileLog.e(t);
+        }
 
         if (BuildVars.LOGS_ENABLED) {
             FileLog.d(helloWorld);

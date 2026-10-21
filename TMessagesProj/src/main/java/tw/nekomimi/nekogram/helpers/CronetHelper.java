@@ -14,19 +14,23 @@ public class CronetHelper {
     private static CronetEngine engine = null;
 
     public static void init(Context context) {
-        CronetProviderInstaller.installProvider(context)
-                .continueWith(task -> {
-                    if (!task.isSuccessful() && task.getException() != null) {
-                        throw task.getException();
-                    }
-                    try {
-                        engine = createEngine(context);
-                    } catch (Throwable t) {
-                        throw new RuntimeException(t);
-                    }
-                    return null;
-                })
-                .addOnFailureListener(e -> FileLog.e("Failed to create cronet engine", e));
+        try {
+            CronetProviderInstaller.installProvider(context)
+                    .continueWith(task -> {
+                        if (!task.isSuccessful() && task.getException() != null) {
+                            throw task.getException();
+                        }
+                        try {
+                            engine = createEngine(context);
+                        } catch (Throwable t) {
+                            throw new RuntimeException(t);
+                        }
+                        return null;
+                    })
+                    .addOnFailureListener(e -> FileLog.e("Failed to create cronet engine", e));
+        } catch (Throwable t) {
+            FileLog.e("Failed to install CronetProvider", t);
+        }
     }
 
     public static CronetEngine createEngine(Context context) {

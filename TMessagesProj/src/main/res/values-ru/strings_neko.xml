@@ -22,7 +22,7 @@
     <string name="AddToSavedMessages">В избранное</string>
     <string name="CreateMention">Создать упоминание</string>
     <string name="Prpr">Peropero</string>
-    <string name="NekogramRunning">Nekogram запущен</string>
+    <string name="NekogramRunning">Lunagram запущен</string>
     <string name="EventType">Иконки бокового меню</string>
     <string name="DependsOnDate">Зависит от даты</string>
     <string name="Christmas">Рождество</string>
@@ -62,9 +62,9 @@
     <string name="OfficialChannel">Официальный канал</string>
     <string name="About">О проекте</string>
     <string name="IgnoreBlockedAbout">ОНИ НА САМОМ ДЕЛЕ НЕ СКРЫВАЮТСЯ! Сообщения будут доступны для просмотра, но текст будет скрыт под спойлер, а автозагрузка медиа будет отключена.</string>
-    <string name="Donate">Поддержать Nekogram</string>
+    <string name="Donate">Поддержать Lunagram</string>
     <string name="DonateAbout">Поддержите разработку проекта.</string>
-    <string name="TranslationAbout">Помогите перевести Nekogram на ваш язык.</string>
+    <string name="TranslationAbout">Помогите перевести Lunagram на ваш язык.</string>
     <string name="Translation">Помочь перевести Neko</string>
     <string name="GooglePlay">Google Play</string>
     <string name="ResetStickerSize">Сбросить размер стикера</string>
@@ -115,7 +115,7 @@
     <string name="RegistrationDateNewer">Новее %s</string>
     <string name="RegistrationDateOlder">Старше %s</string>
     <string name="RegistrationDateApproximately">Приблизительно %s</string>
-    <string name="UpdateNekogram">Обновить Nekogram</string>
+    <string name="UpdateNekogram">Обновить Lunagram</string>
     <string name="TranslationTarget">Целевой язык</string>
     <string name="TranslationTargetApp">Язык приложения</string>
     <string name="Translator">Переводчик</string>
@@ -141,9 +141,9 @@
     <string name="OfficialSite">Официальный сайт</string>
     <string name="MutualContact">Общий контакт</string>
     <string name="MutualContactDescription">Этот контакт является общим.</string>
-    <string name="InviteTextNeko">Привет, я использую Nekogram для переписки. Присоединяйся! Скачать его можно здесь: %1$s</string>
-    <string name="ShareNekogram">Поделиться Nekogram...</string>
-    <string name="NekogramVersion">Nekogram %1$s\nНа основе Telegram %2$s\nДизайн %3$s</string>
+    <string name="InviteTextNeko">Привет, я использую Lunagram для переписки. Присоединяйся! Скачать его можно здесь: %1$s</string>
+    <string name="ShareNekogram">Поделиться Lunagram...</string>
+    <string name="NekogramVersion">Lunagram %1$s\nНа основе Telegram %2$s\nДизайн %3$s</string>
     <string name="UpdateInstalling">Установка обновления...</string>
     <string name="UpdateInstallingNotification">После завершения обновления появится уведомление.</string>
     <string name="UpdateInstallingRelaunch">Когда обновление завершится, приложение будет перезапущено.</string>
@@ -166,7 +166,7 @@
     <string name="SaveToDownloadCount_few">Сохранение %1$d файлов в загрузки</string>
     <string name="SaveToDownloadCount_many">Сохранение %1$d файлов в загрузки</string>
     <string name="SaveToDownloadCount_other">Сохранение %1$d файлов в загрузки</string>
-    <string name="AppLinkNotVerifiedMessage">Для Android 12 и более поздних версий вам необходимо вручную добавить ссылку к подтверждённым ссылкам, чтобы открывать ссылки t.me в Nekogram.</string>
+    <string name="AppLinkNotVerifiedMessage">Для Android 12 и более поздних версий вам необходимо вручную добавить ссылку к подтверждённым ссылкам, чтобы открывать ссылки t.me в Lunagram.</string>
     <string name="AppLinkNotVerifiedTitle">Ссылки приложения не подтверждены</string>
     <string name="AutoTranslate">Автоперевод</string>
     <string name="AutoTranslateAbout">Автоматически переводить сообщения с иностранного языка.</string>
