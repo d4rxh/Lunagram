@@ -350,4 +350,29 @@
 
     <!-- Accessibility -->
     <string name="AccessibilitySettings">Accessibility settings</string>
+
+    <!-- Luna Stealth & AyuGram Features -->
+    <string name="LunaStealthSettings">Stealth &amp; Anti-Delete</string>
+    <string name="LunaStealthSettingsDesc">Ghost mode, message retention, and premium perks</string>
+    <string name="GhostModeHeader">Ghost Mode</string>
+    <string name="GhostRead">Hide read receipts</string>
+    <string name="GhostReadDesc">Read messages secretly without marking them as read on the server.</string>
+    <string name="GhostTyping">Hide typing status</string>
+    <string name="GhostTypingDesc">Do not show typing, recording audio, or uploading status to others.</string>
+    <string name="GhostStories">Anonymous stories</string>
+    <string name="GhostStoriesDesc">View stories without appearing in the viewer list.</string>
+    <string name="GhostOnline">Don\'t send online status</string>
+    <string name="GhostOnlineDesc">Stay offline to others even while browsing the app.</string>
+
+    <string name="AntiDeleteHeader">Message History</string>
+    <string name="AntiDeleteMessages">Anti-Delete messages</string>
+    <string name="AntiDeleteMessagesDesc">Retain incoming messages even if the sender deletes them for everyone.</string>
+    <string name="SaveEditHistory">Save edit history</string>
+    <string name="SaveEditHistoryDesc">Keep track of previous message text when messages are edited.</string>
+
+    <string name="PremiumPerksHeader">Client-Side Perks</string>
+    <string name="UnlockPremiumPerks">Unlock local premium perks</string>
+    <string name="UnlockPremiumPerksDesc">Enables 5 accounts limit, premium stickers animations, and badges locally.</string>
+    <string name="NoSponsoredAds">Block sponsored ads</string>
+    <string name="NoSponsoredAdsDesc">Completely remove sponsored promotional messages from public channels.</string>
 </resources>

@@ -927,6 +927,9 @@ public class MessagesController extends BaseController implements NotificationCe
     }
 
     public boolean isPremiumUser(TLRPC.User currentUser) {
+        if (tw.nekomimi.nekogram.NekoConfig.unlockPremiumFeatures && currentUser != null && currentUser.id == getUserConfig().getClientUserId()) {
+            return true;
+        }
         return currentUser != null && currentUser.premium && !isSupportUser(currentUser);
     }
 
@@ -10515,7 +10518,7 @@ public class MessagesController extends BaseController implements NotificationCe
         checkReadTasks();
 
         if (getUserConfig().isClientActivated() && !getUserConfig().getCurrentUser().bot) {
-            if (!ignoreSetOnline && getConnectionsManager().getPauseTime() == 0 && ApplicationLoader.isScreenOn && !ApplicationLoader.mainInterfacePausedStageQueue) {
+            if (!ignoreSetOnline && !tw.nekomimi.nekogram.NekoConfig.ghostOnline && getConnectionsManager().getPauseTime() == 0 && ApplicationLoader.isScreenOn && !ApplicationLoader.mainInterfacePausedStageQueue) {
                 if (ApplicationLoader.mainInterfacePausedStageQueueTime != 0 && Math.abs(ApplicationLoader.mainInterfacePausedStageQueueTime - System.currentTimeMillis()) > 1000) {
                     if (statusSettingState != 1 && (lastStatusUpdateTime == 0 || Math.abs(System.currentTimeMillis() - lastStatusUpdateTime) >= 55000 || offlineSent)) {
                         statusSettingState = 1;
@@ -11379,6 +11382,9 @@ public class MessagesController extends BaseController implements NotificationCe
     }
 
     public boolean sendTyping(long dialogId, long threadMsgId, int action, String emojicon, int classGuid) {
+        if (tw.nekomimi.nekogram.NekoConfig.ghostTyping) {
+            return false;
+        }
         if (action < 0 || action >= sendingTypings.length || dialogId == 0) {
             return false;
         }
@@ -14553,6 +14559,9 @@ public class MessagesController extends BaseController implements NotificationCe
     }
 
     private void completeReadTask(ReadTask task) {
+        if (tw.nekomimi.nekogram.NekoConfig.ghostRead) {
+            return;
+        }
         if (task.replyId != 0 && task.monoForumPeerId == 0) {
             TLRPC.TL_messages_readDiscussion req = new TLRPC.TL_messages_readDiscussion();
             req.msg_id = (int) task.replyId;
@@ -19521,6 +19530,16 @@ public class MessagesController extends BaseController implements NotificationCe
                     message.attachPath = "";
                 }
 
+                if (tw.nekomimi.nekogram.NekoConfig.saveEditHistory && message.message != null) {
+                    MessageObject oldObj = dialogMessagesByIds.get(message.id);
+                    if (oldObj != null && oldObj.messageOwner != null && oldObj.messageOwner.message != null && !oldObj.messageOwner.message.isEmpty()) {
+                        String oldText = oldObj.messageOwner.message.replace("🗑️ ", "");
+                        if (!oldText.equals(message.message) && !message.message.contains("(Edited, was:")) {
+                            message.message = message.message + "\n\n✏️ (Edited, was: \"" + oldText + "\")";
+                        }
+                    }
+                }
+
                 ImageLoader.saveMessageThumbs(message);
                 AndroidUtilities.runOnUIThread(() -> {
                     getSendMessagesHelper().onMessageEdited(message);
@@ -21666,6 +21685,9 @@ public class MessagesController extends BaseController implements NotificationCe
     }
 
     public SponsoredMessagesInfo getSponsoredMessages(long dialogId) {
+        if (tw.nekomimi.nekogram.NekoConfig.noSponsoredAds) {
+            return null;
+        }
         SponsoredMessagesInfo info = sponsoredMessages.get(dialogId);
         if (info != null && (info.loading || Math.abs(SystemClock.elapsedRealtime() - info.loadTime) <= 5 * 60 * 1000)) {
             return info;

@@ -60,6 +60,7 @@ public class NekoSettingsActivity extends BaseNekoSettingsActivity implements Fa
     private final int appearanceRow = rowId++;
     private final int chatRow = rowId++;
     private final int passcodeRow = rowId++;
+    private final int stealthRow = rowId++;
     private final int experimentRow = rowId++;
     private final int accessibilityRow = rowId++;
 
@@ -167,6 +168,7 @@ public class NekoSettingsActivity extends BaseNekoSettingsActivity implements Fa
         if (!PasscodeHelper.isSettingsHidden()) {
             items.add(UItem.asButton(passcodeRow, R.drawable.msg_secret, LocaleController.getString(R.string.PasscodeNeko)).slug("passcode"));
         }
+        items.add(UItem.asButton(stealthRow, R.drawable.msg_fave, LocaleController.getString(R.string.LunaStealthSettings)).slug("stealth"));
         items.add(UItem.asButton(experimentRow, R.drawable.msg_fave, LocaleController.getString(R.string.NotificationsOther)).slug("experiment"));
         AccessibilityManager am = (AccessibilityManager) ApplicationLoader.applicationContext.getSystemService(Context.ACCESSIBILITY_SERVICE);
         if (am != null && am.isTouchExplorationEnabled()) {
@@ -209,6 +211,8 @@ public class NekoSettingsActivity extends BaseNekoSettingsActivity implements Fa
             presentFragment(new NekoAppearanceSettingsActivity());
         } else if (id == passcodeRow) {
             presentFragment(new NekoPasscodeSettingsActivity());
+        } else if (id == stealthRow) {
+            presentFragment(new LunaStealthSettingsActivity());
         } else if (id == experimentRow) {
             presentFragment(new NekoExperimentalSettingsActivity());
         } else if (id == accessibilityRow) {

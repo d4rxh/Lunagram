@@ -77,6 +77,15 @@ public class NekoConfig {
 
     public static float stickerSize = 14.0f;
 
+    public static boolean ghostRead = false;
+    public static boolean ghostTyping = false;
+    public static boolean ghostStories = false;
+    public static boolean ghostOnline = false;
+    public static boolean antiDelete = true;
+    public static boolean saveEditHistory = true;
+    public static boolean unlockPremiumFeatures = true;
+    public static boolean noSponsoredAds = true;
+
     public static boolean accentAsNotificationColor = false;
     public static boolean askBeforeCall = true;
     public static boolean autoInlineBot = false;
@@ -185,6 +194,14 @@ public class NekoConfig {
             transType = preferences.getInt("transType", TRANS_TYPE_NEKO);
             stickerSize = preferences.getFloat("stickerSize", 14.0f);
             accentAsNotificationColor = preferences.getBoolean("accentAsNotificationColor", false);
+            ghostRead = preferences.getBoolean("ghostRead", false);
+            ghostTyping = preferences.getBoolean("ghostTyping", false);
+            ghostStories = preferences.getBoolean("ghostStories", false);
+            ghostOnline = preferences.getBoolean("ghostOnline", false);
+            antiDelete = preferences.getBoolean("antiDelete", true);
+            saveEditHistory = preferences.getBoolean("saveEditHistory", true);
+            unlockPremiumFeatures = preferences.getBoolean("unlockPremiumFeatures", true);
+            noSponsoredAds = preferences.getBoolean("noSponsoredAds", true);
             askBeforeCall = preferences.getBoolean("askBeforeCall", true);
             autoInlineBot = preferences.getBoolean("autoInlineBot", false);
             autoPauseVideo = preferences.getBoolean("autoPauseVideo", true);
@@ -1150,6 +1167,46 @@ public class NekoConfig {
     public static void toggleVoiceEnhancements() {
         voiceEnhancements = !voiceEnhancements;
         preferences.edit().putBoolean("voiceEnhancements", voiceEnhancements).apply();
+    }
+
+    public static void toggleGhostRead() {
+        ghostRead = !ghostRead;
+        preferences.edit().putBoolean("ghostRead", ghostRead).apply();
+    }
+
+    public static void toggleGhostTyping() {
+        ghostTyping = !ghostTyping;
+        preferences.edit().putBoolean("ghostTyping", ghostTyping).apply();
+    }
+
+    public static void toggleGhostStories() {
+        ghostStories = !ghostStories;
+        preferences.edit().putBoolean("ghostStories", ghostStories).apply();
+    }
+
+    public static void toggleGhostOnline() {
+        ghostOnline = !ghostOnline;
+        preferences.edit().putBoolean("ghostOnline", ghostOnline).apply();
+    }
+
+    public static void toggleAntiDelete() {
+        antiDelete = !antiDelete;
+        preferences.edit().putBoolean("antiDelete", antiDelete).apply();
+    }
+
+    public static void toggleSaveEditHistory() {
+        saveEditHistory = !saveEditHistory;
+        preferences.edit().putBoolean("saveEditHistory", saveEditHistory).apply();
+    }
+
+    public static void toggleUnlockPremiumFeatures() {
+        unlockPremiumFeatures = !unlockPremiumFeatures;
+        preferences.edit().putBoolean("unlockPremiumFeatures", unlockPremiumFeatures).apply();
+    }
+
+    public static void toggleNoSponsoredAds() {
+        noSponsoredAds = !noSponsoredAds;
+        preferences.edit().putBoolean("noSponsoredAds", noSponsoredAds).apply();
     }
 
     public static void setCfAccountID(String value) {

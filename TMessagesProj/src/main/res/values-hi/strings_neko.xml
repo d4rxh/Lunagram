@@ -284,4 +284,29 @@
     <string name="AutoInlineBotDesc">संदेश के पाठ के आधार पर इनलाइन बॉट को स्वचालित रूप से क्वेरी करना।</string>
     <!-- Accessibility -->
     <string name="AccessibilitySettings">एक्सेसिबिलिटी सेटिंग</string>
+
+    <!-- Luna Stealth & AyuGram Features -->
+    <string name="LunaStealthSettings">Stealth और Anti-Delete</string>
+    <string name="LunaStealthSettingsDesc">Ghost mode, हटाए गए संदेश सहेजना, और प्रीमियम सुविधाएं</string>
+    <string name="GhostModeHeader">Ghost Mode</string>
+    <string name="GhostRead">रीड रसीद छुपाएं (Ghost Read)</string>
+    <string name="GhostReadDesc">संदेशों को चुपके से पढ़ें बिना सर्वर पर पढ़ा हुआ चिह्नित किए।</string>
+    <string name="GhostTyping">टाइपिंग स्थिति छुपाएं</string>
+    <string name="GhostTypingDesc">टाइपिंग या ऑडियो रिकॉर्डिंग स्टेटस दूसरों को न दिखाएं।</string>
+    <string name="GhostStories">अनाम कहानियां (Anonymous Stories)</string>
+    <string name="GhostStoriesDesc">व्यूअर लिस्ट में आए बिना दूसरों की कहानियां देखें।</string>
+    <string name="GhostOnline">ऑनलाइन स्थिति न भेजें</string>
+    <string name="GhostOnlineDesc">ऐप का उपयोग करते हुए भी दूसरों के लिए ऑफ़लाइन रहें।</string>
+
+    <string name="AntiDeleteHeader">संदेश इतिहास (Message History)</string>
+    <string name="AntiDeleteMessages">Anti-Delete संदेश</string>
+    <string name="AntiDeleteMessagesDesc">प्रेषक द्वारा सबके लिए हटाए गए संदेशों को भी चैट में सुरक्षित रखें।</string>
+    <string name="SaveEditHistory">संपादन इतिहास सहेजें</string>
+    <string name="SaveEditHistoryDesc">संदेश संपादित होने पर पुराना संदेश भी देखें।</string>
+
+    <string name="PremiumPerksHeader">लोकल प्रीमियम सुविधाएं</string>
+    <string name="UnlockPremiumPerks">प्रीमियम सुविधाएं अनलॉक करें</string>
+    <string name="UnlockPremiumPerksDesc">5 अकाउंट्स और प्रीमियम स्टिकर एनिमेशन अनलॉक करें।</string>
+    <string name="NoSponsoredAds">प्रायोजित विज्ञापन ब्लॉक करें</string>
+    <string name="NoSponsoredAdsDesc">सार्वजनिक चैनलों से स्पॉन्सर्ड विज्ञापन पूरी तरह हटाएं।</string>
 </resources>

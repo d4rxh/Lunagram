@@ -125,6 +125,9 @@ public class UserConfig extends BaseController {
     }
 
     public static boolean hasPremiumOnAccounts() {
+        if (tw.nekomimi.nekogram.NekoConfig.unlockPremiumFeatures) {
+            return true;
+        }
         for (int a = 0; a < MAX_ACCOUNT_COUNT; a++) {
             if (AccountInstance.getInstance(a).getUserConfig().isClientActivated() && AccountInstance.getInstance(a).getUserConfig().getUserConfig().isPremium()) {
                 return true;
@@ -584,6 +587,9 @@ public class UserConfig extends BaseController {
     }
 
     public boolean isPremium() {
+        if (tw.nekomimi.nekogram.NekoConfig.unlockPremiumFeatures) {
+            return true;
+        }
         TLRPC.User user = currentUser;
         if (user == null) {
             return false;
