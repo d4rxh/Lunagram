@@ -78,20 +78,44 @@ jobs:
 
       - name: Ensure Google Services Configuration
         run: |
+          mkdir -p TMessagesProj_App
           if [ -n "${{ secrets.GOOGLE_SERVICES_JSON }}" ]; then
-            echo "${{ secrets.GOOGLE_SERVICES_JSON }}" | base64 --decode > TMessagesProj_App/google-services.json
+            if echo "${{ secrets.GOOGLE_SERVICES_JSON }}" | grep -q '^{'; then
+              echo "${{ secrets.GOOGLE_SERVICES_JSON }}" > TMessagesProj_App/google-services.json
+            else
+              echo "${{ secrets.GOOGLE_SERVICES_JSON }}" | base64 --decode > TMessagesProj_App/google-services.json 2>/dev/null || echo "${{ secrets.GOOGLE_SERVICES_JSON }}" > TMessagesProj_App/google-services.json
+            fi
           elif [ ! -f "TMessagesProj_App/google-services.json" ]; then
             cat << 'EOF' > TMessagesProj_App/google-services.json
           {
             "project_info": {
-              "project_number": "123456789012",
-              "project_id": "lunagram-app",
-              "storage_bucket": "lunagram-app.appspot.com"
+              "project_number": "1062405939305",
+              "project_id": "lunagram-254d7",
+              "storage_bucket": "lunagram-254d7.firebasestorage.app"
             },
             "client": [
               {
                 "client_info": {
-                  "mobilesdk_app_id": "1:123456789012:android:abcdef0123456789",
+                  "mobilesdk_app_id": "1:1062405939305:android:67f72b0077f2dd6f6342f8",
+                  "android_client_info": {
+                    "package_name": "com.d4rxh.lunagram"
+                  }
+                },
+                "oauth_client": [],
+                "api_key": [
+                  {
+                    "current_key": "dummy_api_key_for_lunagram_build"
+                  }
+                ],
+                "services": {
+                  "appinvite_service": {
+                    "other_platform_oauth_client": []
+                  }
+                }
+              },
+              {
+                "client_info": {
+                  "mobilesdk_app_id": "1:1062405939305:android:67f72b0077f2dd6f6342f8",
                   "android_client_info": {
                     "package_name": "com.lunagram.app"
                   }
@@ -103,9 +127,6 @@ jobs:
                   }
                 ],
                 "services": {
-                  "analytics_service": {
-                    "status": 1
-                  },
                   "appinvite_service": {
                     "other_platform_oauth_client": []
                   }
@@ -116,6 +137,7 @@ jobs:
           }
           EOF
           fi
+          cp TMessagesProj_App/google-services.json google-services.json 2>/dev/null || true
           touch sentry.properties
 
       - name: Configure Release Keystore
