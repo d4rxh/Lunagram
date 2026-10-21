@@ -69,6 +69,10 @@ public class UserConfig extends BaseController {
     public TLRPC.TL_help_termsOfService unacceptedTermsOfService;
     public long autoDownloadConfigLoadTime;
 
+    public TLRPC.EmojiStatus localEmojiStatus;
+    public TLRPC.PeerColor localColor;
+    public TLRPC.PeerColor localProfileColor;
+
     public String premiumGiftsStickerPack;
     public String premiumTonStickerPack;
     public String genericAnimationsStickerPack;
@@ -237,6 +241,42 @@ public class UserConfig extends BaseController {
                         editor.remove("user");
                     }
 
+                    if (localEmojiStatus != null) {
+                        try {
+                            SerializedData data = new SerializedData();
+                            localEmojiStatus.serializeToStream(data);
+                            editor.putString("localEmojiStatus", Base64.encodeToString(data.toByteArray(), Base64.DEFAULT));
+                            data.cleanup();
+                        } catch (Exception ignore) {
+                        }
+                    } else {
+                        editor.remove("localEmojiStatus");
+                    }
+
+                    if (localColor != null) {
+                        try {
+                            SerializedData data = new SerializedData();
+                            localColor.serializeToStream(data);
+                            editor.putString("localColor", Base64.encodeToString(data.toByteArray(), Base64.DEFAULT));
+                            data.cleanup();
+                        } catch (Exception ignore) {
+                        }
+                    } else {
+                        editor.remove("localColor");
+                    }
+
+                    if (localProfileColor != null) {
+                        try {
+                            SerializedData data = new SerializedData();
+                            localProfileColor.serializeToStream(data);
+                            editor.putString("localProfileColor", Base64.encodeToString(data.toByteArray(), Base64.DEFAULT));
+                            data.cleanup();
+                        } catch (Exception ignore) {
+                        }
+                    } else {
+                        editor.remove("localProfileColor");
+                    }
+
                     editor.apply();
                 } catch (Exception e) {
                     FileLog.e(e);
@@ -273,11 +313,32 @@ public class UserConfig extends BaseController {
         }
     }
 
+    public void applyLocalPremium(TLRPC.User user) {
+        if (user == null) return;
+        if (localEmojiStatus != null) {
+            user.emoji_status = localEmojiStatus;
+        }
+        if (localColor != null) {
+            user.color = localColor;
+            user.flags2 |= 256;
+        }
+        if (localProfileColor != null) {
+            user.profile_color = localProfileColor;
+            user.flags2 |= 512;
+        }
+        if (tw.nekomimi.nekogram.NekoConfig.unlockPremiumFeatures) {
+            user.premium = true;
+        }
+    }
+
     public void setCurrentUser(TLRPC.User user) {
         synchronized (sync) {
             TLRPC.User oldUser = currentUser;
             currentUser = user;
-            clientUserId = user.id;
+            if (user != null) {
+                applyLocalPremium(user);
+                clientUserId = user.id;
+            }
             checkPremiumSelf(oldUser, user);
         }
     }
@@ -386,7 +447,47 @@ public class UserConfig extends BaseController {
                     data.cleanup();
                 }
             }
+            try {
+                String emojiStatusStr = preferences.getString("localEmojiStatus", null);
+                if (emojiStatusStr != null) {
+                    byte[] bytes = Base64.decode(emojiStatusStr, Base64.DEFAULT);
+                    if (bytes != null) {
+                        SerializedData data = new SerializedData(bytes);
+                        localEmojiStatus = TLRPC.EmojiStatus.TLdeserialize(data, data.readInt32(false), false);
+                        data.cleanup();
+                    }
+                }
+            } catch (Exception ignore) {
+            }
+
+            try {
+                String colorStr = preferences.getString("localColor", null);
+                if (colorStr != null) {
+                    byte[] bytes = Base64.decode(colorStr, Base64.DEFAULT);
+                    if (bytes != null) {
+                        SerializedData data = new SerializedData(bytes);
+                        localColor = TLRPC.PeerColor.TLdeserialize(data, data.readInt32(false), false);
+                        data.cleanup();
+                    }
+                }
+            } catch (Exception ignore) {
+            }
+
+            try {
+                String profileColorStr = preferences.getString("localProfileColor", null);
+                if (profileColorStr != null) {
+                    byte[] bytes = Base64.decode(profileColorStr, Base64.DEFAULT);
+                    if (bytes != null) {
+                        SerializedData data = new SerializedData(bytes);
+                        localProfileColor = TLRPC.PeerColor.TLdeserialize(data, data.readInt32(false), false);
+                        data.cleanup();
+                    }
+                }
+            } catch (Exception ignore) {
+            }
+
             if (currentUser != null) {
+                applyLocalPremium(currentUser);
                 checkPremiumSelf(null, currentUser);
                 clientUserId = currentUser.id;
             }

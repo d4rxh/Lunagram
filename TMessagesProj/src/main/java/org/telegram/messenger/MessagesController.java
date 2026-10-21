@@ -2590,6 +2590,9 @@ public class MessagesController extends BaseController implements NotificationCe
             TLRPC.User user = getUserConfig().getCurrentUser();
             if (user != null) {
                 user.emoji_status = new_emoji_status;
+                getUserConfig().localEmojiStatus = (new_emoji_status instanceof TLRPC.TL_emojiStatusEmpty) ? null : new_emoji_status;
+                getUserConfig().saveConfig(true);
+                putUser(user, false, true);
                 getNotificationCenter().postNotificationName(NotificationCenter.userEmojiStatusUpdated, user);
             }
         } else {
@@ -6849,6 +6852,9 @@ public class MessagesController extends BaseController implements NotificationCe
     public boolean putUser(TLRPC.User user, boolean fromCache, boolean force) {
         if (user == null) {
             return false;
+        }
+        if (user.id == getUserConfig().getClientUserId()) {
+            getUserConfig().applyLocalPremium(user);
         }
         fromCache = fromCache && user.id / 1000 != 333 && user.id != 777000;
         TLRPC.User oldUser = users.get(user.id);

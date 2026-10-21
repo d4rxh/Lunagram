@@ -2098,7 +2098,13 @@ public class PeerColorActivity extends BaseFragment implements NotificationCente
                 }
                 getMessagesController().updateEmojiStatus(0, new_emoji_status, gift);
             }
-            getMessagesController().putUser(me, false);
+            if (applyingName) {
+                getUserConfig().localColor = me.color;
+            }
+            if (applyingProfile) {
+                getUserConfig().localProfileColor = me.profile_color;
+            }
+            getMessagesController().putUser(me, false, true);
             getUserConfig().saveConfig(true);
             finishFragment();
             showBulletin();

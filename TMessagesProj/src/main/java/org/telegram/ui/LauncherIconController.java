@@ -9,8 +9,21 @@ import org.telegram.messenger.FileLog;
 import org.telegram.messenger.R;
 
 public class LauncherIconController {
+    private static final String[] OLD_NEKO_ICONS = {
+        "MerioIcon", "RainbowIcon", "OldSchoolIcon", "MusheenIcon", "SpaceIcon", "CloudIcon", "NeonIcon", "MaterialIcon"
+    };
+
     public static void tryFixLauncherIconIfNeeded() {
         try {
+            Context ctx = ApplicationLoader.applicationContext;
+            PackageManager pm = ctx.getPackageManager();
+            for (String oldName : OLD_NEKO_ICONS) {
+                try {
+                    pm.setComponentEnabledSetting(new ComponentName(ctx.getPackageName(), "org.telegram.messenger." + oldName), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+                } catch (Throwable ignore) {
+                }
+            }
+
             for (LauncherIcon icon : LauncherIcon.values()) {
                 if (isEnabled(icon)) {
                     return;
@@ -37,6 +50,12 @@ public class LauncherIconController {
         try {
             Context ctx = ApplicationLoader.applicationContext;
             PackageManager pm = ctx.getPackageManager();
+            for (String oldName : OLD_NEKO_ICONS) {
+                try {
+                    pm.setComponentEnabledSetting(new ComponentName(ctx.getPackageName(), "org.telegram.messenger." + oldName), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+                } catch (Throwable ignore) {
+                }
+            }
             for (LauncherIcon i : LauncherIcon.values()) {
                 try {
                     pm.setComponentEnabledSetting(i.getComponentName(ctx), i == icon ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED :
@@ -54,15 +73,7 @@ public class LauncherIconController {
         AQUA("AquaIcon", R.drawable.icon_4_background_sa, R.drawable.ic_launcher_foreground, R.string.AppIconAqua),
         PREMIUM("PremiumIcon", R.drawable.icon_3_background_sa, R.drawable.ic_launcher_foreground, R.string.AppIconPremium),
         TURBO("TurboIcon", R.drawable.icon_5_background_sa, R.drawable.ic_launcher_foreground, R.string.AppIconTurbo),
-        NOX("NoxIcon", R.drawable.icon_2_background_sa, R.drawable.ic_launcher_foreground, R.string.AppIconNox),
-        MERIO("MerioIcon", R.mipmap.icon_7_launcher_background, R.mipmap.icon_7_launcher_foreground, R.string.AppIconMerio),
-        RAINBOW("RainbowIcon", R.color.icon_8_launcher_background, R.mipmap.icon_8_launcher_foreground, R.string.AppIconRainbow),
-        SCHOOL("OldSchoolIcon", R.mipmap.icon_9_launcher_background, R.mipmap.icon_9_launcher_foreground, R.string.AppIconOldSchool),
-        MUSHEEN("MusheenIcon", R.color.ic_launcher_background, R.mipmap.icon_10_launcher_foreground, R.string.AppIconMusheen),
-        SPACE("SpaceIcon", R.mipmap.icon_11_launcher_background, R.mipmap.icon_11_launcher_foreground, R.string.AppIconSpace),
-        CLOUD("CloudIcon", R.color.ic_launcher_background, R.mipmap.icon_12_launcher_foreground, R.string.AppIconCloud),
-        NEON("NeonIcon", R.mipmap.icon_13_launcher_background, R.mipmap.icon_13_launcher_foreground, R.string.AppIconNeon),
-        MATERIAL("MaterialIcon", R.mipmap.icon_14_launcher_background, R.mipmap.icon_14_launcher_foreground, R.string.AppIconMaterial);
+        NOX("NoxIcon", R.drawable.icon_2_background_sa, R.drawable.ic_launcher_foreground, R.string.AppIconNox);
 
         public final String key;
         public final int background;

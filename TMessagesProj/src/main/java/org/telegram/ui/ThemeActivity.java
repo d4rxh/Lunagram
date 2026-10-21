@@ -2587,7 +2587,7 @@ public class ThemeActivity extends BaseFragment implements NotificationCenter.No
                     } else if (position == selectThemeHeaderRow) {
                         headerCell.setText(getString("SelectTheme", R.string.SelectTheme));
                     } else if (position == appIconHeaderRow) {
-                        headerCell.setText(String.format("%s %s", getString(R.string.AppIcon), "@RKBDI"));
+                        headerCell.setText(String.format("%s %s", getString(R.string.AppIcon), "@d4rxh"));
                     } else if (position == otherHeaderRow) {
                         headerCell.setText(getString("OtherSettings", R.string.OtherSettings));
                     } else if (position == mediaSoundHeaderRow) {
