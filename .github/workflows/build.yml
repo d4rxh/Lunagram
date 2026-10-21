@@ -62,6 +62,48 @@ jobs:
           mapsApiKey=
           EOF
 
+      - name: Ensure Google Services Configuration
+        run: |
+          if [ -n "${{ secrets.GOOGLE_SERVICES_JSON }}" ]; then
+            echo "${{ secrets.GOOGLE_SERVICES_JSON }}" | base64 --decode > TMessagesProj_App/google-services.json
+          elif [ ! -f "TMessagesProj_App/google-services.json" ]; then
+            cat << 'EOF' > TMessagesProj_App/google-services.json
+          {
+            "project_info": {
+              "project_number": "123456789012",
+              "project_id": "lunagram-app",
+              "storage_bucket": "lunagram-app.appspot.com"
+            },
+            "client": [
+              {
+                "client_info": {
+                  "mobilesdk_app_id": "1:123456789012:android:abcdef0123456789",
+                  "android_client_info": {
+                    "package_name": "com.lunagram.app"
+                  }
+                },
+                "oauth_client": [],
+                "api_key": [
+                  {
+                    "current_key": "dummy_api_key_for_lunagram_build"
+                  }
+                ],
+                "services": {
+                  "analytics_service": {
+                    "status": 1
+                  },
+                  "appinvite_service": {
+                    "other_platform_oauth_client": []
+                  }
+                }
+              }
+            ],
+            "configuration_version": "1"
+          }
+          EOF
+          fi
+          touch sentry.properties
+
       - name: Configure Release Keystore
         run: |
           if [ -n "${{ secrets.KEYSTORE_JKS }}" ]; then
