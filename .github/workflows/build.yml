@@ -1,0 +1,145 @@
+name: Build Lunagram APK
+
+on:
+  push:
+    branches: [ "main", "master" ]
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          submodules: 'recursive'
+          fetch-depth: 1
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+
+      - name: Configure Gradle Environment
+        run: |
+          mkdir -p ~/.gradle
+          echo 'org.gradle.jvmargs=-Xmx6144m -Dfile.encoding=UTF-8 -XX:+UseParallelGC' >> ~/.gradle/gradle.properties
+          echo 'org.gradle.parallel=true' >> ~/.gradle/gradle.properties
+          echo 'org.gradle.caching=true' >> ~/.gradle/gradle.properties
+
+      - name: Configure Local Properties & Credentials
+        run: |
+          cat << 'EOF' > local.properties
+          apiId=${{ secrets.API_ID || '35571665' }}
+          apiHash=${{ secrets.API_HASH || '7cd8bba954b4f9b1024328365fdd1d30' }}
+          EOF
+
+      - name: Configure Release Keystore
+        run: |
+          if [ -n "${{ secrets.KEYSTORE_JKS }}" ]; then
+            echo "${{ secrets.KEYSTORE_JKS }}" | base64 --decode > keystore.jks
+            echo "storeFile=${{ github.workspace }}/keystore.jks" >> local.properties
+            echo "storePassword=${{ secrets.KEYSTORE_PASSWORD }}" >> local.properties
+            echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> local.properties
+            echo "keyPassword=${{ secrets.KEY_PASSWORD }}" >> local.properties
+          else
+            echo "Generating self-signed release keystore for reproducible builds..."
+            keytool -genkey -v -keystore keystore.jks -alias lunagram -keyalg RSA -keysize 2048 -validity 10000 \
+              -storepass lunagram123 -keypass lunagram123 -dname "CN=Lunagram, OU=App, O=Lunagram, L=Space, S=Global, C=US"
+            echo "storeFile=${{ github.workspace }}/keystore.jks" >> local.properties
+            echo "storePassword=lunagram123" >> local.properties
+            echo "keyAlias=lunagram" >> local.properties
+            echo "keyPassword=lunagram123" >> local.properties
+          fi
+
+      - name: Configure Dummy Google Services (if secret omitted)
+        run: |
+          if [ ! -f "TMessagesProj_App/google-services.json" ]; then
+            cat << 'EOF' > TMessagesProj_App/google-services.json
+            {
+              "project_info": {
+                "project_number": "123456789012",
+                "project_id": "lunagram-app",
+                "storage_bucket": "lunagram-app.appspot.com"
+              },
+              "client": [
+                {
+                  "client_info": {
+                    "mobilesdk_app_id": "1:123456789012:android:abcdef0123456789",
+                    "android_client_info": {
+                      "package_name": "com.lunagram.app"
+                    }
+                  },
+                  "oauth_client": [],
+                  "api_key": [
+                    {
+                      "current_key": "dummy_api_key_for_lunagram_build"
+                    }
+                  ],
+                  "services": {
+                    "appinvite_service": {
+                      "other_platform_oauth_client": []
+                    }
+                  }
+                }
+              ],
+              "configuration_version": "1"
+            }
+            EOF
+          fi
+
+      - name: Build Lunagram APK with Gradle
+        run: |
+          chmod +x ./gradlew
+          ./gradlew assembleRelease --no-daemon -x test -x lint
+
+      - name: Locate Generated APKs
+        id: apks
+        run: |
+          mkdir -p release-apks
+          find TMessagesProj_App/build/outputs/apk/release -name "*.apk" -exec cp {} release-apks/ \;
+          echo "Found APKs:"
+          ls -lh release-apks/
+
+      - name: Upload APK Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: lunagram-apks
+          path: release-apks/*.apk
+
+      - name: Publish to GitHub Releases
+        if: startsWith(github.ref, 'refs/tags/v') || github.event_name == 'workflow_dispatch'
+        uses: softprops/action-gh-release@v2
+        with:
+          files: release-apks/*.apk
+          name: Lunagram ${{ github.ref_name }}
+          tag_name: ${{ github.ref_name }}
+          draft: false
+          prerelease: false
+          body: |
+            ### 🌙 Lunagram Release ${{ github.ref_name }}
+            
+            Welcome to the official release of **Lunagram**!
+            
+            #### 📥 Downloads:
+            - **Universal APK:** Runs on all Android devices (arm64, armv7, x86, x86_64)
+            - **arm64-v8a APK:** Optimized for modern 64-bit Android smartphones
+            
+            #### ✨ Highlights:
+            - MTProto Telegram API client (`api_id`: 35571665)
+            - Cosmic Lunar UI theme and full-screen media player
+            - Fully signed and ready to install
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
