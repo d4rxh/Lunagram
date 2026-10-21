@@ -140,7 +140,7 @@
     <string name="OfficialSite">ऑफिशियल साइट</string>
     <string name="MutualContact">परस्पर संपर्क</string>
     <string name="MutualContactDescription">यह एक परस्पर कॉन्टैक्ट है।</string>
-    <string name="InviteTextNeko">हैलो, मैं चैट करने के लिए नेकोग्राम का उपयोग कर रहा हूं। मुझे जुड़ें! यहाँ पर डाउनलोड करो: %1$s</string>
+    <string name="InviteTextNeko">हैलो, मैं चैट करने के लिए Lunagram का उपयोग कर रहा हूं। मुझे जुड़ें! यहाँ पर डाउनलोड करो: %1$s</string>
     <string name="ShareNekogram">Lunagram को साझा करें</string>
     <string name="NekogramVersion">Lunagram %1$s\n टेलीग्राम पर आधारित है। %2$s\n %3$s के द्वारा डिज़ाइन किया गया है।</string>
     <string name="UpdateInstalling">अपडेट को इंस्टॉल किया जा रहा है...</string>

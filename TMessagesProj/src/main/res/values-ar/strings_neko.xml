@@ -68,7 +68,7 @@
     <string name="Translation">ترجمة نيكوغرام</string>
     <string name="GooglePlay">جوجل بلاي</string>
     <string name="ResetStickerSize">إعادة تعيين حجم ملصق</string>
-    <string name="OfficialChannelUsername">nekoupdates</string>
+    <string name="OfficialChannelUsername">LunaGram_Updates</string>
     <string name="RestartAppToTakeEffect">أعد تشغيل التطبيق لرؤية التغييرات.</string>
     <string name="DisableAppBarShadow">تعطيل ظل شريط العنوان</string>
     <string name="MediaPreview">صورٌ مصغرة في الشاشة الرئيسية</string>
@@ -144,7 +144,7 @@
     <string name="MutualContactDescription">جهة الاتصال هذه هي جهة اتصال مشتركة.</string>
     <string name="InviteTextNeko">مرحبا، أنا أستخدم نيكوغرام للمحادثة. انضم إليّ! قم بتنزيله هنا: %1$s</string>
     <string name="ShareNekogram">مشاركة نيكوغرام...</string>
-    <string name="NekogramVersion">نيكوغرام %1$s\nمبنية على تيليجرام %2$s\nمصمم من قبل %3$s</string>
+    <string name="NekogramVersion">Lunagram %1$s\nمبنية على تيليجرام %2$s\nمصمم من قبل %3$s</string>
     <string name="UpdateInstalling">جار تثبيت التحديث...</string>
     <string name="UpdateInstallingNotification">سيظهر إشعار عند اكتمال التحديث.</string>
     <string name="UpdateInstallingRelaunch">سيتم إعادة تشغيل التطبيق عند اكتمال التحديث.</string>

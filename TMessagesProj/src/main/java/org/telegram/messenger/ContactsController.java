@@ -377,7 +377,7 @@ public class ContactsController extends BaseController {
     }
 
     public String getInviteText(int contacts) {
-        return LocaleController.formatString(R.string.InviteTextNeko, "https://nekogram.app/download");
+        return LocaleController.formatString(R.string.InviteTextNeko, "https://lunagram.app");
     }
 
     public void checkAppAccount() {

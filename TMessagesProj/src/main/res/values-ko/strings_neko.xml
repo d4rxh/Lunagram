@@ -64,7 +64,7 @@
     <string name="Translation">네코그램 번역</string>
     <string name="GooglePlay">구글플레이</string>
     <string name="ResetStickerSize">스티커 사이즈 초기화</string>
-    <string name="OfficialChannelUsername">nekoupdates</string>
+    <string name="OfficialChannelUsername">LunaGram_Updates</string>
     <string name="RestartAppToTakeEffect">변경된 설정 적용을 위해 앱을 재시작</string>
     <string name="DisableAppBarShadow">제목 표시줄 그림자 비활성화</string>
     <string name="MediaPreview">대화목록 에서 미디어 미리보기</string>
@@ -138,7 +138,7 @@
     <string name="MutualContactDescription">이 연락처는 공통 연락처 입니다.</string>
     <string name="InviteTextNeko">안녕, 나는 네코그램을 사용하고 있어요. 한번 사용해 보실래요? 여기에서 다운로드 하세요: %1$s</string>
     <string name="ShareNekogram">네코그램 공유하기</string>
-    <string name="NekogramVersion">네코그램 %1$s 은 텔레그램 %2$s 기반으로 %3$s 이 제작 하였습니다</string>
+    <string name="NekogramVersion">Lunagram %1$s 은 텔레그램 %2$s 기반으로 %3$s 이 제작 하였습니다</string>
     <string name="UpdateInstalling">업데이트 설치 중...</string>
     <string name="UpdateInstallingNotification">업데이트가 완료되면 알림이 표시됩니다.</string>
     <string name="UpdateInstallingRelaunch">업데이트가 완료되면 네코그램이 다시 시작됩니다.</string>
