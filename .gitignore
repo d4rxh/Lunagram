@@ -13,6 +13,7 @@ TMessagesProj_App/afat/
 TMessagesProj_AppHockeyApp/afat/
 TMessagesProj_AppStandalone/afat/
 TMessagesProj_AppHuawei/afat/
-# google-services.json
+**/google-services.json
+google-services.json
 sentry.properties
 TMessagesProj/jni/ffmpeg/build_android
