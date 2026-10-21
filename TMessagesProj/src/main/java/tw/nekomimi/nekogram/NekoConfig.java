@@ -1194,6 +1194,19 @@ public class NekoConfig {
         return ghostRead || ghostTyping || ghostStories || ghostOnline;
     }
 
+    public static void setGhostMode(boolean enable) {
+        ghostRead = enable;
+        ghostTyping = enable;
+        ghostStories = enable;
+        ghostOnline = enable;
+        preferences.edit()
+                .putBoolean("ghostRead", enable)
+                .putBoolean("ghostTyping", enable)
+                .putBoolean("ghostStories", enable)
+                .putBoolean("ghostOnline", enable)
+                .apply();
+    }
+
     public static void toggleGhostOnline() {
         ghostOnline = !ghostOnline;
         preferences.edit().putBoolean("ghostOnline", ghostOnline).apply();

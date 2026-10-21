@@ -3471,15 +3471,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             ghostItem.setAlpha(tw.nekomimi.nekogram.NekoConfig.isGhostMode() ? 1.0f : 0.45f);
             ghostItem.setOnClickListener(v -> {
                 boolean enable = !tw.nekomimi.nekogram.NekoConfig.isGhostMode();
-                tw.nekomimi.nekogram.NekoConfig.ghostRead = enable;
-                tw.nekomimi.nekogram.NekoConfig.ghostTyping = enable;
-                tw.nekomimi.nekogram.NekoConfig.ghostStories = enable;
-                tw.nekomimi.nekogram.NekoConfig.ghostOnline = enable;
-                AndroidUtilities.getGlobalMainSharedPreferences().edit()
-                        .putBoolean("ghostRead", enable)
-                        .putBoolean("ghostTyping", enable)
-                        .putBoolean("ghostStories", enable)
-                        .putBoolean("ghostOnline", enable).apply();
+                tw.nekomimi.nekogram.NekoConfig.setGhostMode(enable);
                 ghostItem.setAlpha(enable ? 1.0f : 0.45f);
                 org.telegram.ui.Components.BulletinFactory.of(DialogsActivity.this).createSimpleBulletin(
                         enable ? R.drawable.msg_stories_stealth : R.drawable.msg_stories_stealth2,
