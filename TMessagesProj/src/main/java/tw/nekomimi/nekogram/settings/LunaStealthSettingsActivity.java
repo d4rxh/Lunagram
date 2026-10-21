@@ -32,6 +32,11 @@ public class LunaStealthSettingsActivity extends BaseNekoSettingsActivity {
     }
 
     @Override
+    protected String getActionBarTitle() {
+        return LocaleController.getString(R.string.LunaStealthSettings);
+    }
+
+    @Override
     protected void fillItems(ArrayList<UItem> items, UniversalAdapter adapter) {
         items.add(UItem.asHeader(LocaleController.getString(R.string.GhostModeHeader)));
         items.add(UItem.asCheck(ghostReadRow, LocaleController.getString(R.string.GhostRead), LocaleController.getString(R.string.GhostReadDesc)).setChecked(NekoConfig.ghostRead).slug("ghostRead"));
