@@ -20,6 +20,16 @@ jobs:
           submodules: 'recursive'
           fetch-depth: 1
 
+      - name: Ensure Media Submodule Present
+        run: |
+          if [ ! -d "TMessagesProj_Modules/media/build-logic-settings" ]; then
+            echo "Cloning missing media submodule..."
+            rm -rf TMessagesProj_Modules/media
+            mkdir -p TMessagesProj_Modules
+            git clone --depth 1 https://github.com/Nekogram/media.git TMessagesProj_Modules/media
+          fi
+          git submodule update --init --recursive || true
+
       - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
