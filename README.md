@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="aec052a48687e175c7e578ad423f71f3.jpg" alt="Lunagram Logo" width="140" height="140" style="border-radius: 32px; box-shadow: 0 8px 24px rgba(0,0,0,0.3);" />
+  <img src="logo.png" alt="Lunagram Logo" width="140" height="140" style="border-radius: 32px; box-shadow: 0 8px 24px rgba(0,0,0,0.3);" />
 </p>
 
-<h1 align="center">🌙 Lunagram</h1>
+<h1 align="center">Lunagram</h1>
 
 <p align="center">
   <b>A modern, high-performance, and feature-rich Telegram client for Android.</b><br>

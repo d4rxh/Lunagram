@@ -65,10 +65,6 @@ public class TypefaceHelper {
 
     public static SpannableStringBuilder getTitleText() {
         String title = getString(R.string.AppName);
-        if (NekoConfig.lunarHeader) {
-            String prefix = NekoConfig.isGhostMode() ? "👻 🌙 " : "🌙 ";
-            title = prefix + title;
-        }
         var builder = new SpannableStringBuilder(title);
         builder.setSpan(new LeadingMarginSpan.Standard(dp(2), 0), 0, builder.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         builder.setSpan(new TypefaceSpan(TypefaceHelper.createTypeface(600, false), 0, Theme.key_telegram_color_dialogsLogo, null), 0, builder.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);

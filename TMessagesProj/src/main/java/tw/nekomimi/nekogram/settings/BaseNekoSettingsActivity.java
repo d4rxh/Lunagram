@@ -150,7 +150,7 @@ public abstract class BaseNekoSettingsActivity extends BaseFragment {
                 return BaseNekoSettingsActivity.this.getSelectorColor(position);
             }
         };
-        listView.adapter.setApplyBackground(false);
+        listView.adapter.setApplyBackground(tw.nekomimi.nekogram.NekoConfig.material3Style);
         listView.setClipToPadding(false);
         listView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override

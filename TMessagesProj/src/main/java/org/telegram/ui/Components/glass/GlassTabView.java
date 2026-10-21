@@ -155,14 +155,15 @@ public class GlassTabView extends FrameLayout implements MainTabsLayout.Tab, Fac
             final float alpha = AnimatorUtils.DECELERATE_INTERPOLATOR.getInterpolation(selectedFactor);
 
             if (tw.nekomimi.nekogram.NekoConfig.material3Style) {
-                paintCounterBackground.setColor(Theme.multAlpha(colorSelected, 0.18f * alpha));
-                final float pillWidth = Math.min(viewWidth - dp(12), dp(64));
-                final float pillHeight = dp(32);
+                // Island Dock capsule active indicator matching user reference IMG_20261021_231841_242.jpg
+                paintCounterBackground.setColor(Theme.multAlpha(colorSelected, 0.92f * alpha));
+                final float pillWidth = Math.min(viewWidth - dp(8), dp(68));
+                final float pillHeight = dp(36);
                 final float cx = viewWidth / 2f;
-                final float cy = dp(16);
+                final float cy = getHeight() / 2f;
                 tmpRectF.set(cx - pillWidth / 2f, cy - pillHeight / 2f, cx + pillWidth / 2f, cy + pillHeight / 2f);
-                final float r = dp(16);
-                final float s = lerp(0.6f, 1, selectedFactor) * MathUtils.clamp(attachScale, 0, 1);
+                final float r = pillHeight / 2f;
+                final float s = lerp(0.7f, 1, selectedFactor) * MathUtils.clamp(attachScale, 0, 1);
                 canvas.save();
                 canvas.scale(s, s, cx, cy);
                 canvas.drawRoundRect(tmpRectF, r, r, paintCounterBackground);
@@ -267,8 +268,14 @@ public class GlassTabView extends FrameLayout implements MainTabsLayout.Tab, Fac
     private boolean needUpdateBackupViewColor;
 
     private void updateColors() {
-        final int color = ColorUtils.blendARGB(colorDefault, colorSelected, isSelectedAnimator.getFloatValue());
-        final int colorText = ColorUtils.blendARGB(colorDefault, colorSelectedText, isSelectedAnimator.getFloatValue());
+        int targetSelected = colorSelected;
+        int targetSelectedText = colorSelectedText;
+        if (tw.nekomimi.nekogram.NekoConfig.material3Style) {
+            targetSelected = 0xFFFFFFFF;
+            targetSelectedText = 0xFFFFFFFF;
+        }
+        final int color = ColorUtils.blendARGB(colorDefault, targetSelected, isSelectedAnimator.getFloatValue());
+        final int colorText = ColorUtils.blendARGB(colorDefault, targetSelectedText, isSelectedAnimator.getFloatValue());
 
         final PorterDuffColorFilter filter = new PorterDuffColorFilter(color, PorterDuff.Mode.SRC_IN);
         if (backupImageView != null && needUpdateBackupViewColor) {
