@@ -1,13 +1,32 @@
 {
   "project_info": {
-    "project_number": "123456789012",
-    "project_id": "lunagram-app",
-    "storage_bucket": "lunagram-app.appspot.com"
+    "project_number": "1062405939305",
+    "project_id": "lunagram-254d7",
+    "storage_bucket": "lunagram-254d7.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:123456789012:android:abcdef0123456789",
+        "mobilesdk_app_id": "1:1062405939305:android:67f72b0077f2dd6f6342f8",
+        "android_client_info": {
+          "package_name": "com.d4rxh.lunagram"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-BBD_kwvOYzpdCjROPlhK2Pr2OVz27mw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1062405939305:android:67f72b0077f2dd6f6342f8",
         "android_client_info": {
           "package_name": "com.lunagram.app"
         }
@@ -15,13 +34,10 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "dummy_api_key_for_lunagram_build"
+          "current_key": "AIzaSyC-BBD_kwvOYzpdCjROPlhK2Pr2OVz27mw"
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
           "other_platform_oauth_client": []
         }
