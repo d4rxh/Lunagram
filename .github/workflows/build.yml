@@ -30,11 +30,25 @@ jobs:
           fi
           git submodule update --init --recursive || true
 
+      - name: Ensure TLScheme Files Present
+        run: |
+          if [ ! -f "TMessagesProj_AppTests/tlscheme/231.json" ]; then
+            mkdir -p TMessagesProj_AppTests/tlscheme
+            curl -s -f "https://raw.githubusercontent.com/Nekogram/Nekogram/main/TMessagesProj_AppTests/tlscheme/231.json" -o TMessagesProj_AppTests/tlscheme/231.json || true
+            curl -s -f "https://raw.githubusercontent.com/Nekogram/Nekogram/main/TMessagesProj_AppTests/tlscheme/230.json" -o TMessagesProj_AppTests/tlscheme/230.json || true
+            curl -s -f "https://raw.githubusercontent.com/Nekogram/Nekogram/main/TMessagesProj_AppTests/tlscheme/229.json" -o TMessagesProj_AppTests/tlscheme/229.json || true
+          fi
+
       - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
           java-version: '21'
           distribution: 'temurin'
+
+      - name: Set up ccache
+        uses: Chocobo1/setup-ccache-action@v1
+        with:
+          remove_stale_cache: false
 
       - name: Accept Android SDK Licenses & Setup Components
         run: |
