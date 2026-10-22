@@ -3,6 +3,13 @@ name: Build Lunagram APK
 on:
   push:
     branches: [ "main", "master" ]
+    paths-ignore:
+      - '**.md'
+      - 'docs/**'
+      - '.github/ISSUE_TEMPLATE/**'
+      - 'LICENSE'
+      - '*.png'
+      - '*.jpg'
     tags:
       - 'v*'
   workflow_dispatch:
