@@ -9179,16 +9179,6 @@ public class Theme {
         } else if (key == key_profile_actionIcon) {
             return 0xFFFFFFFF;
         }
-            return 0xFFD71920;
-        } else if (key == key_switchTrackBlueThumb || key == key_switchTrackBlueThumbChecked) {
-            return 0xFFFFFFFF;
-        } else if (key == key_profile_actionBackground) {
-            return 0xFFD71920;
-        } else if (key == key_profile_actionPressedBackground) {
-            return 0xFFB7141A;
-        } else if (key == key_profile_actionIcon) {
-            return 0xFFFFFFFF;
-        }
         if (!ignoreAnimation && animatingColors != null) {
             int index = animatingColors.indexOfKey(key);
             if (index >= 0) {
