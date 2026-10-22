@@ -9096,8 +9096,10 @@ public class Theme {
             return 0xFFB7141A;
         } else if (key == key_chats_unreadCounter || key == key_chats_tabUnreadActiveBackground) {
             return 0xFFD71920;
-        } else if (key == key_chats_unreadCounterText || key == key_chats_actionIcon || key == key_dialogFloatingIcon || key == key_telegram_color_dialogsLogo) {
+        } else if (key == key_chats_unreadCounterText || key == key_chats_actionIcon || key == key_dialogFloatingIcon) {
             return 0xFFFFFFFF;
+        } else if (key == key_telegram_color_dialogsLogo) {
+            return isDark ? 0xFFFFFFFF : 0xFF000000;
         } else if (key == key_chats_unreadCounterMuted) {
             return isDark ? 0xFF333333 : 0xFFCCCCCC;
         } else if (key == key_chats_onlineCircle) {

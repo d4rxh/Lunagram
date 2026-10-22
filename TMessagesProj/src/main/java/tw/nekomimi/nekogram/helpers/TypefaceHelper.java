@@ -63,11 +63,24 @@ public class TypefaceHelper {
         }
     }
 
+    private static Typeface ndotTypeface;
+
+    public static Typeface getNdotTypeface() {
+        if (ndotTypeface == null) {
+            try {
+                ndotTypeface = Typeface.createFromAsset(org.telegram.messenger.ApplicationLoader.applicationContext.getAssets(), "fonts/ndot57.otf");
+            } catch (Exception e) {
+                FileLog.e(e);
+            }
+        }
+        return ndotTypeface != null ? ndotTypeface : TypefaceHelper.createTypeface(700, false);
+    }
+
     public static SpannableStringBuilder getTitleText() {
-        String title = "L U N A G R A M";
+        String title = "LUNAGRAM";
         var builder = new SpannableStringBuilder(title);
         builder.setSpan(new LeadingMarginSpan.Standard(dp(2), 0), 0, builder.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        builder.setSpan(new TypefaceSpan(TypefaceHelper.createTypeface(700, false), 0, Theme.key_telegram_color_dialogsLogo, null), 0, builder.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        builder.setSpan(new TypefaceSpan(getNdotTypeface(), dp(20), Theme.key_telegram_color_dialogsLogo, null), 0, builder.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         return builder;
     }
 
