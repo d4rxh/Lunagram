@@ -7875,9 +7875,9 @@ public class Theme {
     public static void createCommonDialogResources(Context context) {
         if (dialogs_countTextPaint == null) {
             dialogs_countTextPaint = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);
-            dialogs_countTextPaint.setTypeface(AndroidUtilities.bold());
+            dialogs_countTextPaint.setTypeface(tw.nekomimi.nekogram.helpers.TypefaceHelper.getNdotTypeface());
             dialogs_countTextPaint2 = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);
-            dialogs_countTextPaint2.setTypeface(AndroidUtilities.bold());
+            dialogs_countTextPaint2.setTypeface(tw.nekomimi.nekogram.helpers.TypefaceHelper.getNdotTypeface());
             dialogs_countPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
             dialogs_onlineCirclePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
             dialogs_tagPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -7985,10 +7985,11 @@ public class Theme {
 
         dialogs_messageNamePaint.setTextSize(dp(14));
         dialogs_timePaint.setTextSize(dp(12));
+        dialogs_timePaint.setTypeface(tw.nekomimi.nekogram.helpers.TypefaceHelper.getNdotTypeface());
         dialogs_timePaintBold.setTextSize(dp(12));
-        dialogs_timePaintBold.setTypeface(AndroidUtilities.bold());
+        dialogs_timePaintBold.setTypeface(tw.nekomimi.nekogram.helpers.TypefaceHelper.getNdotTypeface());
         dialogs_timePaintBoldAccent.setTextSize(dp(12));
-        dialogs_timePaintBoldAccent.setTypeface(AndroidUtilities.bold());
+        dialogs_timePaintBoldAccent.setTypeface(tw.nekomimi.nekogram.helpers.TypefaceHelper.getNdotTypeface());
         dialogs_archiveTextPaint.setTextSize(dp(13));
         dialogs_archiveTextPaintSmall.setTextSize(dp(11));
         dialogs_onlinePaint.setTextSize(dp(15));
@@ -8017,7 +8018,9 @@ public class Theme {
         dialogs_timePaintBold.setColor(getColor(key_chats_date_bold));
         dialogs_timePaintBoldAccent.setColor(0xFFD71920);
         dialogs_countTextPaint.setColor(getColor(key_chats_unreadCounterText));
+        dialogs_countTextPaint.setTypeface(tw.nekomimi.nekogram.helpers.TypefaceHelper.getNdotTypeface());
         dialogs_countTextPaint2.setColor(getColor(key_chats_unreadCounterText));
+        dialogs_countTextPaint2.setTypeface(tw.nekomimi.nekogram.helpers.TypefaceHelper.getNdotTypeface());
         dialogs_archiveTextPaint.setColor(getColor(key_chats_archiveText));
         dialogs_archiveTextPaintSmall.setColor(getColor(key_chats_archiveText));
         if (tw.nekomimi.nekogram.NekoConfig.material3Style) {

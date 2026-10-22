@@ -1747,6 +1747,8 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     private boolean forceNotDrawTime;
     private Paint drillHolePaint;
     private Path drillHolePath;
+    private static Paint glyphPulsePaint;
+    private static final RectF glyphPulseRect = new RectF();
 
     private Path mediaSpoilerPath = new Path();
     private float[] mediaSpoilerRadii = new float[8];
@@ -20805,6 +20807,19 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                     if (currentPosition == null) {
                         currentBackgroundSelectedDrawable.setAlpha((int) (alphaInternal * currentSelectedBackgroundAlpha * 255));
                         currentBackgroundSelectedDrawable.drawCached(canvas, backgroundCacheParams);
+                        if (currentSelectedBackgroundAlpha > 0.01f) {
+                            if (glyphPulsePaint == null) {
+                                glyphPulsePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+                                glyphPulsePaint.setStyle(Paint.Style.STROKE);
+                                glyphPulsePaint.setStrokeWidth(dp(1.5f));
+                            }
+                            Rect bounds = currentBackgroundDrawable.getBounds();
+                            glyphPulseRect.set(bounds.left + dp(1), bounds.top + dp(1), bounds.right - dp(1), bounds.bottom - dp(1));
+                            glyphPulsePaint.setColor(0xFFD71920);
+                            glyphPulsePaint.setAlpha((int) (alphaInternal * currentSelectedBackgroundAlpha * 220));
+                            float rad = dp(SharedConfig.bubbleRadius);
+                            canvas.drawRoundRect(glyphPulseRect, rad, rad, glyphPulsePaint);
+                        }
                     }
                 } else if (selectedBackgroundProgress != 0 && (currentMessageObject == null || !currentMessageObject.preview) && !(currentMessagesGroup != null && currentMessagesGroup.isDocuments)) {
                     currentBackgroundDrawable.setAlpha((int) (255 * alphaInternal));

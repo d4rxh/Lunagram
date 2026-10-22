@@ -168,7 +168,7 @@ jobs:
       - name: Build Lunagram APK with Gradle
         run: |
           chmod +x ./gradlew
-          ./gradlew assembleRelease -PonlyArm64=true --no-daemon --stacktrace -x test -x lint
+          ./gradlew assembleRelease --no-daemon --stacktrace -x test -x lint
 
       - name: Locate Generated APKs
         id: apks

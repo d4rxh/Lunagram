@@ -336,6 +336,9 @@ public class MainTabsActivity extends ViewPagerActivity implements NotificationC
 
             final int position = indexToPosition(index);
             tabs[index].setOnClickListener(v -> {
+                try {
+                    v.performHapticFeedback(android.view.HapticFeedbackConstants.KEYBOARD_TAP);
+                } catch (Exception ignore) {}
                 if (viewPager.isManualScrolling() || viewPager.isTouch()) {
                     return;
                 }
