@@ -9089,6 +9089,7 @@ public class Theme {
     }
 
     public static int getColor(int key, boolean[] isDefault, boolean ignoreAnimation) {
+        final boolean isDark = isCurrentThemeDark();
         if (key == key_chats_actionBackground || key == key_dialogFloatingButton || key == key_featuredStickers_addButton) {
             return 0xFFD71920;
         } else if (key == key_chats_actionPressedBackground || key == key_dialogFloatingButtonPressed || key == key_featuredStickers_addButtonPressed) {
@@ -9098,7 +9099,7 @@ public class Theme {
         } else if (key == key_chats_unreadCounterText || key == key_chats_actionIcon || key == key_dialogFloatingIcon || key == key_telegram_color_dialogsLogo) {
             return 0xFFFFFFFF;
         } else if (key == key_chats_unreadCounterMuted) {
-            return 0xFF333333;
+            return isDark ? 0xFF333333 : 0xFFCCCCCC;
         } else if (key == key_chats_onlineCircle) {
             return 0xFFD71920;
         } else if (key == key_chat_outSentCheck || key == key_chat_outSentCheckRead || key == key_chat_outSentCheckSelected || key == key_chat_outSentCheckReadSelected) {
@@ -9108,55 +9109,55 @@ public class Theme {
         } else if (key == key_switchTrackChecked || key == key_radioBackgroundChecked || key == key_checkboxSquareBackground || key == key_dialogRadioBackgroundChecked || key == key_dialogCheckboxSquareBackground) {
             return 0xFFD71920;
         } else if (key == key_actionBarTabLine || key == key_actionBarTabSelector) {
-            return 0xFFFFFFFF;
+            return isDark ? 0xFFFFFFFF : 0xFF000000;
         } else if (key == key_actionBarTabActiveText) {
-            return 0xFF000000;
+            return isDark ? 0xFF000000 : 0xFFFFFFFF;
         } else if (key == key_actionBarTabUnactiveText) {
-            return 0xFF8A8A8A;
+            return isDark ? 0xFF8A8A8A : 0xFF666666;
         } else if (key == key_windowBackgroundWhite) {
-            return 0xFF000000;
+            return isDark ? 0xFF000000 : 0xFFFFFFFF;
         } else if (key == key_windowBackgroundGray) {
-            return 0xFF080808;
+            return isDark ? 0xFF080808 : 0xFFF5F5F5;
         } else if (key == key_actionBarDefault || key == key_actionBarActionModeDefault || key == key_actionBarDefaultArchived) {
-            return 0xFF000000;
+            return isDark ? 0xFF000000 : 0xFFFFFFFF;
         } else if (key == key_actionBarDefaultTitle) {
-            return 0xFFFFFFFF;
+            return isDark ? 0xFFFFFFFF : 0xFF000000;
         } else if (key == key_actionBarDefaultIcon || key == key_actionBarActionModeDefaultIcon) {
-            return 0xFFFFFFFF;
+            return isDark ? 0xFFFFFFFF : 0xFF000000;
         } else if (key == key_chats_name || key == key_chats_nameArchived) {
-            return 0xFFFFFFFF;
+            return isDark ? 0xFFFFFFFF : 0xFF000000;
         } else if (key == key_chats_message || key == key_chats_messageArchived) {
-            return 0xFF808080;
+            return isDark ? 0xFF808080 : 0xFF666666;
         } else if (key == key_chats_date) {
-            return 0xFF707070;
+            return isDark ? 0xFF707070 : 0xFF888888;
         } else if (key == key_chat_inBubble) {
-            return 0xFF141414;
+            return isDark ? 0xFF141414 : 0xFFF0F0F0;
         } else if (key == key_chat_inBubbleSelected) {
-            return 0xFF202020;
+            return isDark ? 0xFF202020 : 0xFFE0E0E0;
         } else if (key == key_chat_outBubble) {
-            return 0xFF1E1E1E;
+            return isDark ? 0xFF1E1E1E : 0xFFE8E8E8;
         } else if (key == key_chat_outBubbleSelected) {
-            return 0xFF2A2A2A;
+            return isDark ? 0xFF2A2A2A : 0xFFDCDCDC;
         } else if (key == key_chat_messageTextIn || key == key_chat_messageTextOut) {
-            return 0xFFFFFFFF;
+            return isDark ? 0xFFFFFFFF : 0xFF000000;
         } else if (key == key_chat_wallpaper || key == key_chat_wallpaper_gradient_to1 || key == key_chat_wallpaper_gradient_to2 || key == key_chat_wallpaper_gradient_to3) {
-            return 0xFF000000;
+            return isDark ? 0xFF000000 : 0xFFFFFFFF;
         } else if (key == key_chat_messagePanelBackground) {
-            return 0xFF080808;
+            return isDark ? 0xFF080808 : 0xFFF5F5F5;
         } else if (key == key_divider) {
-            return 0xFF161616;
+            return isDark ? 0xFF161616 : 0xFFE8E8E8;
         } else if (key == key_dialogBackground) {
-            return 0xFF101010;
+            return isDark ? 0xFF101010 : 0xFFFFFFFF;
         } else if (key == key_dialogTextBlack) {
-            return 0xFFFFFFFF;
+            return isDark ? 0xFFFFFFFF : 0xFF000000;
         } else if (key == key_dialogButton) {
             return 0xFFD71920;
         } else if (key == key_dialogTextBlue || key == key_dialogTextBlue2 || key == key_dialogTextBlue4) {
             return 0xFFD71920;
         } else if (key == key_windowBackgroundWhiteBlackText) {
-            return 0xFFFFFFFF;
+            return isDark ? 0xFFFFFFFF : 0xFF000000;
         } else if (key == key_windowBackgroundWhiteGrayText) {
-            return 0xFF808080;
+            return isDark ? 0xFF808080 : 0xFF666666;
         } else if (key == key_windowBackgroundWhiteBlueHeader || key == key_windowBackgroundWhiteBlueText || key == key_windowBackgroundWhiteBlueText2 || key == key_windowBackgroundWhiteBlueText4 || key == key_windowBackgroundWhiteBlueText5 || key == key_windowBackgroundWhiteBlueText6 || key == key_windowBackgroundWhiteBlueButton || key == key_windowBackgroundWhiteLinkText || key == key_windowBackgroundWhiteValueText) {
             return 0xFFD71920;
         } else if (key == key_chat_messageLinkIn || key == key_chat_messageLinkOut) {
@@ -9164,10 +9165,20 @@ public class Theme {
         } else if (key == key_chat_goDownButtonCounterBackground) {
             return 0xFFD71920;
         } else if (key == key_chat_goDownButton) {
-            return 0xFF1A1A1A;
+            return isDark ? 0xFF1A1A1A : 0xFFEEEEEE;
         } else if (key == key_switchTrackBlue) {
-            return 0xFF222222;
+            return isDark ? 0xFF222222 : 0xFFDDDDDD;
         } else if (key == key_switchTrackBlueChecked) {
+            return 0xFFD71920;
+        } else if (key == key_switchTrackBlueThumb || key == key_switchTrackBlueThumbChecked) {
+            return 0xFFFFFFFF;
+        } else if (key == key_profile_actionBackground) {
+            return 0xFFD71920;
+        } else if (key == key_profile_actionPressedBackground) {
+            return 0xFFB7141A;
+        } else if (key == key_profile_actionIcon) {
+            return 0xFFFFFFFF;
+        }
             return 0xFFD71920;
         } else if (key == key_switchTrackBlueThumb || key == key_switchTrackBlueThumbChecked) {
             return 0xFFFFFFFF;

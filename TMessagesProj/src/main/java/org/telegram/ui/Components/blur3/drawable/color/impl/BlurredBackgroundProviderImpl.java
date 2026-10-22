@@ -21,16 +21,14 @@ public class BlurredBackgroundProviderImpl {
     public static BlurredBackgroundProvider mainTabs(Theme.ResourcesProvider resourcesProvider) {
         return new BlurredBackgroundProviderBuilder(resourcesProvider)
             .setBackgroundColor((r, isDark) -> {
-                final float alpha = LiteMode.isEnabled(LiteMode.FLAG_LIQUID_GLASS) ? 0.85f : 0.76f;
-                final int colorBg = Theme.getColor(Theme.key_windowBackgroundWhite, r);
-                final int colorTarget = Theme.getColor(Theme.key_glass_targetMainTabs, r);
-                return solveSrcColor(colorBg, colorTarget, alpha);
+                // Nothing Crimson Red sleek dockbar pill
+                return 0xF0D71920;
             })
-            .setStrokeColorTop(0x11000000, 0x06FFFFFF)
-            .setStrokeColorBottom(0x20000000, 0x11FFFFFF)
-            .setShadowColor(0x20000000, 0x04FFFFFF)
-            .setShadowLayer(dpf2(2.667f), 0, dpf2(0.85f))
-            .setStrokeWidth(dpf2(0.4f), dpf2(0.4f))
+            .setStrokeColorTop(0x35FFFFFF, 0x35FFFFFF)
+            .setStrokeColorBottom(0x25000000, 0x25000000)
+            .setShadowColor(0x33000000, 0x33000000)
+            .setShadowLayer(dpf2(3f), 0, dpf2(1f))
+            .setStrokeWidth(dpf2(0.5f), dpf2(0.5f))
             .build();
     }
 

@@ -88,16 +88,24 @@ android {
 
         multiDexEnabled true
 
+        if (project.hasProperty("onlyArm64")) {
+            ndk.abiFilters 'arm64-v8a'
+        }
+
         manifestPlaceholders = [MAPS_API_KEY: localProperties.get("mapsApiKey")]
     }
 
     splits.abi {
         var buildingBundle = gradle.startParameter.taskNames.any { it.startsWith("bundle") }
         enable !buildingBundle
-        universalApk true
+        universalApk !project.hasProperty("onlyArm64")
 
         reset()
-        include "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
+        if (project.hasProperty("onlyArm64")) {
+            include "arm64-v8a"
+        } else {
+            include "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
+        }
     }
     namespace 'org.telegram.messenger.regular'
 

@@ -153,10 +153,10 @@ public class GlassTabView extends FrameLayout implements MainTabsLayout.Tab, Fac
             final float alpha = AnimatorUtils.DECELERATE_INTERPOLATOR.getInterpolation(selectedFactor);
 
             if (tw.nekomimi.nekogram.NekoConfig.material3Style) {
-                // Island Dock capsule active indicator matching user reference IMG_20261021_231841_242.jpg
-                paintCounterBackground.setColor(Theme.multAlpha(colorSelected, 0.92f * alpha));
+                // Island Dock capsule active indicator on Red Dockbar
+                paintCounterBackground.setColor(Theme.multAlpha(0xFFFFFFFF, 0.28f * alpha));
                 final float pillWidth = Math.min(viewWidth - dp(4), dp(52));
-                final float pillHeight = dp(36);
+                final float pillHeight = dp(34);
                 final float cx = viewWidth / 2f;
                 final float cy = getHeight() / 2f;
                 tmpRectF.set(cx - pillWidth / 2f, cy - pillHeight / 2f, cx + pillWidth / 2f, cy + pillHeight / 2f);
@@ -220,7 +220,8 @@ public class GlassTabView extends FrameLayout implements MainTabsLayout.Tab, Fac
                 premiumStarDrawable.draw(canvas);
             } else {
                 if (tw.nekomimi.nekogram.NekoConfig.material3Style) {
-                    paintCounterBackground.setColor(0xFFD71920);
+                    paintCounterBackground.setColor(0xFFFFFFFF);
+                    counter.setTextColor(0xFFD71920);
                 } else {
                     paintCounterBackground.setColor(ColorUtils.blendARGB(Theme.getColor(Theme.key_telegram_color), Theme.getColor(Theme.key_fill_RedNormal), isHasCounterErrorAnimator.getFloatValue()));
                 }
@@ -272,12 +273,14 @@ public class GlassTabView extends FrameLayout implements MainTabsLayout.Tab, Fac
     private void updateColors() {
         int targetSelected = colorSelected;
         int targetSelectedText = colorSelectedText;
+        int unselectedColor = colorDefault;
         if (tw.nekomimi.nekogram.NekoConfig.material3Style) {
             targetSelected = 0xFFFFFFFF;
             targetSelectedText = 0xFFFFFFFF;
+            unselectedColor = 0xCCFFFFFF;
         }
-        final int color = ColorUtils.blendARGB(colorDefault, targetSelected, isSelectedAnimator.getFloatValue());
-        final int colorText = ColorUtils.blendARGB(colorDefault, targetSelectedText, isSelectedAnimator.getFloatValue());
+        final int color = ColorUtils.blendARGB(unselectedColor, targetSelected, isSelectedAnimator.getFloatValue());
+        final int colorText = ColorUtils.blendARGB(unselectedColor, targetSelectedText, isSelectedAnimator.getFloatValue());
 
         final PorterDuffColorFilter filter = new PorterDuffColorFilter(color, PorterDuff.Mode.SRC_IN);
         if (backupImageView != null && needUpdateBackupViewColor) {
