@@ -547,8 +547,8 @@ public class ThemeColors {
         defaultColors[key_chat_tagCreator] = 0xff955CDB;
 
         defaultColors[key_profile_tabText] = 0xff878c90;
-        defaultColors[key_profile_tabSelectedText] = 0xff3a95d5;
-        defaultColors[key_profile_tabSelectedLine] = 0xff4fa6e9;
+        defaultColors[key_profile_tabSelectedText] = 0xFFD71920;
+        defaultColors[key_profile_tabSelectedLine] = 0xFFD71920;
         defaultColors[key_profile_tabSelector] = 0x0f000000;
 
         defaultColors[key_player_actionBarSelector] = 0x0f000000;
@@ -873,17 +873,29 @@ public class ThemeColors {
         defaultColors[key_glass_defaultText] = 0x991B2227; //0xFF737876;
         defaultColors[key_glass_targetMainTabs] = 0xFFFFFFFF;
         defaultColors[key_glass_targetMainTopPanel] = 0xFFFFFFFF;
-        defaultColors[key_glass_tabSelected] = 0xFF1a91e6;
-        defaultColors[key_glass_tabSelectedText] = 0xFF0d7fcf;
+        defaultColors[key_glass_tabSelected] = 0xFFD71920;
+        defaultColors[key_glass_tabSelectedText] = 0xFFD71920;
         defaultColors[key_glass_tabUnselected] = 0xFF1A1D21;
 
         defaultColors[key_botKeyboard_button_danger] = 0xFFdb4646;
         defaultColors[key_botKeyboard_button_primary] = TELEGRAM_COLOR;
         defaultColors[key_botKeyboard_button_success] = 0xFF40b135;
 
-        defaultColors[key_telegram_color_dialogsLogo] = 0xFF168bdb;
+        defaultColors[key_telegram_color_dialogsLogo] = 0xFFD71920;
         defaultColors[key_telegram_color] = TELEGRAM_COLOR;
         defaultColors[key_telegram_color_text] = TELEGRAM_COLOR_TEXT;
+
+        for (int i = 0; i < defaultColors.length; i++) {
+            int c = defaultColors[i];
+            if (c == 0) continue;
+            int a = (c >> 24) & 0xFF;
+            int r = (c >> 16) & 0xFF;
+            int g = (c >> 8) & 0xFF;
+            int b = c & 0xFF;
+            if (b > 90 && b > r + 10 && b >= g - 15) {
+                defaultColors[i] = (a << 24) | 0x00D71920;
+            }
+        }
 
         return defaultColors;
     }

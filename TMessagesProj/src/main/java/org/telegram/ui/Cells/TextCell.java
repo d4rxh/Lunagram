@@ -623,6 +623,8 @@ public class TextCell extends FrameLayout {
     }
 
     public void setColorfulIcon(int colorTop, int colorBottom, int resId) {
+        colorTop = Theme.filterBlue(colorTop);
+        colorBottom = Theme.filterBlue(colorBottom);
         offsetFromImage = getOffsetFromImage(true);
         imageView.setVisibility(VISIBLE);
         imageView.setPadding(dp(2), dp(2), dp(2), dp(2));

@@ -1292,7 +1292,7 @@ public class NekoConfig {
             }
             return color;
         } else {
-            return 0xff11acfa;
+            return 0xFFD71920;
         }
     }
 }

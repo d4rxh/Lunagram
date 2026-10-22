@@ -2668,7 +2668,7 @@ public class FragmentContextView extends FrameLayout implements NotificationCent
                 final float bottom = getMeasuredHeight();
                 final float top = bottom - dpf2(2);
 
-                progressPaint.setColor(getThemedColor(Theme.key_telegram_color));
+                progressPaint.setColor(0xFFD71920);
                 canvas.drawRoundRect(left, top, p, bottom, dpf2(1), dpf2(1), progressPaint);
             }
         }

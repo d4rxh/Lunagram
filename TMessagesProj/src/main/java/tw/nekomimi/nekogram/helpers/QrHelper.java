@@ -79,8 +79,8 @@ public class QrHelper {
             var linkOrUsername = username != null || text.startsWith("http://") || text.startsWith("https://");
             var textView = new LinkSpanDrawable.LinksTextView(context, dark ? null : resourcesProvider);
             textView.setDisablePaddingsOffsetY(true);
-            textView.setTextColor(dark ? linkOrUsername ? 0xff79c4fc : 0xffffffff : linkOrUsername ? Theme.getColor(Theme.key_dialogTextLink, resourcesProvider) : Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
-            textView.setLinkTextColor(dark ? 0xff79c4fc : Theme.getColor(Theme.key_dialogTextLink, resourcesProvider));
+            textView.setTextColor(dark ? linkOrUsername ? 0xFFD71920 : 0xffffffff : linkOrUsername ? Theme.getColor(Theme.key_dialogTextLink, resourcesProvider) : Theme.getColor(Theme.key_dialogTextBlack, resourcesProvider));
+            textView.setLinkTextColor(dark ? 0xFFD71920 : Theme.getColor(Theme.key_dialogTextLink, resourcesProvider));
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
             textView.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
             textView.setMaxLines(0);

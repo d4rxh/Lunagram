@@ -1740,13 +1740,13 @@ public class Theme {
                 if (isHome(themeAccent)) {
                     themeAccent.isDefault = true;
                 }
-                themeAccent.accentColor = accent[a];
+                themeAccent.accentColor = filterBlue(accent[a]);
                 themeAccent.parentTheme = this;
                 if (myMessages != null) {
-                    themeAccent.myMessagesAccentColor = myMessages[a];
+                    themeAccent.myMessagesAccentColor = filterBlue(myMessages[a]);
                 }
                 if (myMessagesGradient != null) {
-                    themeAccent.myMessagesGradientAccentColor1 = myMessagesGradient[a];
+                    themeAccent.myMessagesGradientAccentColor1 = filterBlue(myMessagesGradient[a]);
                 }
                 if (background != null) {
                     themeAccent.backgroundOverrideColor = background[a];
@@ -1785,16 +1785,16 @@ public class Theme {
 
                 //override default themes
                 if (isHome(themeAccent) && name.equals("Dark Blue") || name.equals("Night") || name.equals("AMOLED")) {
-                    themeAccent.myMessagesAccentColor = 0xff258DE5;
-                    themeAccent.myMessagesGradientAccentColor1 = 0xff4272DF;
-                    themeAccent.myMessagesGradientAccentColor2 = 0xff8146D7;
-                    themeAccent.myMessagesGradientAccentColor3 = 0xff9F3EAA;
+                    themeAccent.myMessagesAccentColor = 0xFFD71920;
+                    themeAccent.myMessagesGradientAccentColor1 = 0xFFB7141A;
+                    themeAccent.myMessagesGradientAccentColor2 = 0xFF8E0E13;
+                    themeAccent.myMessagesGradientAccentColor3 = 0xFF63080B;
                     if (name.equals("Night") || name.equals("AMOLED")) {
                         themeAccent.patternIntensity = -0.57f;
-                        themeAccent.backgroundOverrideColor = 0xff6c7fa6;
-                        themeAccent.backgroundGradientOverrideColor1 = 0xff2e344b;
-                        themeAccent.backgroundGradientOverrideColor2 = 0xff7874a7;
-                        themeAccent.backgroundGradientOverrideColor3 = 0xff333258;
+                        themeAccent.backgroundOverrideColor = 0xFF000000;
+                        themeAccent.backgroundGradientOverrideColor1 = 0xFF000000;
+                        themeAccent.backgroundGradientOverrideColor2 = 0xFF000000;
+                        themeAccent.backgroundGradientOverrideColor3 = 0xFF000000;
                     }
                 }
                 themeAccentsMap.put(themeAccent.id, themeAccent);
@@ -6160,6 +6160,9 @@ public class Theme {
         if (accent != null) {
             shouldDrawGradientIcons = accent.fillAccentColors(currentColorsNoAccent, currentColors);
         }
+        for (int i = 0; i < currentColors.size(); i++) {
+            currentColors.setValueAt(i, filterBlue(currentColors.valueAt(i)));
+        }
         applyCalculatedTableColors(currentColorsNoAccent, currentColors, currentTheme.isDark());
         applyCalculatedArticleCodeColors(currentColorsNoAccent, currentColors, currentTheme.isDark());
         if (!messages) {
@@ -7689,7 +7692,7 @@ public class Theme {
                                 }
                                 int keyFromString = ThemeColors.stringKeyToInt(key);
                                 if (keyFromString >= 0) {
-                                    stringMap.put(keyFromString, value);
+                                    stringMap.put(keyFromString, filterBlue(value));
                                 }
                             }
                         }
@@ -8012,7 +8015,7 @@ public class Theme {
         dialogs_pinnedPaint.setColor(getColor(key_chats_pinnedOverlay));
         dialogs_timePaint.setColor(getColor(key_chats_date));
         dialogs_timePaintBold.setColor(getColor(key_chats_date_bold));
-        dialogs_timePaintBoldAccent.setColor(getColor(key_telegram_color_text));
+        dialogs_timePaintBoldAccent.setColor(0xFFD71920);
         dialogs_countTextPaint.setColor(getColor(key_chats_unreadCounterText));
         dialogs_countTextPaint2.setColor(getColor(key_chats_unreadCounterText));
         dialogs_archiveTextPaint.setColor(getColor(key_chats_archiveText));
@@ -9014,19 +9017,31 @@ public class Theme {
         return drawable;
     }
 
+    public static int filterBlue(int color) {
+        if (color == 0) return 0;
+        int a = (color >> 24) & 0xFF;
+        int r = (color >> 16) & 0xFF;
+        int g = (color >> 8) & 0xFF;
+        int b = color & 0xFF;
+        if (b > 90 && b > r + 10 && b >= g - 15) {
+            return (a << 24) | 0x00D71920;
+        }
+        return color;
+    }
+
     public static int getDefaultColor(int key) {
         int value = defaultColors[key];
         if (value == 0) {
             int fallbackKey = fallbackKeys.get(key, -1);
             if (fallbackKey != -1) {
-                return getDefaultColor(fallbackKey);
+                return filterBlue(getDefaultColor(fallbackKey));
             }
             if (isMyMessagesBubbles(key) || key == key_chats_menuTopShadow || key == key_chats_menuTopBackground || key == key_chats_menuTopShadowCats || key == key_chat_wallpaper_gradient_to2 || key == key_chat_wallpaper_gradient_to3) {
                 return 0;
             }
             return 0xffff0000;
         }
-        return value;
+        return filterBlue(value);
     }
 
     public static boolean hasThemeKey(int key) {
@@ -9071,13 +9086,13 @@ public class Theme {
 
     public static int getColor(int key, ResourcesProvider provider) {
         if (provider != null) {
-            return provider.getColor(key);
+            return filterBlue(provider.getColor(key));
         }
         return getColor(key);
     }
 
     public static int getCurrentColor(int key) {
-        return currentColors.get(key);
+        return filterBlue(currentColors.get(key));
     }
 
     public static int getColor(int key) {
@@ -9154,23 +9169,23 @@ public class Theme {
             return isDark ? 0xFFFFFFFF : 0xFF000000;
         } else if (key == key_dialogButton) {
             return 0xFFD71920;
-        } else if (key == key_dialogTextBlue || key == key_dialogTextBlue2 || key == key_dialogTextBlue4) {
+        } else if (key == key_dialogTextBlue || key == key_dialogTextBlue2 || key == key_dialogTextBlue4 || key == key_dialogTextLink || key == key_dialogRoundCheckBox || key == key_dialogRoundCheckBoxCheck) {
             return 0xFFD71920;
         } else if (key == key_windowBackgroundWhiteBlackText) {
             return isDark ? 0xFFFFFFFF : 0xFF000000;
         } else if (key == key_windowBackgroundWhiteGrayText) {
             return isDark ? 0xFF808080 : 0xFF666666;
-        } else if (key == key_windowBackgroundWhiteBlueHeader || key == key_windowBackgroundWhiteBlueText || key == key_windowBackgroundWhiteBlueText2 || key == key_windowBackgroundWhiteBlueText4 || key == key_windowBackgroundWhiteBlueText5 || key == key_windowBackgroundWhiteBlueText6 || key == key_windowBackgroundWhiteBlueButton || key == key_windowBackgroundWhiteLinkText || key == key_windowBackgroundWhiteValueText) {
+        } else if (key == key_windowBackgroundWhiteBlueHeader || key == key_windowBackgroundWhiteBlueText || key == key_windowBackgroundWhiteBlueText2 || key == key_windowBackgroundWhiteBlueText3 || key == key_windowBackgroundWhiteBlueText4 || key == key_windowBackgroundWhiteBlueText5 || key == key_windowBackgroundWhiteBlueText6 || key == key_windowBackgroundWhiteBlueText7 || key == key_windowBackgroundWhiteBlueButton || key == key_windowBackgroundWhiteBlueIcon || key == key_windowBackgroundWhiteLinkText || key == key_windowBackgroundWhiteValueText) {
             return 0xFFD71920;
-        } else if (key == key_chat_messageLinkIn || key == key_chat_messageLinkOut) {
+        } else if (key == key_chat_messageLinkIn || key == key_chat_messageLinkOut || key == key_chat_serviceLink) {
             return 0xFFD71920;
-        } else if (key == key_chat_goDownButtonCounterBackground) {
+        } else if (key == key_chat_goDownButtonCounterBackground || key == key_picker_badge) {
             return 0xFFD71920;
         } else if (key == key_chat_goDownButton) {
             return isDark ? 0xFF1A1A1A : 0xFFEEEEEE;
         } else if (key == key_switchTrackBlue) {
             return isDark ? 0xFF222222 : 0xFFDDDDDD;
-        } else if (key == key_switchTrackBlueChecked) {
+        } else if (key == key_switchTrackBlueChecked || key == key_switch2TrackChecked) {
             return 0xFFD71920;
         } else if (key == key_switchTrackBlueThumb || key == key_switchTrackBlueThumbChecked) {
             return 0xFFFFFFFF;
@@ -9180,11 +9195,27 @@ public class Theme {
             return 0xFFB7141A;
         } else if (key == key_profile_actionIcon) {
             return 0xFFFFFFFF;
+        } else if (key == key_chats_sentCheck || key == key_chats_sentReadCheck || key == key_chats_verifiedCheck || key == key_profile_verifiedCheck) {
+            return 0xFFD71920;
+        } else if (key == key_chat_mediaSentCheck || key == key_chat_mediaProgress || key == key_chat_outAudioProgress || key == key_chat_inAudioProgress || key == key_chat_recordedVoiceProgress) {
+            return 0xFFD71920;
+        } else if (key == key_glass_tabSelected || key == key_glass_tabSelectedText) {
+            return 0xFFD71920;
+        } else if (key == key_player_progress || key == key_progressCircle || key == key_dialogLineProgress || key == key_dialog_inlineProgress) {
+            return 0xFFD71920;
+        } else if (key == key_telegram_color || key == key_telegram_color_text) {
+            return 0xFFD71920;
+        } else if (key == key_profile_tabSelectedLine || key == key_profile_tabSelectedText) {
+            return 0xFFD71920;
+        } else if (key == key_inappPlayerPlayPause || key == key_inappPlayerPerformer) {
+            return 0xFFD71920;
+        } else if (key == key_chat_inReactionButtonBackground || key == key_chat_outReactionButtonBackground || key == key_chat_inReactionButtonText || key == key_chat_outReactionButtonText) {
+            return 0xFFD71920;
         }
         if (!ignoreAnimation && animatingColors != null) {
             int index = animatingColors.indexOfKey(key);
             if (index >= 0) {
-                return animatingColors.valueAt(index);
+                return filterBlue(animatingColors.valueAt(index));
             }
         }
         if (serviceBitmapShader != null && (key_chat_serviceText == key || key_chat_serviceLink == key || key_chat_serviceIcon == key
@@ -9204,11 +9235,11 @@ public class Theme {
             }
             if (useDefault) {
                 if (key == key_chat_serviceBackground) {
-                    return serviceMessageColor;
+                    return filterBlue(serviceMessageColor);
                 } else if (key == key_chat_serviceBackgroundSelected) {
-                    return serviceSelectedMessageColor;
+                    return filterBlue(serviceSelectedMessageColor);
                 }
-                return getDefaultColor(key);
+                return filterBlue(getDefaultColor(key));
             }
         }
         int index = currentColors.indexOfKey(key);
@@ -9218,7 +9249,7 @@ public class Theme {
             if (fallbackKey != -1) {
                 int fallbackIndex = currentColors.indexOfKey(fallbackKey);
                 if (fallbackIndex >= 0) {
-                    return currentColors.valueAt(fallbackIndex);
+                    return filterBlue(currentColors.valueAt(fallbackIndex));
                 }
             }
 
@@ -9226,24 +9257,18 @@ public class Theme {
                 isDefault[0] = true;
             }
             if (key == key_chat_serviceBackground) {
-                return serviceMessageColor;
+                return filterBlue(serviceMessageColor);
             } else if (key == key_chat_serviceBackgroundSelected) {
-                return serviceSelectedMessageColor;
+                return filterBlue(serviceSelectedMessageColor);
             }
-            return getDefaultColor(key);
+            return filterBlue(getDefaultColor(key));
         } else {
             color = currentColors.valueAt(index);
         }
         if (key_windowBackgroundWhite == key || key_windowBackgroundGray == key || key_actionBarDefault == key || key_actionBarDefaultArchived == key) {
             color |= 0xff000000;
         }
-        int r = (color >> 16) & 0xFF;
-        int g = (color >> 8) & 0xFF;
-        int b = color & 0xFF;
-        if (b > 150 && b > r + 35 && b > g + 5) {
-            return 0xFFD71920;
-        }
-        return color;
+        return filterBlue(color);
     }
 
     private static boolean isMyMessagesBubbles(int key) {

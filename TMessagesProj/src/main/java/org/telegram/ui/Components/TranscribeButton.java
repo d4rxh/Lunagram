@@ -253,6 +253,8 @@ public class TranscribeButton {
     }
 
     public void setColor(int color, int grayColor, boolean isOut, float bgBack) {
+        color = Theme.filterBlue(color);
+        grayColor = Theme.filterBlue(grayColor);
         boolean disabled = !premium;
 //        if (disabled) {
 //            color = ColorUtils.blendARGB(color, grayColor, isOut ? .6f : .8f);

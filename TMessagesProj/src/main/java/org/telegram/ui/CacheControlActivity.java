@@ -2578,7 +2578,7 @@ public class CacheControlActivity extends BaseFragment implements NotificationCe
                     }
                     String value = CacheByChatsController.getKeepMediaString(cacheByChatsController.getKeepMedia(keepMediaType));
                     if (itemInners.get(position).keepMediaType == KEEP_MEDIA_TYPE_USER) {
-                        textCell2.setTextAndValueAndColorfulIcon(LocaleController.getString(R.string.PrivateChats), value, true, R.drawable.msg_filled_menu_users, 0xFF4F85F6, 0xFF3568E8, true);
+                        textCell2.setTextAndValueAndColorfulIcon(LocaleController.getString(R.string.PrivateChats), value, true, R.drawable.msg_filled_menu_users, 0xFFD71920, 0xFFB7141A, true);
                     } else if (itemInners.get(position).keepMediaType == KEEP_MEDIA_TYPE_GROUP) {
                         textCell2.setTextAndValueAndColorfulIcon(LocaleController.getString(R.string.GroupChats), value, true, R.drawable.msg_filled_menu_groups, 0xFF55CA47, 0xFF27B434, true);
                     } else if (itemInners.get(position).keepMediaType == KEEP_MEDIA_TYPE_CHANNEL) {
