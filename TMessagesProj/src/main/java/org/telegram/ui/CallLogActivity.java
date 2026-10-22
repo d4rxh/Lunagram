@@ -753,7 +753,7 @@ public class CallLogActivity extends BaseFragment implements NotificationCenter.
 		listView = new UniversalRecyclerView(this, this::fillItems, this::onClick, this::onLongClick);
 		listView.setBackgroundColor(Theme.getColor(Theme.key_windowBackgroundGray, resourceProvider));
 		listView.setSections();
-		listView.adapter.setApplyBackground(false);
+		listView.adapter.setApplyBackground(tw.nekomimi.nekogram.NekoConfig.material3Style);
 		contentView = new SizeNotifierFrameLayout(context) {
 			@Override
 			protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {

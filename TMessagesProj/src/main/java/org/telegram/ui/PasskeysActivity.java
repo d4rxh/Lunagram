@@ -80,7 +80,7 @@ public class PasskeysActivity extends BaseFragment {
 
         listView = new UniversalRecyclerView(this, this::fillItems, this::onItemClick, null);
         listView.setSections();
-        listView.adapter.setApplyBackground(false);
+        listView.adapter.setApplyBackground(tw.nekomimi.nekogram.NekoConfig.material3Style);
         contentView.addView(listView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
         actionBar.setAdaptiveBackground(listView);
 
