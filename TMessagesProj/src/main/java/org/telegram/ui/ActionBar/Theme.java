@@ -9113,40 +9113,70 @@ public class Theme {
             return 0xFF000000;
         } else if (key == key_actionBarTabUnactiveText) {
             return 0xFF8A8A8A;
-        } else if (isCurrentThemeDark()) {
-            if (key == key_windowBackgroundWhite) {
-                return 0xFF000000;
-            } else if (key == key_windowBackgroundGray) {
-                return 0xFF0A0A0A;
-            } else if (key == key_actionBarDefault) {
-                return 0xFF000000;
-            } else if (key == key_actionBarDefaultTitle) {
-                return 0xFFFFFFFF;
-            } else if (key == key_actionBarDefaultIcon) {
-                return 0xFFFFFFFF;
-            } else if (key == key_chats_name) {
-                return 0xFFFFFFFF;
-            } else if (key == key_chats_message) {
-                return 0xFF808080;
-            } else if (key == key_chats_date) {
-                return 0xFF707070;
-            } else if (key == key_chat_inBubble) {
-                return 0xFF141414;
-            } else if (key == key_chat_inBubbleSelected) {
-                return 0xFF202020;
-            } else if (key == key_chat_outBubble) {
-                return 0xFF1E1E1E;
-            } else if (key == key_chat_outBubbleSelected) {
-                return 0xFF2A2A2A;
-            } else if (key == key_chat_messageTextIn || key == key_chat_messageTextOut) {
-                return 0xFFFFFFFF;
-            } else if (key == key_chat_wallpaper || key == key_chat_wallpaper_gradient_to1 || key == key_chat_wallpaper_gradient_to2 || key == key_chat_wallpaper_gradient_to3) {
-                return 0xFF000000;
-            } else if (key == key_chat_messagePanelBackground) {
-                return 0xFF080808;
-            } else if (key == key_divider) {
-                return 0xFF161616;
-            }
+        } else if (key == key_windowBackgroundWhite) {
+            return 0xFF000000;
+        } else if (key == key_windowBackgroundGray) {
+            return 0xFF080808;
+        } else if (key == key_actionBarDefault || key == key_actionBarActionModeDefault || key == key_actionBarDefaultArchived) {
+            return 0xFF000000;
+        } else if (key == key_actionBarDefaultTitle) {
+            return 0xFFFFFFFF;
+        } else if (key == key_actionBarDefaultIcon || key == key_actionBarActionModeDefaultIcon) {
+            return 0xFFFFFFFF;
+        } else if (key == key_chats_name || key == key_chats_nameArchived) {
+            return 0xFFFFFFFF;
+        } else if (key == key_chats_message || key == key_chats_messageArchived) {
+            return 0xFF808080;
+        } else if (key == key_chats_date) {
+            return 0xFF707070;
+        } else if (key == key_chat_inBubble) {
+            return 0xFF141414;
+        } else if (key == key_chat_inBubbleSelected) {
+            return 0xFF202020;
+        } else if (key == key_chat_outBubble) {
+            return 0xFF1E1E1E;
+        } else if (key == key_chat_outBubbleSelected) {
+            return 0xFF2A2A2A;
+        } else if (key == key_chat_messageTextIn || key == key_chat_messageTextOut) {
+            return 0xFFFFFFFF;
+        } else if (key == key_chat_wallpaper || key == key_chat_wallpaper_gradient_to1 || key == key_chat_wallpaper_gradient_to2 || key == key_chat_wallpaper_gradient_to3) {
+            return 0xFF000000;
+        } else if (key == key_chat_messagePanelBackground) {
+            return 0xFF080808;
+        } else if (key == key_divider) {
+            return 0xFF161616;
+        } else if (key == key_dialogBackground) {
+            return 0xFF101010;
+        } else if (key == key_dialogTextBlack) {
+            return 0xFFFFFFFF;
+        } else if (key == key_dialogButton) {
+            return 0xFFD71920;
+        } else if (key == key_dialogTextBlue || key == key_dialogTextBlue2 || key == key_dialogTextBlue4) {
+            return 0xFFD71920;
+        } else if (key == key_windowBackgroundWhiteBlackText) {
+            return 0xFFFFFFFF;
+        } else if (key == key_windowBackgroundWhiteGrayText) {
+            return 0xFF808080;
+        } else if (key == key_windowBackgroundWhiteBlueHeader || key == key_windowBackgroundWhiteBlueText || key == key_windowBackgroundWhiteBlueText2 || key == key_windowBackgroundWhiteBlueText4 || key == key_windowBackgroundWhiteBlueText5 || key == key_windowBackgroundWhiteBlueText6 || key == key_windowBackgroundWhiteBlueButton || key == key_windowBackgroundWhiteLinkText || key == key_windowBackgroundWhiteValueText) {
+            return 0xFFD71920;
+        } else if (key == key_chat_messageLinkIn || key == key_chat_messageLinkOut) {
+            return 0xFFD71920;
+        } else if (key == key_chat_goDownButtonCounterBackground) {
+            return 0xFFD71920;
+        } else if (key == key_chat_goDownButton) {
+            return 0xFF1A1A1A;
+        } else if (key == key_switchTrackBlue) {
+            return 0xFF222222;
+        } else if (key == key_switchTrackBlueChecked) {
+            return 0xFFD71920;
+        } else if (key == key_switchTrackBlueThumb || key == key_switchTrackBlueThumbChecked) {
+            return 0xFFFFFFFF;
+        } else if (key == key_profile_actionBackground) {
+            return 0xFFD71920;
+        } else if (key == key_profile_actionPressedBackground) {
+            return 0xFFB7141A;
+        } else if (key == key_profile_actionIcon) {
+            return 0xFFFFFFFF;
         }
         if (!ignoreAnimation && animatingColors != null) {
             int index = animatingColors.indexOfKey(key);
@@ -9203,6 +9233,12 @@ public class Theme {
         }
         if (key_windowBackgroundWhite == key || key_windowBackgroundGray == key || key_actionBarDefault == key || key_actionBarDefaultArchived == key) {
             color |= 0xff000000;
+        }
+        int r = (color >> 16) & 0xFF;
+        int g = (color >> 8) & 0xFF;
+        int b = color & 0xFF;
+        if (b > 150 && b > r + 35 && b > g + 5) {
+            return 0xFFD71920;
         }
         return color;
     }

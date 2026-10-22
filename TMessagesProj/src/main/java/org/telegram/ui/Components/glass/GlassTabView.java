@@ -119,6 +119,9 @@ public class GlassTabView extends FrameLayout implements MainTabsLayout.Tab, Fac
         if (hasVisualWidth) {
             final float offset = (visualWidth - getMeasuredWidth()) / 2f;
             imageView.setTranslationX(offset);
+            if (backupImageView != null) {
+                backupImageView.setTranslationX(offset);
+            }
             textView.setTranslationX(offset);
         }
     }
@@ -152,7 +155,7 @@ public class GlassTabView extends FrameLayout implements MainTabsLayout.Tab, Fac
             if (tw.nekomimi.nekogram.NekoConfig.material3Style) {
                 // Island Dock capsule active indicator matching user reference IMG_20261021_231841_242.jpg
                 paintCounterBackground.setColor(Theme.multAlpha(colorSelected, 0.92f * alpha));
-                final float pillWidth = Math.min(viewWidth - dp(8), dp(68));
+                final float pillWidth = Math.min(viewWidth - dp(4), dp(52));
                 final float pillHeight = dp(36);
                 final float cx = viewWidth / 2f;
                 final float cy = getHeight() / 2f;
@@ -424,7 +427,7 @@ public class GlassTabView extends FrameLayout implements MainTabsLayout.Tab, Fac
         tab.tabAnimation = tabAnimation;
         tab.textView.setText(LocaleController.getString(stringRes));
         tab.checkPlayAnimation(false);
-        tab.imageView.setLayoutParams(LayoutHelper.createFrame(24, 24, Gravity.CENTER_HORIZONTAL | Gravity.TOP, 0, 4, 0, 0));
+        tab.imageView.setLayoutParams(LayoutHelper.createFrame(28, 28, Gravity.CENTER));
         tab.colorDefault = Theme.getColor(Theme.key_glass_tabUnselected, resourcesProvider);
         tab.colorSelected = Theme.getColor(Theme.key_glass_tabSelected, resourcesProvider);
         tab.colorSelectedText = Theme.getColor(Theme.key_glass_tabSelectedText, resourcesProvider);
@@ -442,10 +445,10 @@ public class GlassTabView extends FrameLayout implements MainTabsLayout.Tab, Fac
 
         BackupImageView backupImageView = new BackupImageView(context);
         backupImageView.setForUserOrChat(user, avatarDrawable);
-        backupImageView.setRoundRadius(dp(13));
+        backupImageView.setRoundRadius(dp(14));
         tab.backupImageView = backupImageView;
 
-        tab.addView(backupImageView, LayoutHelper.createFrame(26, 26, Gravity.CENTER));
+        tab.addView(backupImageView, LayoutHelper.createFrame(28, 28, Gravity.CENTER));
         tab.colorDefault = Theme.getColor(Theme.key_glass_tabUnselected, resourcesProvider);
         tab.colorSelected = Theme.getColor(Theme.key_glass_tabSelected, resourcesProvider);
         tab.colorSelectedText = Theme.getColor(Theme.key_glass_tabSelectedText, resourcesProvider);
@@ -535,18 +538,14 @@ public class GlassTabView extends FrameLayout implements MainTabsLayout.Tab, Fac
 
     @Override
     public float measureTextWidth() {
-        return defaultTextPaint.measureText(textView.getText().toString());
+        return dp(48);
     }
 
     private TextPaint scaledTextPaint;
 
     @Override
     public float measureTextWidth(float textSizeDp) {
-        if (scaledTextPaint == null) {
-            scaledTextPaint = new TextPaint(defaultTextPaint);
-        }
-        scaledTextPaint.setTextSize(dp(textSizeDp));
-        return scaledTextPaint.measureText(textView.getText().toString());
+        return dp(48);
     }
 
     @Override
