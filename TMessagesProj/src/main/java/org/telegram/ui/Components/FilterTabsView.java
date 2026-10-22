@@ -1525,7 +1525,7 @@ public class FilterTabsView extends FrameLayout {
             final int y = height / 2 - dp(14);
             selectorDrawable.setBounds((int) (indicatorX - dp(TAB_INTERNAL_PADDING) - add), y, (int) (indicatorX + indicatorWidth + dp(TAB_INTERNAL_PADDING) + add), y + dp(28));
             if (NekoConfig.material3Style) {
-                selectorDrawable.setAlpha(65);
+                selectorDrawable.setAlpha(160);
             } else {
                 selectorDrawable.setAlpha(31);
             }

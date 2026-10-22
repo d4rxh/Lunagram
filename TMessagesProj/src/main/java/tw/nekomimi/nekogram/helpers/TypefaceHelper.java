@@ -64,10 +64,10 @@ public class TypefaceHelper {
     }
 
     public static SpannableStringBuilder getTitleText() {
-        String title = getString(R.string.AppName);
+        String title = "L U N A G R A M";
         var builder = new SpannableStringBuilder(title);
         builder.setSpan(new LeadingMarginSpan.Standard(dp(2), 0), 0, builder.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        builder.setSpan(new TypefaceSpan(TypefaceHelper.createTypeface(600, false), 0, Theme.key_telegram_color_dialogsLogo, null), 0, builder.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        builder.setSpan(new TypefaceSpan(TypefaceHelper.createTypeface(700, false), 0, Theme.key_telegram_color_dialogsLogo, null), 0, builder.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         return builder;
     }
 

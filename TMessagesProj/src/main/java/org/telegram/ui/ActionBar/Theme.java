@@ -8011,7 +8011,11 @@ public class Theme {
         dialogs_countTextPaint2.setColor(getColor(key_chats_unreadCounterText));
         dialogs_archiveTextPaint.setColor(getColor(key_chats_archiveText));
         dialogs_archiveTextPaintSmall.setColor(getColor(key_chats_archiveText));
-        dialogs_countPaint.setColor(getColor(key_chats_unreadCounter));
+        if (tw.nekomimi.nekogram.NekoConfig.material3Style) {
+            dialogs_countPaint.setColor(0xFFD71920);
+        } else {
+            dialogs_countPaint.setColor(getColor(key_chats_unreadCounter));
+        }
         dialogs_countGrayPaint.setColor(getColor(key_chats_unreadCounterMuted));
         dialogs_actionMessagePaint.setColor(getColor(key_chats_actionMessage));
         dialogs_errorPaint.setColor(getColor(key_chats_sentError));

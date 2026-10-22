@@ -221,7 +221,11 @@ public class GlassTabView extends FrameLayout implements MainTabsLayout.Tab, Fac
                 premiumStarDrawable.setBounds(x, y, x + dp(14), y + dp(14));
                 premiumStarDrawable.draw(canvas);
             } else {
-                paintCounterBackground.setColor(ColorUtils.blendARGB(Theme.getColor(Theme.key_telegram_color), Theme.getColor(Theme.key_fill_RedNormal), isHasCounterErrorAnimator.getFloatValue()));
+                if (tw.nekomimi.nekogram.NekoConfig.material3Style) {
+                    paintCounterBackground.setColor(0xFFD71920);
+                } else {
+                    paintCounterBackground.setColor(ColorUtils.blendARGB(Theme.getColor(Theme.key_telegram_color), Theme.getColor(Theme.key_fill_RedNormal), isHasCounterErrorAnimator.getFloatValue()));
+                }
                 canvas.drawRoundRect(tmpRectF, rInner, rInner, paintCounterBackground);
                 counter.setBounds(tmpRectF);
                 counter.draw(canvas);
