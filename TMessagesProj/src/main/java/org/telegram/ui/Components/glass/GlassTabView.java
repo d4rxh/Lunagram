@@ -80,17 +80,12 @@ public class GlassTabView extends FrameLayout implements MainTabsLayout.Tab, Fac
     public GlassTabView(@NonNull Context context) {
         super(context);
         imageView = new RLottieImageView(context);
-        addView(imageView, LayoutHelper.createFrame(44, 44, Gravity.CENTER_HORIZONTAL | Gravity.TOP, 0, -6, 0, 0));
+        addView(imageView, LayoutHelper.createFrame(28, 28, Gravity.CENTER));
 
         imageView.setColorFilter(new PorterDuffColorFilter(Color.BLACK, PorterDuff.Mode.SRC_IN));
 
         textView = new TextView(context);
-        textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12f);
-        textView.setSingleLine();
-        textView.setLines(1);
-        textView.setEllipsize(TextUtils.TruncateAt.END);
-        textView.setTypeface(AndroidUtilities.bold());
-        textView.setGravity(Gravity.CENTER);
+        textView.setVisibility(GONE);
 
         defaultTextPaint = new TextPaint(textView.getPaint());
         addView(textView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL | Gravity.TOP, 0, 28.33f, 0, 0));
@@ -192,8 +187,8 @@ public class GlassTabView extends FrameLayout implements MainTabsLayout.Tab, Fac
             canvas.save();
 
             final float gap = dpf2(1.33f);
-            final float cx = viewWidth / 2f + dpf2(11);
-            final float cy = dpf2(10);
+            final float cx = viewWidth / 2f + dpf2(10);
+            final float cy = getHeight() / 2f - dpf2(7);
             final float height = dpf2(16);
             final float width = Math.max(height, counter.getCurrentWidth() + dp(8));
             final float rOuter = dpf2(9.333f);
@@ -447,10 +442,10 @@ public class GlassTabView extends FrameLayout implements MainTabsLayout.Tab, Fac
 
         BackupImageView backupImageView = new BackupImageView(context);
         backupImageView.setForUserOrChat(user, avatarDrawable);
-        backupImageView.setRoundRadius(dp(11));
+        backupImageView.setRoundRadius(dp(13));
         tab.backupImageView = backupImageView;
 
-        tab.addView(backupImageView, LayoutHelper.createFrame(22, 22, Gravity.CENTER_HORIZONTAL | Gravity.TOP, 0, 5, 0, 0));
+        tab.addView(backupImageView, LayoutHelper.createFrame(26, 26, Gravity.CENTER));
         tab.colorDefault = Theme.getColor(Theme.key_glass_tabUnselected, resourcesProvider);
         tab.colorSelected = Theme.getColor(Theme.key_glass_tabSelected, resourcesProvider);
         tab.colorSelectedText = Theme.getColor(Theme.key_glass_tabSelectedText, resourcesProvider);
@@ -471,7 +466,7 @@ public class GlassTabView extends FrameLayout implements MainTabsLayout.Tab, Fac
         tab.textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 11);
         tab.textView.setPadding(dp(8), 0, dp(8), 0);
         tab.checkPlayAnimation(false);
-        tab.imageView.setLayoutParams(LayoutHelper.createFrame(24, 24, Gravity.CENTER_HORIZONTAL | Gravity.TOP, 0, 4, 0, 0));
+        tab.imageView.setLayoutParams(LayoutHelper.createFrame(26, 26, Gravity.CENTER));
         tab.colorDefault = Theme.getColor(Theme.key_glass_tabUnselected, resourcesProvider);
         tab.colorSelected = Theme.getColor(Theme.key_glass_tabSelected, resourcesProvider);
         tab.colorSelectedText = Theme.getColor(Theme.key_glass_tabSelectedText, resourcesProvider);
@@ -488,7 +483,7 @@ public class GlassTabView extends FrameLayout implements MainTabsLayout.Tab, Fac
         tab.imageView.setVisibility(GONE);
         tab.checkPlayAnimation(false);
         tab.backupImageView = new BackupImageView(context);
-        tab.addView(tab.backupImageView, LayoutHelper.createFrame(24, 24, Gravity.CENTER_HORIZONTAL | Gravity.TOP, 0, 4, 0, 0));
+        tab.addView(tab.backupImageView, LayoutHelper.createFrame(26, 26, Gravity.CENTER));
         tab.colorDefault = Theme.getColor(Theme.key_glass_tabUnselected, resourcesProvider);
         tab.colorSelected = Theme.getColor(Theme.key_glass_tabSelected, resourcesProvider);
         tab.colorSelectedText = Theme.getColor(Theme.key_glass_tabSelectedText, resourcesProvider);
@@ -666,8 +661,8 @@ public class GlassTabView extends FrameLayout implements MainTabsLayout.Tab, Fac
         textView.setText(bot.short_name);
 
         backupImageView.setRoundRadius(0);
-        backupImageView.setSize(dp(24), dp(24));
-        backupImageView.setLayoutParams(LayoutHelper.createFrame(24, 24, Gravity.CENTER_HORIZONTAL | Gravity.TOP, 0, 4, 0, 0));
+        backupImageView.setSize(dp(26), dp(26));
+        backupImageView.setLayoutParams(LayoutHelper.createFrame(26, 26, Gravity.CENTER));
         needUpdateBackupViewColor = true;
         checkPlayAnimation(false);
         updateColors();
@@ -690,8 +685,8 @@ public class GlassTabView extends FrameLayout implements MainTabsLayout.Tab, Fac
         avatarDrawable.setInfo(currentAccount, user);
         backupImageView.setForUserOrChat(user, avatarDrawable);
         backupImageView.setSize(-1, -1);
-        backupImageView.setRoundRadius(dp(11.33f));
-        backupImageView.setLayoutParams(LayoutHelper.createFrame(22, 22, Gravity.CENTER_HORIZONTAL | Gravity.TOP, 0, 5, 0, 0));
+        backupImageView.setRoundRadius(dp(13));
+        backupImageView.setLayoutParams(LayoutHelper.createFrame(26, 26, Gravity.CENTER));
         backupImageView.setColorFilter(null);
         needUpdateBackupViewColor = false;
         invalidate();

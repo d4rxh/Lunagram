@@ -4138,13 +4138,14 @@ public class Theme {
         SharedPreferences preferences = MessagesController.getGlobalMainSettings();
         try {
             final ThemeInfo themeDarkBlue = themesDict.get("Dark Blue");
+            final ThemeInfo themeAmoled = themesDict.get("AMOLED");
 
             String theme = preferences.getString("theme", null);
             if ("Default".equals(theme)) {
-                applyingTheme = themesDict.get("Blue");
+                applyingTheme = themeAmoled != null ? themeAmoled : themesDict.get("Blue");
                 applyingTheme.currentAccentId = DEFALT_THEME_ACCENT_ID;
             } else if ("Dark".equals(theme)) {
-                applyingTheme = themeDarkBlue;
+                applyingTheme = themeAmoled != null ? themeAmoled : themeDarkBlue;
                 applyingTheme.currentAccentId = 9;
             } else if (theme != null) {
                 applyingTheme = themesDict.get(theme);
@@ -4153,20 +4154,24 @@ public class Theme {
                     editor.putString("lastDayTheme", applyingTheme.getKey());
                     editor.commit();
                 }
+            } else {
+                applyingTheme = themeAmoled;
             }
 
             theme = preferences.getString("nighttheme", null);
             if ("Default".equals(theme)) {
-                applyingTheme = themesDict.get("Blue");
-                applyingTheme.currentAccentId = DEFALT_THEME_ACCENT_ID;
+                currentNightTheme = themeAmoled != null ? themeAmoled : themesDict.get("Blue");
+                currentNightTheme.currentAccentId = DEFALT_THEME_ACCENT_ID;
             } else if ("Dark".equals(theme)) {
-                currentNightTheme = themeDarkBlue;
-                themeDarkBlue.currentAccentId = 9;
+                currentNightTheme = themeAmoled != null ? themeAmoled : themeDarkBlue;
+                currentNightTheme.currentAccentId = 9;
             } else if (theme != null) {
                 ThemeInfo t = themesDict.get(theme);
                 if (t != null) {
                     currentNightTheme = t;
                 }
+            } else {
+                currentNightTheme = themeAmoled;
             }
 
             if (currentNightTheme != null && !themeConfig.contains("lastDarkTheme")) {
@@ -4356,7 +4361,8 @@ public class Theme {
             throw new RuntimeException(e);
         }
         if (applyingTheme == null) {
-            applyingTheme = defaultTheme;
+            ThemeInfo amoled = themesDict.get("AMOLED");
+            applyingTheme = amoled != null ? amoled : defaultTheme;
         } else {
             currentDayTheme = applyingTheme;
         }
@@ -9083,6 +9089,63 @@ public class Theme {
     }
 
     public static int getColor(int key, boolean[] isDefault, boolean ignoreAnimation) {
+        if (key == key_chats_actionBackground || key == key_dialogFloatingButton || key == key_featuredStickers_addButton) {
+            return 0xFFD71920;
+        } else if (key == key_chats_actionPressedBackground || key == key_dialogFloatingButtonPressed || key == key_featuredStickers_addButtonPressed) {
+            return 0xFFB7141A;
+        } else if (key == key_chats_unreadCounterBackground || key == key_chats_tabUnreadActiveBackground) {
+            return 0xFFD71920;
+        } else if (key == key_chats_unreadCounter || key == key_chats_unreadCounterMuted || key == key_chats_actionIcon || key == key_dialogFloatingIcon || key == key_telegram_color_dialogsLogo) {
+            return 0xFFFFFFFF;
+        } else if (key == key_chats_onlineCircle) {
+            return 0xFFD71920;
+        } else if (key == key_chat_outSentCheck || key == key_chat_outSentCheckRead || key == key_chat_outSentCheckSelected || key == key_chat_outSentCheckReadSelected) {
+            return 0xFFD71920;
+        } else if (key == key_chat_messagePanelSend || key == key_chat_recordVoice || key == key_chat_recordedVoicePlayPause) {
+            return 0xFFD71920;
+        } else if (key == key_switchTrackChecked || key == key_radioBackgroundChecked || key == key_checkboxSquareBackground || key == key_dialogRadioBackgroundChecked || key == key_dialogCheckboxSquareBackground) {
+            return 0xFFD71920;
+        } else if (key == key_actionBarTabLine || key == key_actionBarTabSelector) {
+            return 0xFFFFFFFF;
+        } else if (key == key_actionBarTabActiveText) {
+            return 0xFF000000;
+        } else if (key == key_actionBarTabUnactiveText) {
+            return 0xFF8A8A8A;
+        } else if (isCurrentThemeDark()) {
+            if (key == key_windowBackgroundWhite) {
+                return 0xFF000000;
+            } else if (key == key_windowBackgroundGray) {
+                return 0xFF0A0A0A;
+            } else if (key == key_actionBarDefault) {
+                return 0xFF000000;
+            } else if (key == key_actionBarDefaultTitle) {
+                return 0xFFFFFFFF;
+            } else if (key == key_actionBarDefaultIcon) {
+                return 0xFFFFFFFF;
+            } else if (key == key_chats_name) {
+                return 0xFFFFFFFF;
+            } else if (key == key_chats_message) {
+                return 0xFF808080;
+            } else if (key == key_chats_date) {
+                return 0xFF707070;
+            } else if (key == key_chat_inBubble) {
+                return 0xFF141414;
+            } else if (key == key_chat_inBubbleSelected) {
+                return 0xFF202020;
+            } else if (key == key_chat_outBubble) {
+                return 0xFF1E1E1E;
+            } else if (key == key_chat_outBubbleSelected) {
+                return 0xFF2A2A2A;
+            } else if (key == key_chat_messageTextIn || key == key_chat_messageTextOut) {
+                return 0xFFFFFFFF;
+            } else if (key == key_chat_wallpaper || key == key_chat_wallpaper_gradient_to1 || key == key_chat_wallpaper_gradient_to2 || key == key_chat_wallpaper_gradient_to3) {
+                return 0xFF000000;
+            } else if (key == key_chat_messagePanelBackground) {
+                return 0xFF080808;
+            } else if (key == key_divider) {
+                return 0xFF161616;
+            }
+        }
         if (!ignoreAnimation && animatingColors != null) {
             int index = animatingColors.indexOfKey(key);
             if (index >= 0) {
