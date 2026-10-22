@@ -9093,15 +9093,17 @@ public class Theme {
             return 0xFFD71920;
         } else if (key == key_chats_actionPressedBackground || key == key_dialogFloatingButtonPressed || key == key_featuredStickers_addButtonPressed) {
             return 0xFFB7141A;
-        } else if (key == key_chats_unreadCounterBackground || key == key_chats_tabUnreadActiveBackground) {
+        } else if (key == key_chats_unreadCounter || key == key_chats_tabUnreadActiveBackground) {
             return 0xFFD71920;
-        } else if (key == key_chats_unreadCounter || key == key_chats_unreadCounterMuted || key == key_chats_actionIcon || key == key_dialogFloatingIcon || key == key_telegram_color_dialogsLogo) {
+        } else if (key == key_chats_unreadCounterText || key == key_chats_actionIcon || key == key_dialogFloatingIcon || key == key_telegram_color_dialogsLogo) {
             return 0xFFFFFFFF;
+        } else if (key == key_chats_unreadCounterMuted) {
+            return 0xFF333333;
         } else if (key == key_chats_onlineCircle) {
             return 0xFFD71920;
         } else if (key == key_chat_outSentCheck || key == key_chat_outSentCheckRead || key == key_chat_outSentCheckSelected || key == key_chat_outSentCheckReadSelected) {
             return 0xFFD71920;
-        } else if (key == key_chat_messagePanelSend || key == key_chat_recordVoice || key == key_chat_recordedVoicePlayPause) {
+        } else if (key == key_chat_messagePanelSend || key == key_chat_messagePanelVoiceBackground || key == key_chat_recordedVoicePlayPause) {
             return 0xFFD71920;
         } else if (key == key_switchTrackChecked || key == key_radioBackgroundChecked || key == key_checkboxSquareBackground || key == key_dialogRadioBackgroundChecked || key == key_dialogCheckboxSquareBackground) {
             return 0xFFD71920;
