@@ -12,7 +12,7 @@
 <p align="center">
   <a href="https://github.com/d4rxh/Lunagram/releases/latest"><img src="https://img.shields.io/github/v/release/d4rxh/Lunagram?style=for-the-badge&color=D71920&logo=android&logoColor=white" alt="Latest Version"></a>
   <a href="https://github.com/d4rxh/Lunagram/actions/workflows/build.yml"><img src="https://img.shields.io/github/actions/workflow/status/d4rxh/Lunagram/build.yml?style=for-the-badge&label=CI%20Build&color=00c853&logo=githubactions&logoColor=white" alt="CI Status"></a>
-  <a href="https://github.com/d4rxh/Lunagram/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-GPLv3-0070F3?style=for-the-badge" alt="License"></a>
+  <a href="https://github.com/d4rxh/Lunagram/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-GPLv2-0070F3?style=for-the-badge" alt="License"></a>
   <a href="https://t.me/LunaGram_Updates"><img src="https://img.shields.io/badge/Telegram-@LunaGram__Updates-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram Channel"></a>
   <a href="https://android.com"><img src="https://img.shields.io/badge/Android-7.0%2B%20(API%2024%2B)-3DDC84?style=for-the-badge&logo=android&logoColor=white" alt="Android MinSdk"></a>
 </p>
@@ -157,7 +157,7 @@ If you discover any security vulnerabilities or unexpected behavior, please open
 
 ## 📜 License & Acknowledgements
 
-* Lunagram is free and open-source software licensed under the **[GNU General Public License v3.0 (GPLv3)](LICENSE)**.
+* Lunagram is free and open-source software licensed under the **[GNU General Public License v2.0 (GPLv2)](LICENSE)**.
 * Built upon open-source contributions from [Telegram for Android](https://github.com/DrKLO/Telegram) and [Nekogram](https://github.com/Nekogram/Nekogram).
 
 <p align="center">
