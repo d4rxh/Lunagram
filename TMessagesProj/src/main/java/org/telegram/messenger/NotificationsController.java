@@ -4826,6 +4826,9 @@ public class NotificationsController extends BaseController implements Notificat
                 }
             }
             showExtraNotifications(mBuilder, detailText, dialog_id, topicId, chatName, vibrationPattern, ledColor, sound, configImportance, isDefault, isInApp, notifyDisabled, chatType);
+            if (notifyAboutLast && !notifyDisabled && lastMessageObject != null && !isSilentMessage(lastMessageObject)) {
+                tw.nekomimi.nekogram.helpers.GlyphHelper.getInstance().onMessageNotification(lastMessageObject);
+            }
             scheduleNotificationRepeat();
         } catch (Exception e) {
             FileLog.e(e);

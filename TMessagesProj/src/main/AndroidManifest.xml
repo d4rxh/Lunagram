@@ -84,6 +84,8 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
+    <uses-permission android:name="com.nothing.ketchum.permission.ENABLE" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
 
     <uses-sdk tools:overrideLibrary="com.google.mlkit.vision.segmentation.subject"/>
 
@@ -125,6 +127,9 @@
         android:usesCleartextTraffic="true"
         android:enableOnBackInvokedCallback="true"
     >
+        <meta-data
+            android:name="NothingKey"
+            android:value="test" />
         <!-- usesCleartextTraffic for browser supporting opening http:// links -->
 
         <activity-alias

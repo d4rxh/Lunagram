@@ -384,4 +384,19 @@
     <string name="M3SquircleFabDesc">Shape the floating action button with Material 3 rounded squircle geometry.</string>
     <string name="LunarBrandedHeader">Lunar cosmic header</string>
     <string name="LunarBrandedHeaderDesc">Show cosmic crescent and stealth cloak indicator in the top app bar.</string>
+
+    <!-- Nothing Glyph Interface -->
+    <string name="GlyphSettings">Nothing Glyph Interface</string>
+    <string name="GlyphSettingsDesc">Control rear LEDs, pulse effects, call strobe, and flash alerts</string>
+    <string name="GlyphGeneralHeader">Glyph Controls</string>
+    <string name="GlyphEnable">Enable Glyph lighting</string>
+    <string name="GlyphEnableDesc">Illuminate rear LED strips on Nothing Phones (1, 2, 2a) or use camera flash</string>
+    <string name="GlyphIncomingMessages">Message pulse alerts</string>
+    <string name="GlyphIncomingMessagesDesc">Trigger signature double-pulse Glyph pattern when incoming messages arrive</string>
+    <string name="GlyphCalls">Incoming call strobe</string>
+    <string name="GlyphCallsDesc">Synchronize rhythmic breathing Glyph strobe when receiving voice or video calls</string>
+    <string name="GlyphTorchFallback">Universal camera flash fallback</string>
+    <string name="GlyphTorchFallbackDesc">Use camera LED flash in Nothing rhythmic cadence on non-Nothing devices</string>
+    <string name="GlyphTestPattern">Test Glyph light</string>
+    <string name="GlyphTestPatternDesc">Trigger a test sequence to verify LED hardware response</string>
 </resources>

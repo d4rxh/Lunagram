@@ -309,4 +309,19 @@
     <string name="UnlockPremiumPerksDesc">5 अकाउंट्स और प्रीमियम स्टिकर एनिमेशन अनलॉक करें।</string>
     <string name="NoSponsoredAds">प्रायोजित विज्ञापन ब्लॉक करें</string>
     <string name="NoSponsoredAdsDesc">सार्वजनिक चैनलों से स्पॉन्सर्ड विज्ञापन पूरी तरह हटाएं।</string>
+
+    <!-- Nothing Glyph Interface -->
+    <string name="GlyphSettings">Nothing Glyph इंटरफ़ेस</string>
+    <string name="GlyphSettingsDesc">रियर LED स्ट्रिप्स, पल्स प्रभाव, कॉल स्ट्रोब और फ्लैश अलर्ट</string>
+    <string name="GlyphGeneralHeader">Glyph सेटिंग्स</string>
+    <string name="GlyphEnable">Glyph लाइटिंग चालू करें</string>
+    <string name="GlyphEnableDesc">Nothing Phone (1, 2, 2a) पर बैक LED स्ट्रिप्स या कैमरा फ्लैश जलाएं</string>
+    <string name="GlyphIncomingMessages">संदेश पल्स अलर्ट</string>
+    <string name="GlyphIncomingMessagesDesc">नया संदेश आने पर Glyph का सिग्नेचर डबल-पल्स पैटर्न चलाएं</string>
+    <string name="GlyphCalls">इनकमिंग कॉल स्ट्रोब</string>
+    <string name="GlyphCallsDesc">वॉइस या वीडियो कॉल आने पर रिदमिक ब्रीदिंग Glyph स्ट्रोब चलाएं</string>
+    <string name="GlyphTorchFallback">कैमरा फ्लैश फॉलबैक</string>
+    <string name="GlyphTorchFallbackDesc">अन्य सभी फ़ोनों पर Nothing रिदमिक कैडेंस में कैमरा फ्लैश चमकाएं</string>
+    <string name="GlyphTestPattern">Glyph टेस्ट करें</string>
+    <string name="GlyphTestPatternDesc">हार्डवेयर LED प्रतिक्रिया जांचने के लिए टेस्ट पैटर्न चलाएं</string>
 </resources>

@@ -108,6 +108,10 @@ public class NekoConfig {
     public static boolean forceHttpStreaming = false;
     public static boolean formatTimeWithSeconds = false;
     public static boolean gooeyAvatarAnimation = true;
+    public static boolean glyphEnabled = true;
+    public static boolean glyphIncomingMessages = true;
+    public static boolean glyphCalls = true;
+    public static boolean glyphTorchFallback = false;
     public static boolean hideAllTab = false;
     public static boolean hideBottomNavigationBar = false;
     public static boolean hideChannelBottomButtons = false;
@@ -226,6 +230,10 @@ public class NekoConfig {
             forceHttpStreaming = preferences.getBoolean("forceHttpStreaming", false);
             formatTimeWithSeconds = preferences.getBoolean("formatTimeWithSeconds", false);
             gooeyAvatarAnimation = preferences.getBoolean("gooeyAvatarAnimation", true);
+            glyphEnabled = preferences.getBoolean("glyphEnabled", true);
+            glyphIncomingMessages = preferences.getBoolean("glyphIncomingMessages", true);
+            glyphCalls = preferences.getBoolean("glyphCalls", true);
+            glyphTorchFallback = preferences.getBoolean("glyphTorchFallback", false);
             hideAllTab = preferences.getBoolean("hideAllTab", false);
             hideBottomNavigationBar = preferences.getBoolean("hideBottomNavigationBar", false);
             hideChannelBottomButtons = preferences.getBoolean("hideChannelBottomButtons", false);
@@ -1068,6 +1076,26 @@ public class NekoConfig {
     public static void toggleShouldNOTTrustMe() {
         shouldNOTTrustMe = !shouldNOTTrustMe;
         preferences.edit().putBoolean("shouldNOTTrustMe", shouldNOTTrustMe).apply();
+    }
+
+    public static void toggleGlyphEnabled() {
+        glyphEnabled = !glyphEnabled;
+        preferences.edit().putBoolean("glyphEnabled", glyphEnabled).apply();
+    }
+
+    public static void toggleGlyphIncomingMessages() {
+        glyphIncomingMessages = !glyphIncomingMessages;
+        preferences.edit().putBoolean("glyphIncomingMessages", glyphIncomingMessages).apply();
+    }
+
+    public static void toggleGlyphCalls() {
+        glyphCalls = !glyphCalls;
+        preferences.edit().putBoolean("glyphCalls", glyphCalls).apply();
+    }
+
+    public static void toggleGlyphTorchFallback() {
+        glyphTorchFallback = !glyphTorchFallback;
+        preferences.edit().putBoolean("glyphTorchFallback", glyphTorchFallback).apply();
     }
 
     public static void toggleShowAddToSavedMessages() {

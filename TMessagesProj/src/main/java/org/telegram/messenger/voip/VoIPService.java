@@ -3965,6 +3965,7 @@ public class VoIPService extends Service implements SensorEventListener, AudioMa
 	}
 
 	public void stopRinging() {
+		tw.nekomimi.nekogram.helpers.GlyphHelper.getInstance().stopCallGlyph();
 		synchronized (sync) {
 			if (ringtonePlayer != null) {
 				ringtonePlayer.stop();
@@ -4047,6 +4048,7 @@ public class VoIPService extends Service implements SensorEventListener, AudioMa
 	}
 
 	private void startRingtoneAndVibration(long chatID) {
+		tw.nekomimi.nekogram.helpers.GlyphHelper.getInstance().startCallGlyph();
 		SharedPreferences prefs = MessagesController.getNotificationsSettings(currentAccount);
 		AudioManager am = (AudioManager) getSystemService(AUDIO_SERVICE);
 		boolean needRing = am.getRingerMode() != AudioManager.RINGER_MODE_SILENT;
