@@ -170,7 +170,7 @@ public class NekoSettingsActivity extends BaseNekoSettingsActivity implements Fa
             items.add(UItem.asButton(passcodeRow, R.drawable.msg_secret, LocaleController.getString(R.string.PasscodeNeko)).slug("passcode"));
         }
         items.add(UItem.asButton(stealthRow, R.drawable.msg_fave, LocaleController.getString(R.string.LunaStealthSettings)).slug("stealth"));
-        items.add(UItem.asButton(glyphRow, R.drawable.qr_flashlight, LocaleController.getString(R.string.GlyphSettings)).slug("glyph"));
+        items.add(UItem.asButton(glyphRow, R.drawable.msg_glyph, LocaleController.getString(R.string.GlyphSettings)).slug("glyph"));
         items.add(UItem.asButton(experimentRow, R.drawable.msg_fave, LocaleController.getString(R.string.NotificationsOther)).slug("experiment"));
         AccessibilityManager am = (AccessibilityManager) ApplicationLoader.applicationContext.getSystemService(Context.ACCESSIBILITY_SERVICE);
         if (am != null && am.isTouchExplorationEnabled()) {

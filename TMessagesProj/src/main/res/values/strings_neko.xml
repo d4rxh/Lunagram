@@ -385,9 +385,9 @@
     <string name="LunarBrandedHeader">Lunar cosmic header</string>
     <string name="LunarBrandedHeaderDesc">Show cosmic crescent and stealth cloak indicator in the top app bar.</string>
 
-    <!-- Nothing Glyph Interface -->
-    <string name="GlyphSettings">Nothing Glyph Interface</string>
-    <string name="GlyphSettingsDesc">Control rear LEDs, pulse effects, call strobe, and flash alerts</string>
+    <!-- Nothing Glyph Interface & Nothing OS -->
+    <string name="GlyphSettings">Nothing OS &amp; Glyph</string>
+    <string name="GlyphSettingsDesc">Nothing Signature Typography, Tactile Haptics, and rear Glyph LED alerts</string>
     <string name="GlyphGeneralHeader">Glyph Controls</string>
     <string name="GlyphEnable">Enable Glyph lighting</string>
     <string name="GlyphEnableDesc">Illuminate rear LED strips on Nothing Phones (1, 2, 2a) or use camera flash</string>
@@ -399,4 +399,13 @@
     <string name="GlyphTorchFallbackDesc">Use camera LED flash in Nothing rhythmic cadence on non-Nothing devices</string>
     <string name="GlyphTestPattern">Test Glyph light</string>
     <string name="GlyphTestPatternDesc">Trigger a test sequence to verify LED hardware response</string>
+
+    <!-- Nothing OS Experience -->
+    <string name="NothingExperienceHeader">Nothing OS Experience</string>
+    <string name="NothingTypography">Nothing Signature Typography</string>
+    <string name="NothingTypographyDesc">Use authentic Nothing NDot dot-matrix font for headers, clocks, badges, and titles</string>
+    <string name="NothingHaptics">Nothing Tactile Haptic Engine</string>
+    <string name="NothingHapticsDesc">Crisp micro-vibrations for message sending, long-press selection, and switches</string>
+    <string name="NothingTestHaptics">Test Tactile Haptics</string>
+    <string name="NothingTestHapticsDesc">Feel the signature Nothing tick, pop, and thump haptic vibrations</string>
 </resources>

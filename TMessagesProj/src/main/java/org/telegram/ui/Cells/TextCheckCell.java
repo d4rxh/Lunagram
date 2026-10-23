@@ -298,6 +298,7 @@ public class TextCheckCell extends FrameLayout {
     }
 
     public void setChecked(boolean checked) {
+        tw.nekomimi.nekogram.helpers.NothingHapticHelper.vibrateTick(this);
         checkBox.setChecked(checked, true);
     }
 

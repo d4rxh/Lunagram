@@ -310,9 +310,9 @@
     <string name="NoSponsoredAds">प्रायोजित विज्ञापन ब्लॉक करें</string>
     <string name="NoSponsoredAdsDesc">सार्वजनिक चैनलों से स्पॉन्सर्ड विज्ञापन पूरी तरह हटाएं।</string>
 
-    <!-- Nothing Glyph Interface -->
-    <string name="GlyphSettings">Nothing Glyph इंटरफ़ेस</string>
-    <string name="GlyphSettingsDesc">रियर LED स्ट्रिप्स, पल्स प्रभाव, कॉल स्ट्रोब और फ्लैश अलर्ट</string>
+    <!-- Nothing Glyph Interface & Nothing OS -->
+    <string name="GlyphSettings">Nothing OS और Glyph</string>
+    <string name="GlyphSettingsDesc">Nothing सिग्नेचर टाइपोग्राफी, टैक्टाइल हैप्टिक्स और रियर Glyph LED अलर्ट</string>
     <string name="GlyphGeneralHeader">Glyph सेटिंग्स</string>
     <string name="GlyphEnable">Glyph लाइटिंग चालू करें</string>
     <string name="GlyphEnableDesc">Nothing Phone (1, 2, 2a) पर बैक LED स्ट्रिप्स या कैमरा फ्लैश जलाएं</string>
@@ -324,4 +324,13 @@
     <string name="GlyphTorchFallbackDesc">अन्य सभी फ़ोनों पर Nothing रिदमिक कैडेंस में कैमरा फ्लैश चमकाएं</string>
     <string name="GlyphTestPattern">Glyph टेस्ट करें</string>
     <string name="GlyphTestPatternDesc">हार्डवेयर LED प्रतिक्रिया जांचने के लिए टेस्ट पैटर्न चलाएं</string>
+
+    <!-- Nothing OS Experience -->
+    <string name="NothingExperienceHeader">Nothing OS अनुभव</string>
+    <string name="NothingTypography">Nothing सिग्नेचर टाइपोग्राफी</string>
+    <string name="NothingTypographyDesc">हेडर्स, क्लॉक, बैज और टाइटल्स के लिए Nothing NDot डॉट-मैट्रिक्स फ़ॉन्ट का उपयोग करें</string>
+    <string name="NothingHaptics">Nothing टैक्टाइल हैप्टिक इंजन</string>
+    <string name="NothingHapticsDesc">संदेश भेजने, लॉन्ग-प्रेस और स्विच टॉगल के लिए क्रिस्प माइक्रो-वाइब्रेशन</string>
+    <string name="NothingTestHaptics">हैप्टिक्स टेस्ट करें</string>
+    <string name="NothingTestHapticsDesc">सिग्नेचर Nothing टिक, पॉप और थंप वाइब्रेशन महसूस करें</string>
 </resources>

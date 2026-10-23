@@ -112,6 +112,8 @@ public class NekoConfig {
     public static boolean glyphIncomingMessages = true;
     public static boolean glyphCalls = true;
     public static boolean glyphTorchFallback = false;
+    public static boolean nothingTypography = true;
+    public static boolean nothingHaptics = true;
     public static boolean hideAllTab = false;
     public static boolean hideBottomNavigationBar = false;
     public static boolean hideChannelBottomButtons = false;
@@ -234,6 +236,8 @@ public class NekoConfig {
             glyphIncomingMessages = preferences.getBoolean("glyphIncomingMessages", true);
             glyphCalls = preferences.getBoolean("glyphCalls", true);
             glyphTorchFallback = preferences.getBoolean("glyphTorchFallback", false);
+            nothingTypography = preferences.getBoolean("nothingTypography", true);
+            nothingHaptics = preferences.getBoolean("nothingHaptics", true);
             hideAllTab = preferences.getBoolean("hideAllTab", false);
             hideBottomNavigationBar = preferences.getBoolean("hideBottomNavigationBar", false);
             hideChannelBottomButtons = preferences.getBoolean("hideChannelBottomButtons", false);
@@ -1096,6 +1100,17 @@ public class NekoConfig {
     public static void toggleGlyphTorchFallback() {
         glyphTorchFallback = !glyphTorchFallback;
         preferences.edit().putBoolean("glyphTorchFallback", glyphTorchFallback).apply();
+    }
+
+    public static void toggleNothingTypography() {
+        nothingTypography = !nothingTypography;
+        preferences.edit().putBoolean("nothingTypography", nothingTypography).apply();
+        org.telegram.messenger.AndroidUtilities.mediumTypeface = null;
+    }
+
+    public static void toggleNothingHaptics() {
+        nothingHaptics = !nothingHaptics;
+        preferences.edit().putBoolean("nothingHaptics", nothingHaptics).apply();
     }
 
     public static void toggleShowAddToSavedMessages() {
