@@ -33,6 +33,7 @@ public class UserConfig extends BaseController {
     private volatile boolean configLoaded;
     private TLRPC.User currentUser;
     public boolean registeredForPush;
+    public boolean isRealServerPremium;
     public int lastSendMessageId = -210000;
     public int lastBroadcastId = -1;
     public int contactsSavedCount;
@@ -182,6 +183,7 @@ public class UserConfig extends BaseController {
                     editor.putBoolean("showCallsTab", showCallsTab);
                     editor.putBoolean("suggestContacts", suggestContacts);
                     editor.putBoolean("hasSecureData", hasSecureData);
+                    editor.putBoolean("isRealServerPremium", isRealServerPremium);
                     editor.putBoolean("notificationsSettingsLoaded4", notificationsSettingsLoaded);
                     editor.putBoolean("notificationsSignUpSettingsLoaded", notificationsSignUpSettingsLoaded);
                     editor.putLong("autoDownloadConfigLoadTime", autoDownloadConfigLoadTime);
@@ -336,6 +338,10 @@ public class UserConfig extends BaseController {
             TLRPC.User oldUser = currentUser;
             currentUser = user;
             if (user != null) {
+                if (user != oldUser) {
+                    isRealServerPremium = user.premium;
+                    getPreferences().edit().putBoolean("isRealServerPremium", isRealServerPremium).apply();
+                }
                 applyLocalPremium(user);
                 clientUserId = user.id;
             }
@@ -485,6 +491,8 @@ public class UserConfig extends BaseController {
                 }
             } catch (Exception ignore) {
             }
+
+            isRealServerPremium = preferences.getBoolean("isRealServerPremium", false);
 
             if (currentUser != null) {
                 applyLocalPremium(currentUser);

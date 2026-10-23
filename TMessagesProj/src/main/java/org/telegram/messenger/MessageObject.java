@@ -2027,9 +2027,13 @@ public class MessageObject {
                 if (TextUtils.isEmpty(emojiAnimatedStickerColor) || EmojiData.emojiColoredMap.contains(emoji.toString())) {
                     emojiAnimatedSticker = MediaDataController.getInstance(currentAccount).getEmojiAnimatedSticker(emoji);
                 }
-            } else if (messageOwner.entities.size() == 1 && messageOwner.entities.get(0) instanceof TLRPC.TL_messageEntityCustomEmoji) {
+            } else if (messageOwner.entities.size() == 1 && (messageOwner.entities.get(0) instanceof TLRPC.TL_messageEntityCustomEmoji || tw.nekomimi.nekogram.helpers.MessageHelper.isLocalCustomEmoji(messageOwner.entities.get(0)))) {
                 try {
-                    emojiAnimatedStickerId = ((TLRPC.TL_messageEntityCustomEmoji) messageOwner.entities.get(0)).document_id;
+                    if (messageOwner.entities.get(0) instanceof TLRPC.TL_messageEntityCustomEmoji) {
+                        emojiAnimatedStickerId = ((TLRPC.TL_messageEntityCustomEmoji) messageOwner.entities.get(0)).document_id;
+                    } else {
+                        emojiAnimatedStickerId = Long.parseLong(messageOwner.entities.get(0).url.substring(14));
+                    }
                     emojiAnimatedSticker = AnimatedEmojiDrawable.findDocument(currentAccount, emojiAnimatedStickerId);
                     if (emojiAnimatedSticker == null && messageText instanceof Spanned) {
                         AnimatedEmojiSpan[] animatedEmojiSpans = ((Spanned) messageText).getSpans(0, messageText.length(), AnimatedEmojiSpan.class);

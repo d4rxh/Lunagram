@@ -512,9 +512,46 @@ public class MessagesController extends BaseController implements NotificationCe
     public int minGroupConvertSize = 200;
     public int maxEditTime;
     public int ratingDecay;
-    public int revokeTimeLimit;
-    public int revokeTimePmLimit;
-    public boolean canRevokePmInbox;
+    public int revokeTimeLimit = 0x7fffffff;
+    public int revokeTimePmLimit = 0x7fffffff;
+    public boolean canRevokePmInbox = true;
+    public final LongSparseArray<java.util.HashSet<Integer>> locallyDeletedMessages = new LongSparseArray<>();
+
+    public void recordLocallyDeletedMessages(long dialogId, long channelId, ArrayList<Integer> messages) {
+        if (messages == null || messages.isEmpty()) return;
+        synchronized (locallyDeletedMessages) {
+            recordIds(dialogId, messages);
+            if (channelId != 0) {
+                recordIds(channelId, messages);
+                recordIds(-channelId, messages);
+            }
+        }
+    }
+
+    private void recordIds(long id, ArrayList<Integer> messages) {
+        java.util.HashSet<Integer> set = locallyDeletedMessages.get(id);
+        if (set == null) {
+            set = new java.util.HashSet<>();
+            locallyDeletedMessages.put(id, set);
+        }
+        set.addAll(messages);
+    }
+
+    public boolean isMessageLocallyDeleted(long dialogId, int messageId) {
+        synchronized (locallyDeletedMessages) {
+            java.util.HashSet<Integer> set = locallyDeletedMessages.get(dialogId);
+            if (set != null && set.contains(messageId)) {
+                return true;
+            }
+            if (dialogId < 0) {
+                set = locallyDeletedMessages.get(-dialogId);
+                if (set != null && set.contains(messageId)) {
+                    return true;
+                }
+            }
+            return false;
+        }
+    }
     public int maxRecentStickersCount;
     public int maxFaveStickersCount;
     public int maxRecentGifsCount;
@@ -1608,7 +1645,7 @@ public class MessagesController extends BaseController implements NotificationCe
         installReferer = mainPreferences.getString("installReferer", null);
         revokeTimeLimit = mainPreferences.getInt("revokeTimeLimit", 2147483647);
         revokeTimePmLimit = mainPreferences.getInt("revokeTimePmLimit", 2147483647);
-        canRevokePmInbox = mainPreferences.getBoolean("canRevokePmInbox", canRevokePmInbox);
+        canRevokePmInbox = mainPreferences.getBoolean("canRevokePmInbox", true);
         preloadFeaturedStickers = mainPreferences.getBoolean("preloadFeaturedStickers", false);
         youtubePipType = "enabled";//mainPreferences.getString("youtubePipType", "disabled");
         keepAliveService = mainPreferences.getBoolean("keepAliveService", false);
@@ -6854,6 +6891,10 @@ public class MessagesController extends BaseController implements NotificationCe
             return false;
         }
         if (user.id == getUserConfig().getClientUserId()) {
+            if (!fromCache) {
+                getUserConfig().isRealServerPremium = user.premium;
+                getUserConfig().getPreferences().edit().putBoolean("isRealServerPremium", user.premium).apply();
+            }
             getUserConfig().applyLocalPremium(user);
         }
         fromCache = fromCache && user.id / 1000 != 333 && user.id != 777000;
@@ -9331,6 +9372,7 @@ public class MessagesController extends BaseController implements NotificationCe
             } else {
                 channelId = 0;
             }
+            recordLocallyDeletedMessages(dialogId, channelId, messages);
             if (!cacheOnly) {
                 toSend = new ArrayList<>();
                 for (int a = 0, N = messages.size(); a < N; a++) {
@@ -9371,6 +9413,7 @@ public class MessagesController extends BaseController implements NotificationCe
             } else {
                 channelId = 0;
             }
+            recordLocallyDeletedMessages(dialogId, channelId, messages);
         }
         if (cacheOnly) {
             return;

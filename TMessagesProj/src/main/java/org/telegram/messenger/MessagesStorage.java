@@ -14898,7 +14898,14 @@ public class MessagesStorage extends BaseController {
                         cursor.dispose();
                         cursor = null;
                     }
-                    if (tw.nekomimi.nekogram.NekoConfig.antiDelete && did != currentUser) {
+                    boolean hasLocallyDeleted = false;
+                    for (int m = 0; m < messages.size(); m++) {
+                        if (getMessagesController().isMessageLocallyDeleted(did, messages.get(m))) {
+                            hasLocallyDeleted = true;
+                            break;
+                        }
+                    }
+                    if (tw.nekomimi.nekogram.NekoConfig.antiDelete && did != currentUser && !hasLocallyDeleted) {
                         database.executeFast(String.format(Locale.US, "DELETE FROM messages_v2 WHERE mid IN(%s) AND uid = %d AND out = 1", ids, did)).stepThis().dispose();
                     } else {
                         database.executeFast(String.format(Locale.US, "DELETE FROM messages_v2 WHERE mid IN(%s) AND uid = %d", ids, did)).stepThis().dispose();

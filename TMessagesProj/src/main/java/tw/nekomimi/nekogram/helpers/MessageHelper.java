@@ -759,8 +759,7 @@ public class MessageHelper extends BaseController {
     }
 
     public static boolean canUseLocalCustomEmojis(int account) {
-        var user = UserConfig.getInstance(account).getCurrentUser();
-        boolean hasActualServerPremium = user != null && user.premium;
+        boolean hasActualServerPremium = UserConfig.getInstance(account).isRealServerPremium;
         return (NekoConfig.localCustomEmoji || NekoConfig.unlockPremiumFeatures) && !hasActualServerPremium;
     }
 

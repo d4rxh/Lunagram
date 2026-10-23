@@ -4480,6 +4480,13 @@ public class SendMessagesHelper extends BaseController implements NotificationCe
         if (richMessage != null && DialogObject.isEncryptedDialog(peer)) {
             return;
         }
+        if (entities != null && !entities.isEmpty()) {
+            entities = getMessageHelper().replaceCustomEmojis(peer, entities);
+            sendMessageParams.entities = entities;
+        }
+        if (pollSendParams != null && pollSendParams.entities != null && !pollSendParams.entities.isEmpty()) {
+            pollSendParams.entities = getMessageHelper().replaceCustomEmojis(peer, pollSendParams.entities);
+        }
         if (message == null && caption == null && richMessage == null) {
             caption = "";
         }
@@ -8285,7 +8292,9 @@ public class SendMessagesHelper extends BaseController implements NotificationCe
                             existFlags = msgObj.getMediaExistanceFlags();
                             newMsgObj.local_id = newMsgObj.id = res.id;
                             newMsgObj.date = res.date;
-                            newMsgObj.entities = res.entities;
+                            if (res.entities != null && !res.entities.isEmpty()) {
+                                newMsgObj.entities = res.entities;
+                            }
                             newMsgObj.out = res.out;
                             if ((res.flags & 33554432) != 0) {
                                 newMsgObj.ttl_period = res.ttl_period;
@@ -8299,7 +8308,7 @@ public class SendMessagesHelper extends BaseController implements NotificationCe
                             if ((res.media instanceof TLRPC.TL_messageMediaGame || res.media instanceof TLRPC.TL_messageMediaInvoice) && !TextUtils.isEmpty(res.message)) {
                                 newMsgObj.message = res.message;
                             }
-                            if (!newMsgObj.entities.isEmpty()) {
+                            if (newMsgObj.entities != null && !newMsgObj.entities.isEmpty()) {
                                 newMsgObj.flags |= TLRPC.MESSAGE_FLAG_HAS_ENTITIES;
                             }
                             currentSchedule = false;

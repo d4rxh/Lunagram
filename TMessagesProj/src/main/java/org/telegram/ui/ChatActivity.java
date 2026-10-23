@@ -26974,7 +26974,8 @@ public class ChatActivity extends BaseFragment implements
                         }
                     }
                 }
-                if (tw.nekomimi.nekogram.NekoConfig.antiDelete && !obj.isOutOwner() && !obj.scheduled) {
+                boolean isLocalDelete = getMessagesController().isMessageLocallyDeleted(dialog_id, obj.getId());
+                if (tw.nekomimi.nekogram.NekoConfig.antiDelete && !obj.isOutOwner() && !obj.scheduled && !isLocalDelete) {
                     obj.deleted = false;
                     if (obj.messageOwner != null && obj.messageOwner.message != null && !obj.messageOwner.message.startsWith("🗑️ ")) {
                         obj.messageOwner.message = "🗑️ " + obj.messageOwner.message;
