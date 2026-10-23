@@ -155,6 +155,20 @@ jobs:
             echo "storePassword=${{ secrets.KEYSTORE_PASSWORD }}" >> local.properties
             echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> local.properties
             echo "keyPassword=${{ secrets.KEY_PASSWORD }}" >> local.properties
+          elif [ -f "keystore/release.keystore.base64" ]; then
+            echo "Using committed repository release keystore (base64)..."
+            base64 -d keystore/release.keystore.base64 > keystore.jks
+            echo "storeFile=${{ github.workspace }}/keystore.jks" >> local.properties
+            echo "storePassword=lunagram123" >> local.properties
+            echo "keyAlias=lunagram" >> local.properties
+            echo "keyPassword=lunagram123" >> local.properties
+          elif [ -f "keystore/lunagram-release.jks" ]; then
+            echo "Using committed repository release keystore..."
+            cp keystore/lunagram-release.jks keystore.jks
+            echo "storeFile=${{ github.workspace }}/keystore.jks" >> local.properties
+            echo "storePassword=lunagram123" >> local.properties
+            echo "keyAlias=lunagram" >> local.properties
+            echo "keyPassword=lunagram123" >> local.properties
           else
             echo "Generating self-signed release keystore for reproducible builds..."
             keytool -genkey -v -keystore keystore.jks -alias lunagram -keyalg RSA -keysize 2048 -validity 10000 \
