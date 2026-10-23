@@ -1,0 +1,53 @@
+name: Publish Artifact Release
+on:
+  workflow_dispatch:
+    inputs:
+      tag_name:
+        description: 'Tag name for release'
+        required: true
+        default: 'v1.0.20'
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download APKs from Main Build
+        uses: actions/download-artifact@v4
+        with:
+          name: lunagram-apks
+          run-id: 39941488831
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: release-apks
+
+      - name: Check APKs
+        run: ls -lh release-apks/
+
+      - name: Publish to GitHub Releases
+        uses: softprops/action-gh-release@v2
+        with:
+          files: release-apks/*.apk
+          name: Lunagram ${{ inputs.tag_name }}
+          tag_name: ${{ inputs.tag_name }}
+          draft: false
+          prerelease: false
+          body: |
+            ### 🌙 Lunagram Release ${{ inputs.tag_name }}
+
+            Official release of **Lunagram** signed with the **Permanent Keystore**!
+
+            #### 📥 Downloads:
+            - **arm64-v8a APK:** Recommended for modern 64-bit Android smartphones & Nothing Phone
+            - **Universal APK:** Compatible with all Android devices (arm64, armv7, x86, x86_64)
+            - **armeabi-v7a APK:** For 32-bit older Android devices
+
+            #### ✨ What's New & Highlights:
+            - 🔑 **Permanent Keystore Signing:** All future updates (v1.0.21+) will update seamlessly over this build with zero uninstall needed!
+            - 💡 **Nothing Glyph Interface:** Real rear LED lighting on Nothing Phone (1), (2), (2a), (3a) + Universal Camera Torch Strobe fallback.
+            - ✨ **Client-Side Premium Animated Emojis:** Custom animated emojis stay persistent in chats without reverting.
+            - 🗑️ **Message & Channel Post Deletion:** Fixed non-outgoing DM and channel message deletion.
+            - ⚡ **MTProto Telegram API Client:** Official \`api_id: 35571665\`.
+            - Fully signed and ready to install.
