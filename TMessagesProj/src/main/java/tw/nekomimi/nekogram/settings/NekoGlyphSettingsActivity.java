@@ -65,7 +65,7 @@ public class NekoGlyphSettingsActivity extends BaseNekoSettingsActivity {
         } else if (item.id == testRow) {
             GlyphHelper.getInstance().testGlyph();
             try {
-                BulletinFactory.of(this).createSimpleBulletin(R.raw.fireworks, "Testing Glyph Lighting...").show();
+                BulletinFactory.of(this).createSimpleBulletin(R.raw.chats_infotip, "Testing Glyph Lighting...").show();
             } catch (Throwable ignored) {}
         }
     }
