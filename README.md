@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="logo.png" alt="Lunagram Logo" width="130" height="130" style="border-radius: 28px; box-shadow: 0 10px 30px rgba(121, 40, 202, 0.35);" />
+  <img src="icon.png" alt="Lunagram Logo" width="130" height="130" style="border-radius: 28px; box-shadow: 0 10px 30px rgba(215, 25, 32, 0.35);" />
 </p>
 
 <h1 align="center">Lunagram</h1>

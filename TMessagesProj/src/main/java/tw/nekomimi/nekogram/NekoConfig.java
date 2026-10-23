@@ -117,7 +117,7 @@ public class NekoConfig {
     public static boolean ignoreBlocked = false;
     public static boolean ignoreContentRestriction = false;
     public static boolean keepFormatting = true;
-    public static boolean localCustomEmoji = false;
+    public static boolean localCustomEmoji = true;
     public static boolean mapDriftingFix = false;
     public static boolean markdownParseLinks = true;
     public static boolean mediaPreview = true;
@@ -235,7 +235,7 @@ public class NekoConfig {
             ignoreBlocked = preferences.getBoolean("ignoreBlocked2", false);
             ignoreContentRestriction = preferences.getBoolean("ignoreContentRestriction", false);
             keepFormatting = preferences.getBoolean("keepFormatting", true);
-            localCustomEmoji = preferences.getBoolean("localCustomEmoji", false);
+            localCustomEmoji = preferences.getBoolean("localCustomEmoji", true);
             mapDriftingFix = preferences.getBoolean("mapDriftingFix", userMcc == 460);
             markdownParseLinks = preferences.getBoolean("markdownParseLinks", true);
             mediaPreview = preferences.getBoolean("mediaPreview", true);

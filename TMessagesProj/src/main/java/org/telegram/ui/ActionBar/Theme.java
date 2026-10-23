@@ -9198,8 +9198,10 @@ public class Theme {
             return 0xFFB7141A;
         } else if (key == key_profile_actionIcon) {
             return 0xFFFFFFFF;
-        } else if (key == key_chats_sentCheck || key == key_chats_sentReadCheck || key == key_chats_verifiedCheck || key == key_profile_verifiedCheck) {
+        } else if (key == key_chats_sentCheck || key == key_chats_sentReadCheck || key == key_chats_verifiedBackground || key == key_profile_verifiedBackground) {
             return 0xFFD71920;
+        } else if (key == key_chats_verifiedCheck || key == key_profile_verifiedCheck) {
+            return 0xFFFFFFFF;
         } else if (key == key_chat_mediaSentCheck || key == key_chat_mediaProgress || key == key_chat_outAudioProgress || key == key_chat_inAudioProgress || key == key_chat_recordedVoiceProgress) {
             return 0xFFD71920;
         } else if (key == key_glass_tabSelected || key == key_glass_tabSelectedText) {

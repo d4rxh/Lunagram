@@ -5397,7 +5397,9 @@ public class SendMessagesHelper extends BaseController implements NotificationCe
                             reqSend.send_as = getMessagesController().getInputPeer(newMsg.from_id);
                         }
                         if (entities != null && !entities.isEmpty()) {
-                            reqSend.entities = getMessageHelper().replaceCustomEmojis(newMsg.dialog_id, entities);
+                            entities = getMessageHelper().replaceCustomEmojis(newMsg.dialog_id, entities);
+                            reqSend.entities = entities;
+                            newMsg.entities = entities;
                             reqSend.flags |= 8;
                         }
                         if (scheduleDate != 0) {
@@ -5464,7 +5466,9 @@ public class SendMessagesHelper extends BaseController implements NotificationCe
                             reqSend.no_webpage = true;
                         }
                         if (entities != null && !entities.isEmpty()) {
-                            reqSend.entities = getMessageHelper().replaceCustomEmojis(newMsg.dialog_id, entities);
+                            entities = getMessageHelper().replaceCustomEmojis(newMsg.dialog_id, entities);
+                            reqSend.entities = entities;
+                            newMsg.entities = entities;
                             reqSend.flags |= 8;
                         }
                         if (scheduleDate != 0) {
@@ -6088,7 +6092,9 @@ public class SendMessagesHelper extends BaseController implements NotificationCe
                         request.media = inputMedia;
                         request.message = caption;
                         if (entities != null && !entities.isEmpty()) {
-                            request.entities = getMessageHelper().replaceCustomEmojis(newMsg.dialog_id, entities);
+                            entities = getMessageHelper().replaceCustomEmojis(newMsg.dialog_id, entities);
+                            request.entities = entities;
+                            newMsg.entities = entities;
                             request.flags |= 8;
                         }
                         if (scheduleDate != 0) {

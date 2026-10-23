@@ -746,16 +746,12 @@ public class MessageHelper extends BaseController {
             return null;
         }
         try {
-            var emojiOnly = new int[1];
-            var emojis = Emoji.parseEmojis(spannable.subSequence(entity.offset, entity.offset + entity.length), emojiOnly);
-            if (emojiOnly[0] > 0 && emojis.size() == 1) {
-                var documentId = Long.parseLong(entity.url.substring(14));
-                var customEmojiEntity = new TLRPC.TL_messageEntityCustomEmoji();
-                customEmojiEntity.offset = entity.offset;
-                customEmojiEntity.length = entity.length;
-                customEmojiEntity.document_id = documentId;
-                return customEmojiEntity;
-            }
+            var documentId = Long.parseLong(entity.url.substring(14));
+            var customEmojiEntity = new TLRPC.TL_messageEntityCustomEmoji();
+            customEmojiEntity.offset = entity.offset;
+            customEmojiEntity.length = entity.length;
+            customEmojiEntity.document_id = documentId;
+            return customEmojiEntity;
         } catch (Exception e) {
             FileLog.e("Failed to parse custom emoji id: " + entity.url, e);
         }
@@ -763,11 +759,13 @@ public class MessageHelper extends BaseController {
     }
 
     public static boolean canUseLocalCustomEmojis(int account) {
-        return NekoConfig.localCustomEmoji && !UserConfig.getInstance(account).isPremium();
+        var user = UserConfig.getInstance(account).getCurrentUser();
+        boolean hasActualServerPremium = user != null && user.premium;
+        return (NekoConfig.localCustomEmoji || NekoConfig.unlockPremiumFeatures) && !hasActualServerPremium;
     }
 
     public ArrayList<TLRPC.MessageEntity> replaceCustomEmojis(long dialogId, ArrayList<TLRPC.MessageEntity> entities) {
-        if (!canUseLocalCustomEmojis(currentAccount) || dialogId == getUserConfig().getClientUserId()) {
+        if (!canUseLocalCustomEmojis(currentAccount)) {
             return entities;
         }
         var set = getGroupEmojis(dialogId);
