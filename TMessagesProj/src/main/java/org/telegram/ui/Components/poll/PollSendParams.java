@@ -13,7 +13,7 @@ public class PollSendParams {
     public final long groupId;
 
     public final String caption;
-    public final ArrayList<TLRPC.MessageEntity> entities;
+    public ArrayList<TLRPC.MessageEntity> entities;
 
     public PollSendParams(PollAttachedMediaPack mediaPack, TLRPC.TL_messageMediaPoll poll, long groupId, String caption, ArrayList<TLRPC.MessageEntity> entities, ArrayList<Integer> correctAnswers) {
         this.mediaPack = mediaPack;
