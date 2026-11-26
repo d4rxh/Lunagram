@@ -984,8 +984,8 @@
     <string name="SecretChatContextBotAlert">Houd er rekening mee dat inline bots door externe partijen zijn ontwikkeld. Om de bot te laten werken, worden de symbolen die je na de gebruikersnaam van de bot typt, naar de ontwikkelaar verstuurd.</string>
     <string name="EditMessageError">Je mag dit bericht niet wijzigen.</string>
     <string name="AllowReadCall">Sta het ontvangen van oproepen toe zodat we automatisch je inlogcode kunnen invoeren.</string>
-    <string name="AllowReadCallAndLog">Sta Telegram toe om oproepen te ontvangen en de oproepenlijst te lezen zodat we automatisch de code voor je kunnen ingeven.</string>
-    <string name="AllowReadCallLog">Sta Telegram toe om de oproepenlijst te lezen zodat we automatisch de code voor je in kunnen voeren.</string>
+    <string name="AllowReadCallAndLog">Sta Lunagram toe om oproepen te ontvangen en de oproepenlijst te lezen zodat we automatisch de code voor je kunnen ingeven.</string>
+    <string name="AllowReadCallLog">Sta Lunagram toe om de oproepenlijst te lezen zodat we automatisch de code voor je in kunnen voeren.</string>
     <string name="AllowFillNumber">Sta het ontvangen van oproepen toe zodat we automatisch je telefoonnummer kunnen bevestigen.</string>
     <string name="UserRestricted">Je mag deze actie niet uitvoeren.</string>
     <string name="YouBlockedUser">Je hebt deze gebruiker of bot geblokkeerd, toevoegen aan een groep kan pas na deblokkeren.</string>

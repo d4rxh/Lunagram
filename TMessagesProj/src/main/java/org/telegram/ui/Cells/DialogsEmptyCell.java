@@ -136,7 +136,11 @@ public class DialogsEmptyCell extends LinearLayout {
             case TYPE_WELCOME_NO_CONTACTS:
                 icon = R.raw.utyan_newborn;
                 help = LocaleController.getString(R.string.NoChatsHelp);
-                titleView.setText(LocaleController.getString(R.string.NoChats));
+                String welcomeTitle = LocaleController.getString(R.string.NoChats);
+                if (welcomeTitle != null && welcomeTitle.contains("Telegram")) {
+                    welcomeTitle = welcomeTitle.replace("Telegram", "Lunagram");
+                }
+                titleView.setText(welcomeTitle);
                 break;
             case TYPE_FILTER_NO_CHATS_TO_DISPLAY:
                 imageView.setAutoRepeat(false);

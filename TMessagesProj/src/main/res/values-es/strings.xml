@@ -1200,10 +1200,10 @@
     <string name="SecretLinkPreviewAlert">¿Quieres activar las vistas previas de enlaces ampliadas en los chats secretos? Ten en cuenta que son generadas en los servidores de Telegram.</string>
     <string name="SecretChatContextBotAlert">Ten en cuenta que los bots integrados son hechos por terceros. Para que el bot funcione, los símbolos escritos después del nombre de usuario del bot son enviados a su respectivo desarrollador.</string>
     <string name="EditMessageError">Lo sentimos, no puedes editar este mensaje.</string>
-    <string name="AllowReadCall">Por favor, permite a Telegram recibir llamadas para que podamos ingresar automáticamente el código por ti.</string>
-    <string name="AllowReadCallAndLog">Por favor, permite a Telegram recibir llamadas y leer el registro de llamadas para que podamos poner automáticamente el código por ti.</string>
-    <string name="AllowReadCallLog">Por favor, permite a Telegram leer el registro de llamadas para que podamos poner automáticamente el código por ti.</string>
-    <string name="AllowFillNumber">Por favor, permite a Telegram recibir llamadas para que podamos confirmar tu número de teléfono automáticamente.</string>
+    <string name="AllowReadCall">Por favor, permite a Lunagram recibir llamadas para que podamos ingresar automáticamente el código por ti.</string>
+    <string name="AllowReadCallAndLog">Por favor, permite a Lunagram recibir llamadas y leer el registro de llamadas para que podamos poner automáticamente el código por ti.</string>
+    <string name="AllowReadCallLog">Por favor, permite a Lunagram leer el registro de llamadas para que podamos poner automáticamente el código por ti.</string>
+    <string name="AllowFillNumber">Por favor, permite a Lunagram recibir llamadas para que podamos confirmar tu número de teléfono automáticamente.</string>
     <string name="UserRestricted">Lo sentimos, no tienes permitido hacer esto.</string>
     <string name="YouBlockedUser">No puedes añadir a este usuario o bot al grupo porque lo has bloqueado. Por favor, desbloquéalo para continuar.</string>
     <string name="AddAdminErrorNotAMember">No puedes añadir a este usuario como admin. porque no es un miembro de este grupo y no tienes permitido añadirlo.</string>

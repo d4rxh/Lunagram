@@ -1134,10 +1134,10 @@
     <string name="SecretLinkPreviewAlert">Ativar a prévia estendida de links em Chats Secretos? Note que a prévia é gerada nos servidores do Telegram.</string>
     <string name="SecretChatContextBotAlert">Os bots inline são fornecidos por desenvolvedores terceiros. Para o bot funcionar, os símbolos que você digita depois do nome de usuário do bot são enviados para o respectivo desenvolvedor.</string>
     <string name="EditMessageError">Desculpe, você não pode editar essa mensagem.</string>
-    <string name="AllowReadCall">Permita o acesso às ligações ao Telegram, assim podemos automaticamente adicionar o código para você.</string>
-    <string name="AllowReadCallAndLog">Por favor, permita que o Telegram receba chamadas e leia o registro de chamadas para que possamos inserir automaticamente seu código para você.</string>
-    <string name="AllowReadCallLog">Por favor, permita que o Telegram leia o registro de chamadas para inserir automaticamente o seu código para você.</string>
-    <string name="AllowFillNumber">Por favor, permita que o Telegram receba chamadas. Assim podemos confirmar o seu número de telefone automaticamente.</string>
+    <string name="AllowReadCall">Permita o acesso às ligações ao Lunagram, assim podemos automaticamente adicionar o código para você.</string>
+    <string name="AllowReadCallAndLog">Por favor, permita que o Lunagram receba chamadas e leia o registro de chamadas para que possamos inserir automaticamente seu código para você.</string>
+    <string name="AllowReadCallLog">Por favor, permita que o Lunagram leia o registro de chamadas para inserir automaticamente o seu código para você.</string>
+    <string name="AllowFillNumber">Por favor, permita que o Lunagram receba chamadas. Assim podemos confirmar o seu número de telefone automaticamente.</string>
     <string name="UserRestricted">Você não tem permissão para isso.</string>
     <string name="YouBlockedUser">Desculpe, você bloqueou este usuário ou bot e por isso não pode adicioná-lo a grupos. Desbloqueie para prosseguir.</string>
     <string name="AddAdminErrorNotAMember">Você não pode adicionar esse usuário como admin porque ele não é membro deste grupo e você não tem permissão para adicioná-lo.</string>

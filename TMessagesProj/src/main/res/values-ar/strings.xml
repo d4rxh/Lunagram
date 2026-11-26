@@ -1153,10 +1153,10 @@
     <string name="SecretLinkPreviewAlert">هل ترغبون في تفعيل معاينة الروابط المطولة في المحادثات السرية؟ مع العلم أن معاينة الروابط يتم توليدها على خوادم تيليجرام.</string>
     <string name="SecretChatContextBotAlert">يرجى ملاحظة أن بوتات المحتوى الاستعلامي يتم تطويرها من مطورين مستقلين. لكي تعمل هذه البوتات، ما تكتبه بعد اسم مستخدم البوت يذهب لمطور البوت.</string>
     <string name="EditMessageError">المعذرة، لا يمكنك تعديل هذه الرسالة.</string>
-    <string name="AllowReadCall">يرجى السماح لتيليجرام باستلام المكالمات ليتمكن من إدخال الرمز لك تلقائيًا.</string>
-    <string name="AllowReadCallAndLog">يرجى السماح لتيليجرام بتلقي وقراءة سجل المكالمات لنتمكن من إدخال الرمز لك تلقائيًا.</string>
-    <string name="AllowReadCallLog">يرجى السماح لتيليجرام بقراءة سجل المكالمات لنتمكن من إدخال الرمز لك تلقائيًا.</string>
-    <string name="AllowFillNumber">يرجى السماح لتيليجرام بتلقي المكالمات لنتمكن من تفعيل رقم هاتفك تلقائيًا.</string>
+    <string name="AllowReadCall">يرجى السماح لـ Lunagram باستلام المكالمات ليتمكن من إدخال الرمز لك تلقائيًا.</string>
+    <string name="AllowReadCallAndLog">يرجى السماح لـ Lunagram بتلقي وقراءة سجل المكالمات لنتمكن من إدخال الرمز لك تلقائيًا.</string>
+    <string name="AllowReadCallLog">يرجى السماح لـ Lunagram بقراءة سجل المكالمات لنتمكن من إدخال الرمز لك تلقائيًا.</string>
+    <string name="AllowFillNumber">يرجى السماح لـ Lunagram بتلقي المكالمات لنتمكن من تفعيل رقم هاتفك تلقائيًا.</string>
     <string name="UserRestricted">المعذرة، ليس مسموحًا لك القيام بهذا.</string>
     <string name="YouBlockedUser">المعذرة، لا يمكنك إضافة هذا المستخدم أو البوت للمجموعات بسبب أنك قمت بحظره. فضلًا قم بإزالة الحظر للاستمرار.</string>
     <string name="AddAdminErrorNotAMember">لا يمكنك إضافة هذا المستخدم كمشرف لأنه ليس عضوًا في هذه المجموعة وغير مسموح لك بإضافته.</string>

@@ -173,7 +173,7 @@
     <string name="NoResultFoundFor">No results found for \"%s\".</string>
     <string name="NoResultFoundForTag">No results found for %s</string>
     <string name="NoResultFoundFor2">There were no results for \"%s\".\nTry a new search.</string>
-    <string name="NoChats">Welcome to Telegram</string>
+    <string name="NoChats">Welcome to Lunagram</string>
     <string name="RecentlyViewed">Recently viewed</string>
     <string name="RecentlyViewedHide">HIDE</string>
     <string name="NoChatsHelp">Start messaging by tapping the pencil button in the bottom right corner.</string>
@@ -335,11 +335,11 @@
     <string name="Superscript">Superscript</string>
     <string name="Regular">Regular</string>
     <string name="FormattedDate">Date</string>
-    <string name="ContactsPermissionAlert">**Telegram** needs access to your contacts so that you can connect with your friends across all your devices. Your contacts will be continuously synced with Telegram\'s heavily encrypted cloud servers.</string>
+    <string name="ContactsPermissionAlert">**Lunagram** needs access to your contacts so that you can connect with your friends across all your devices. Your contacts will be continuously synced with Lunagram\'s heavily encrypted cloud servers.</string>
     <string name="ContactsPermissionAlertNotNow">Not now</string>
     <string name="ContactsPermissionAlertContinue">Continue</string>
     <string name="NotificationsPermissionAlertTitle">Turn on notifications</string>
-    <string name="NotificationsPermissionAlertSubtitle">Please allow Telegram to send you notifications to stay in touch with your friends and family.</string>
+    <string name="NotificationsPermissionAlertSubtitle">Please allow Lunagram to send you notifications to stay in touch with your friends and family.</string>
     <string name="NotificationsPermissionAlert1">Get notified about new messages</string>
     <string name="NotificationsPermissionAlert2">Learn when you are mentioned in groups</string>
     <string name="NotificationsPermissionAlert3">Mute specific chats and types of chats</string>
@@ -4073,10 +4073,10 @@
     <string name="SecretLinkPreviewAlert">Would you like to enable extended link previews in Secret Chats? Note that link previews are generated on Telegram servers.</string>
     <string name="SecretChatContextBotAlert">Please note that inline bots are provided by third-party developers. For the bot to work, the symbols you type after the bot\'s username are sent to the respective developer.</string>
     <string name="EditMessageError">Sorry, you can\'t edit this message.</string>
-    <string name="AllowReadCall">Please allow Telegram to receive calls so that we can automatically enter your code for you.</string>
-    <string name="AllowReadCallAndLog">Please allow Telegram to receive calls and read the call log so that we can automatically enter your code for you.</string>
-    <string name="AllowReadCallLog">Please allow Telegram to read the call log so that we can automatically enter your code for you.</string>
-    <string name="AllowFillNumber">Please allow Telegram to receive calls so that we can automatically confirm your phone number.</string>
+    <string name="AllowReadCall">Please allow Lunagram to receive calls so that we can automatically enter your code for you.</string>
+    <string name="AllowReadCallAndLog">Please allow Lunagram to receive calls and read the call log so that we can automatically enter your code for you.</string>
+    <string name="AllowReadCallLog">Please allow Lunagram to read the call log so that we can automatically enter your code for you.</string>
+    <string name="AllowFillNumber">Please allow Lunagram to receive calls so that we can automatically confirm your phone number.</string>
     <string name="UserRestricted">Sorry, you are not allowed to do this.</string>
     <string name="YouBlockedUser">Sorry, you can\'t add this user or bot to groups because you\'ve blocked them. Please unblock to proceed.</string>
     <string name="AddAdminErrorNotAMember">Sorry, you can\'t add this user as an admin because they are not a member of this group and you are not allowed to add them.</string>
@@ -4206,18 +4206,18 @@
     <string name="ViewMessageStatistic">Message Statistic</string>
     <string name="ViewMessage">Open Message</string>
     <!--Intro view-->
-    <string name="Page1Title">Telegram</string>
+    <string name="Page1Title">Lunagram</string>
     <string name="Page2Title">Fast</string>
     <string name="Page3Title">Free</string>
     <string name="Page4Title">Secure</string>
     <string name="Page5Title">Powerful</string>
     <string name="Page6Title">Cloud-Based</string>
     <string name="Page1Message">The world\'s **fastest** messaging app.\nIt is **free** and **secure**.</string>
-    <string name="Page2Message">**Telegram** delivers messages faster than\nany other application.</string>
-    <string name="Page3Message">**Telegram** provides free unlimited cloud storage for chats and media.</string>
-    <string name="Page4Message">**Telegram** keeps your messages safe\nfrom hacker attacks.</string>
-    <string name="Page5Message">**Telegram** has no limits on\nthe size of your media and chats.</string>
-    <string name="Page6Message">**Telegram** lets you access your messages\nfrom multiple devices.</string>
+    <string name="Page2Message">**Lunagram** delivers messages faster than\nany other application.</string>
+    <string name="Page3Message">**Lunagram** provides free unlimited cloud storage for chats and media.</string>
+    <string name="Page4Message">**Lunagram** keeps your messages safe\nfrom hacker attacks.</string>
+    <string name="Page5Message">**Lunagram** has no limits on\nthe size of your media and chats.</string>
+    <string name="Page6Message">**Lunagram** lets you access your messages\nfrom multiple devices.</string>
     <string name="StartMessaging">Start Messaging</string>
     <!-- VoIP -->
     <string name="AccountSettings">Account Settings</string>
@@ -4230,9 +4230,9 @@
     <string name="VoipFailed">Failed to connect</string>
     <string name="VoipRinging">Ringing</string>
     <string name="VoipBusy">Line busy</string>
-    <string name="VoipInCallBranding">Telegram Call</string>
-    <string name="VoipInVideoCallBranding">Telegram Video Call</string>
-    <string name="VoipInConferenceCallBranding">Telegram Group Call</string>
+    <string name="VoipInCallBranding">Lunagram Call</string>
+    <string name="VoipInVideoCallBranding">Lunagram Video Call</string>
+    <string name="VoipInConferenceCallBranding">Lunagram Group Call</string>
     <string name="VoipOutgoingCall">Ongoing Telegram call</string>
     <string name="VoipVoiceChat">Ongoing Voice Chat</string>
     <string name="VoipLiveStream">Ongoing Live Stream</string>

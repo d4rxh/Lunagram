@@ -4477,6 +4477,7 @@ public class LocaleController {
     }
 
     @Nullable
+    @Nullable
     private String getStringV2(String key, @StringRes int stringRes, String fallback) {
         if (R.string.AppName == stringRes) {
             return getStringV2("Nekogram", R.string.Nekogram, null);
@@ -4484,27 +4485,36 @@ public class LocaleController {
             return getStringV2("NekogramBeta", R.string.NekogramBeta, null);
         }
         final Context context = ApplicationLoader.applicationContext;
-        String value;
+        String value = null;
 
         if (BuildVars.USE_CLOUD_STRINGS) {
             value = localizationExternal.getByResNameOrResId(context, key, stringRes);
-            if (value != null) {
-                return value;
-            }
-
-            value = localizationExternal.getByResName(fallback);
-            if (value != null) {
-                return value;
+            if (value == null) {
+                value = localizationExternal.getByResName(fallback);
             }
         }
 
-        checkLocalizationInternal();
-        value = localizationInternal.getByResNameOrResId(context, key, stringRes);
+        if (value == null) {
+            checkLocalizationInternal();
+            value = localizationInternal.getByResNameOrResId(context, key, stringRes);
+            if (value == null) {
+                value = localizationInternal.getByResName(fallback);
+            }
+        }
+
         if (value != null) {
-            return value;
+            if (R.string.NoChats == stringRes || "NoChats".equals(key)) {
+                return value.replace("Telegram", "Lunagram").replace("텔레그램", "루나그램").replace("تيليجرام", "Lunagram");
+            } else if (R.string.AllowFillNumber == stringRes || "AllowFillNumber".equals(key)
+                    || R.string.AllowReadCall == stringRes || "AllowReadCall".equals(key)
+                    || R.string.AllowReadCallAndLog == stringRes || "AllowReadCallAndLog".equals(key)
+                    || R.string.AllowReadCallLog == stringRes || "AllowReadCallLog".equals(key)
+                    || R.string.NotificationsPermissionAlertSubtitle == stringRes || "NotificationsPermissionAlertSubtitle".equals(key)) {
+                return value.replace("Telegram", "Lunagram").replace("텔레그램", "루나그램").replace("تيليجرام", "Lunagram");
+            }
         }
 
-        return localizationInternal.getByResName(fallback);
+        return value;
     }
 
 

@@ -1275,10 +1275,10 @@
     <string name="SecretLinkPreviewAlert">Möchtest du die erweiterte Linkvorschau in Geheimen Chats aktivieren? Die Vorschau wird auf den Telegram Servern generiert.</string>
     <string name="SecretChatContextBotAlert">Inline Bots werden von Drittentwicklern erstellt. Symbole, die du nach dem Botnamen eingibst, werden an den jeweiligen Entwickler geschickt, damit der Bot funktioniert.</string>
     <string name="EditMessageError">Du kannst diese Nachricht nicht bearbeiten.</string>
-    <string name="AllowReadCall">Bitte erlaube Telegram den Zugriff auf Anrufe, so dass wir den Code automatisch in der App eingeben können.</string>
-    <string name="AllowReadCallAndLog">Bitte erlaube Telegram, Anrufe zu empfangen und die Anrufliste einzusehen , so dass wir den Code automatisch für dich eingeben können.</string>
-    <string name="AllowReadCallLog">Bitte erlaube Telegram auf die Anrufliste zuzugreifen, so dass wir den Code für dich automatisch eingeben können.</string>
-    <string name="AllowFillNumber">Bitte erlaube Telegram, Anrufe zu empfangen, damit wir deine Telefonnummer automatisch bestätigen können.</string>
+    <string name="AllowReadCall">Bitte erlaube Lunagram den Zugriff auf Anrufe, so dass wir den Code automatisch in der App eingeben können.</string>
+    <string name="AllowReadCallAndLog">Bitte erlaube Lunagram, Anrufe zu empfangen und die Anrufliste einzusehen , so dass wir den Code automatisch für dich eingeben können.</string>
+    <string name="AllowReadCallLog">Bitte erlaube Lunagram auf die Anrufliste zuzugreifen, so dass wir den Code für dich automatisch eingeben können.</string>
+    <string name="AllowFillNumber">Bitte erlaube Lunagram, Anrufe zu empfangen, damit wir deine Telefonnummer automatisch bestätigen können.</string>
     <string name="UserRestricted">Du kannst diese Aktion nicht durchführen.</string>
     <string name="YouBlockedUser">Du kannst diesen Nutzer oder Bot Gruppen leider nicht hinzufügen, da du ihn blockiert hast. Gebe ihn wieder frei, um fortzufahren.</string>
     <string name="AddAdminErrorNotAMember">Du kannst diesen Nutzer nicht als Admin festlegen, da er kein Mitglied dieser Gruppe ist oder du keine Erlaubnis hast, ihn einzuladen.</string>

@@ -1436,10 +1436,10 @@
     <string name="SecretLinkPreviewAlert">Attivare le anteprime estese per i link nelle Chat segrete? Ricorda che le anteprime dei link sono generate sui server di Telegram.</string>
     <string name="SecretChatContextBotAlert">Per favore ricorda che i bot inline sono forniti da sviluppatori di terze parti. Per far funzionare il bot, i caratteri che digiti dopo l\'username del bot sono inviati al rispettivo sviluppatore.</string>
     <string name="EditMessageError">Spiacenti, non puoi modificare questo messaggio.</string>
-    <string name="AllowReadCall">Consenti a Telegram di ricevere chiamate così potremo inserire in automatico il codice per te.</string>
-    <string name="AllowReadCallAndLog">Consenti a Telegram di ricevere chiamate e leggere il registro delle chiamate in modo da poter inserire il codice per te automaticamente.</string>
-    <string name="AllowReadCallLog">Consenti a Telegram di leggere il registro delle chiamate in modo da poter inserire il codice per te automaticamente.</string>
-    <string name="AllowFillNumber">Per favore consenti a Telegram di ricevere chiamate, così potremo confermare automaticamente il tuo numero di telefono.</string>
+    <string name="AllowReadCall">Consenti a Lunagram di ricevere chiamate così potremo inserire in automatico il codice per te.</string>
+    <string name="AllowReadCallAndLog">Consenti a Lunagram di ricevere chiamate e leggere il registro delle chiamate in modo da poter inserire il codice per te automaticamente.</string>
+    <string name="AllowReadCallLog">Consenti a Lunagram di leggere il registro delle chiamate in modo da poter inserire il codice per te automaticamente.</string>
+    <string name="AllowFillNumber">Per favore consenti a Lunagram di ricevere chiamate, così potremo confermare automaticamente il tuo numero di telefono.</string>
     <string name="UserRestricted">Spiacenti, questa azione non ti è permessa.</string>
     <string name="YouBlockedUser">Spiacenti, non puoi aggiungere questo utente o bot al gruppo perché lo hai bloccato. Sbloccalo per procedere.</string>
     <string name="AddAdminErrorNotAMember">Non puoi aggiungere questo utente come amministratore perché non è un membro del gruppo e non sei autorizzato ad aggiungerlo.</string>
