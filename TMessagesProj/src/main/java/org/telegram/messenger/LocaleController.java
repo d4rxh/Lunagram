@@ -4477,7 +4477,6 @@ public class LocaleController {
     }
 
     @Nullable
-    @Nullable
     private String getStringV2(String key, @StringRes int stringRes, String fallback) {
         if (R.string.AppName == stringRes) {
             return getStringV2("Nekogram", R.string.Nekogram, null);
